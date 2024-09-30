@@ -48,12 +48,10 @@ A community-based bartering system where users can list items they want to excha
 ## Technologies Used
 
 - Django (Python web framework)
-- PostgreSQL (database)
-- React (frontend framework - potential for future development)
 
 ## Getting Started
 
 **1. Clone the repository:**
 
 ```bash
-git clone https://github.com/your-username/ItemExchangeApplication.git
+git clone https://github.com/MasuRii/ItemExchangeApplication.git
