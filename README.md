@@ -46,6 +46,13 @@ A community-based bartering system where users can list items they want to excha
 -  **In-app notification center to view all alerts.** *[Notifications Page / Notification Center]*
 -  **Unread notifications are highlighted. Notification automatically updates to read, and the highlight is removed once clicked.** *[Notifications Page]*
 
+
+## Documents Link
+- **Functional Requirements Document**
+- **Gantt Chart**
+- **System ERD**
+- **UIUX Figma**
+
   
 
 ## Technologies Used
