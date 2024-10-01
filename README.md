@@ -48,10 +48,10 @@ A community-based bartering system where users can list items they want to excha
 
 
 ## Documents Link
-- **Functional Requirements Document**
-- **Gantt Chart**
-- **System ERD**
-- **UIUX Figma**
+- **Functional Requirements Document** - https://github.com/MasuRii/ItemExchangeApplication/blob/main/Documents/Functional%20Requirement.docx
+- **Gantt Chart** - https://github.com/MasuRii/ItemExchangeApplication/blob/main/Documents/Gantt%20Chart.xlsx
+- **System ERD** - https://github.com/MasuRii/ItemExchangeApplication/blob/main/Documents/ERD.jpg
+- **UIUX Figma** - https://github.com/MasuRii/ItemExchangeApplication/tree/main/Documents/UIUX
 
   
 
