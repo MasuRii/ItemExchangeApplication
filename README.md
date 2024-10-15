@@ -1,51 +1,53 @@
+# Item Exchange & Marketplace Platform
 
-# Item Exchange Platform
-
-  
-
-A community-based bartering system where users can list items they want to exchange and connect with others to trade goods without involving money.
-
-  
+A community-based platform where users can list items they want to exchange or sell and connect with others to trade goods or purchase items using money. This hybrid system supports both bartering and monetary transactions, providing flexibility and enhancing user engagement.
 
 ## Minimum Viable Product (MVP) Features
 
-  
-
 ### **1. User Registration and Profiles**
--  **Users can create an account using email and password.**  *[Signup Page]*
--  **Users can create and edit their profile, including name, location, and profile picture.** *[User Profile Page / Edit Profile Page]*
--  **Option to add a brief bio and preferred item categories for exchange.** *[User Profile Page / Settings Page]*
+- **Users can create an account using email and password.** *[Signup Page]*
+- **Users can create and edit their profile, including name, location, and profile picture.** *[User Profile Page / Edit Profile Page]*
+- **Option to add a brief bio, preferred item categories for exchange, and payment details (e.g., PayPal, credit card).** *[User Profile Page / Settings Page]*
+- **Verification of payment methods to ensure secure transactions.** *[User Profile Page / Payment Settings Page]*
 
 ### **2. Item Listing**
--  **Users can create new item listings with title, description, category, condition, and photos (up to 5).** *[New Item Listing Page]*
--  **Edit or delete existing listings.** *[My Listings Page / Edit Item Page]*
--  **Mark items as available or unavailable.** *[My Listings Page / Item Details Page]*
--  **Option to add tags for better searchability.** *[New Item Listing Page / Edit Item Page]*
+- **Users can create new item listings with title, description, category, condition, price (optional for sale), and photos (up to 5).** *[New Item Listing Page]*
+- **Option to choose between Listing for Sale, Exchange, or Both.** *[New Item Listing Page / Listing Type Selector]*
+- **Edit or delete existing listings.** *[My Listings Page / Edit Item Page]*
+- **Mark items as available or unavailable.** *[My Listings Page / Item Details Page]*
+- **Option to add tags for better searchability.** *[New Item Listing Page / Edit Item Page]*
 
 ### **3. Search and Browse**
--  **Keyword search functionality for items.** *[Search Bar (accessible on all pages) / Search Results Page]*
--  **Category-based browsing.** *[Home Page / Categories Page]*
--  **Filter options including item condition, location, and date listed.** *[Search Results Page / Filter Panel]*
--  **Sort results by relevance, date, or user rating.** *[Search Results Page / Sort Options]*
+- **Keyword search functionality for items.** *[Search Bar (accessible on all pages) / Search Results Page]*
+- **Category-based browsing.** *[Home Page / Categories Page]*
+- **Filter options including item condition, location, price range, listing type (sale/exchange), and date listed.** *[Search Results Page / Filter Panel]*
+- **Sort results by relevance, price, date, or user rating.** *[Search Results Page / Sort Options]*
 
-### **4. Exchange Proposal System & Offer Management**
--  **Users can send exchange proposals for listed items.** *[Item Details Page / Send Proposal Page]*
--  **Proposal includes offered item(s) and an optional message.** *[Send Proposal Page]*
--  **Item owners can accept, reject, or counter proposals.** *[Proposals Management Page / Incoming Offers Page]*
--  **Ability to view active, pending, and completed exchanges.** *[Exchange Dashboard / Exchange History Page]*
-- 
+### **4. Exchange and Marketplace Proposal System & Offer Management**
+- **Users can send proposals to exchange or purchase listed items.** *[Item Details Page / Send Proposal Page]*
+  - **For Sales:** Option to buy immediately or send an offer.
+  - **For Exchanges:** Option to propose exchanging items or a combination of items and money.
+- **Proposal includes offered item(s), monetary offer (if applicable), and an optional message.** *[Send Proposal Page]*
+- **Item owners can accept, reject, or counter proposals.** *[Proposals Management Page / Incoming Offers Page]*
+- **Secure payment processing for monetary transactions.** *[Checkout Page / Payment Gateway Integration]*
+- **Ability to view active, pending, and completed transactions.** *[Transaction Dashboard / Transaction History Page]*
+
 ### **5. Rating and Review System**
--  **Users can rate other users on a 5-star scale after completing an exchange.** *[Rate User Page / Exchange Completion Page]*
--  **Option to leave a written review along with the rating.** *[Rate User Page / Review Submission Page]*
--  **System calculates and displays average user rating.** *[User Profile Page]*
--  **Recent reviews visible on user profiles.** *[User Profile Page]*
--  **Functionality to report inappropriate reviews or users.** *[User Profile Page / Report User Page]*
+- **Users can rate other users on a 5-star scale after completing a transaction (exchange or sale).** *[Rate User Page / Transaction Completion Page]*
+- **Option to leave a written review along with the rating.** *[Rate User Page / Review Submission Page]*
+- **System calculates and displays average user rating.** *[User Profile Page]*
+- **Recent reviews visible on user profiles.** *[User Profile Page]*
+- **Functionality to report inappropriate reviews or users.** *[User Profile Page / Report User Page]*
 
-### **6. Notification System**
--  **Push notifications for new exchange proposals, messages, and status updates.** *[System Notifications / Push Notifications Service]*
--  **In-app notification center to view all alerts.** *[Notifications Page / Notification Center]*
--  **Unread notifications are highlighted. Notification automatically updates to read, and the highlight is removed once clicked.** *[Notifications Page]*
+### **6. Payment and Transaction Management**
+- **Integrated secure payment gateway (e.g., Gcash, Paymaya) for handling transactions.** *[Payment Gateway Integration]*
+- **Refund and dispute resolution mechanisms.** *[Support Page / Dispute Resolution Page]*
+- **Transaction history with detailed records of all monetary and barter exchanges.** *[Transaction History Page]*
 
+### **7. Notification System**
+- **Push notifications for new proposals, messages, payments, and status updates.** *[System Notifications / Push Notifications Service]*
+- **In-app notification center to view all alerts.** *[Notifications Page / Notification Center]*
+- **Unread notifications are highlighted. Notifications automatically update to read, and the highlight is removed once clicked.** *[Notifications Page]*
 
 ## Documents Link
 - **Functional Requirements Document** - https://cebuinstituteoftechnology-my.sharepoint.com/:b:/g/personal/mathlee_biacolo_cit_edu/EQkl7GExwtdLj6NagGnM-uMBoQxGu4KhcKXVUXqQKzx3PQ?e=4zhwcD
