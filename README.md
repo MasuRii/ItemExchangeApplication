@@ -48,10 +48,10 @@ A community-based bartering system where users can list items they want to excha
 
 
 ## Documents Link
-- **Functional Requirements Document** - https://github.com/MasuRii/ItemExchangeApplication/blob/main/Documents/Functional%20Requirement.docx
-- **Gantt Chart** - https://github.com/MasuRii/ItemExchangeApplication/blob/main/Documents/Gantt%20Chart.xlsx
-- **System ERD** - https://github.com/MasuRii/ItemExchangeApplication/blob/main/Documents/ERD.jpg
-- **UIUX Figma** - https://github.com/MasuRii/ItemExchangeApplication/tree/main/Documents/UIUX
+- **Functional Requirements Document** - https://cebuinstituteoftechnology-my.sharepoint.com/:b:/g/personal/mathlee_biacolo_cit_edu/EQkl7GExwtdLj6NagGnM-uMBoQxGu4KhcKXVUXqQKzx3PQ?e=4zhwcD
+- **Gantt Chart** - https://cebuinstituteoftechnology-my.sharepoint.com/:x:/g/personal/mathlee_biacolo_cit_edu/EfKybpc0szZFo-HltRaQEhQBlNUPJrhNLKNTS-dbVxQ5rg?e=jhDcvw
+- **System ERD** - https://cebuinstituteoftechnology-my.sharepoint.com/:i:/g/personal/mathlee_biacolo_cit_edu/ETKLOu__3xdOrdkWqURaXLkBgQ0LObOJW2eweg-Bhfj8Rg?e=D5Pftg
+- **UIUX Figma** - https://www.figma.com/design/KxtKGC2RcJdpSmID1ovZs9/Item-Exchange-Platform---Web-Design?node-id=0-1&t=3pNSQjHxgsga2Stx-1
 
   
 
