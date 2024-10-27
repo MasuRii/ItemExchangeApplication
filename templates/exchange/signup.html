@@ -1,15 +1,45 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Sign Up</title>
+    <title>Sign Up - SwapSpot</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
 </head>
 <body>
+    <header>
+        <h1>SwapSpot</h1>
+    </header>
     <h2>Sign Up</h2>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form.non_field_errors }}
+        <label for="{{ form.email.id_for_label }}">Email:</label>
+        {{ form.email }}
+        <label for="{{ form.full_name.id_for_label }}">Full Name:</label>
+        {{ form.full_name }}
+        <label for="{{ form.username.id_for_label }}">Username:</label>
+        {{ form.username }}
+        <label for="{{ form.password1.id_for_label }}">Password:</label>
+        {{ form.password1 }}
+        <label for="{{ form.password2.id_for_label }}">Confirm Password:</label>
+        {{ form.password2 }}
+        <label for="{{ form.city.id_for_label }}">City/Town:</label>
+        {{ form.city }}
+        <label for="{{ form.state.id_for_label }}">State/Region/Province:</label>
+        {{ form.state }}
+        <label for="{{ form.country.id_for_label }}">Country:</label>
+        {{ form.country }}
+        <label for="{{ form.zip_code.id_for_label }}">ZIP/Postal Code:</label>
+        {{ form.zip_code }}
+        <label>
+            {{ form.terms_agreed }}
+            {{ form.terms_agreed.label }}
+        </label>
         <button type="submit">Sign Up</button>
     </form>
-    <a href="{% url 'exchange:login' %}">Log In</a>
+    <p>Already have an account? <a href="{% url 'exchange:login' %}">Log In</a></p>
+    <footer>
+        <p>&copy; 2023 SwapSpot</p>
+    </footer>
 </body>
 </html>

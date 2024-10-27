@@ -2,15 +2,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Home - SwapSpot</title>
+    <title>{% block title %}SwapSpot{% endblock %}</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
 </head>
 <body>
     <header>
         <h1>SwapSpot</h1>
     </header>
-    <h2>Welcome, {{ request.user.full_name }}</h2>
-    <p><a href="{% url 'exchange:logout' %}">Log Out</a></p>
+    {% block content %}{% endblock %}
     <footer>
         <p>&copy; 2023 SwapSpot</p>
     </footer>

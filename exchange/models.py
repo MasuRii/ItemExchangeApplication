@@ -2,36 +2,47 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 
 class UserManager(BaseUserManager):
-    def create_user(self, email, password=None, **extra_fields):
+    def create_user(self, email, username, password=None, **extra_fields):
         if not email:
             raise ValueError('Users must have an email address')
+        if not username:
+            raise ValueError('Users must have a username')
         email = self.normalize_email(email)
-        user = self.model(email=email, **extra_fields)
+        username = username.lower()
+        user = self.model(email=email, username=username, **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, password=None, **extra_fields):
+    def create_superuser(self, email, username, password=None, **extra_fields):
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
-        return self.create_user(email, password, **extra_fields)
+        return self.create_user(email, username, password, **extra_fields)
 
 class User(AbstractBaseUser, PermissionsMixin):
     user_id = models.AutoField(primary_key=True)
     email = models.EmailField(unique=True)
-    name = models.CharField(max_length=255, blank=True, null=True)
-    location = models.CharField(max_length=255, blank=True, null=True)
+    username = models.CharField(max_length=150, unique=True)
+    full_name = models.CharField(max_length=255)
+    city = models.CharField(max_length=255, blank=True, null=True)
+    state = models.CharField(max_length=255, blank=True, null=True)
+    country = models.CharField(max_length=255, blank=True, null=True)
+    zip_code = models.CharField(max_length=20, blank=True, null=True)
     bio = models.TextField(blank=True, null=True)
     profile_picture_url = models.CharField(max_length=255, blank=True, null=True)
     average_rating = models.DecimalField(max_digits=5, decimal_places=2, default=0.0)
     date_joined = models.DateTimeField(auto_now_add=True)
-
+    terms_agreed = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
 
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ['username']
+
+    def __str__(self):
+        return self.email
 
 class PaymentMethod(models.Model):
     payment_method_id = models.AutoField(primary_key=True)
@@ -39,6 +50,9 @@ class PaymentMethod(models.Model):
     provider = models.CharField(max_length=255)
     account_details = models.CharField(max_length=255)
     is_verified = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"{self.provider} - {self.user.email}"
 
 class Item(models.Model):
     item_id = models.AutoField(primary_key=True)
@@ -52,13 +66,22 @@ class Item(models.Model):
     is_available = models.BooleanField(default=True)
     date_listed = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return self.title
+
 class Tag(models.Model):
     tag_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255)
 
+    def __str__(self):
+        return self.name
+
 class ItemTag(models.Model):
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
     tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.item.title} - {self.tag.name}"
 
 class Proposal(models.Model):
     proposal_id = models.AutoField(primary_key=True)
@@ -69,12 +92,18 @@ class Proposal(models.Model):
     status = models.CharField(max_length=10)
     date_sent = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return f"Proposal from {self.sender.email} to {self.receiver.email}"
+
 class Transaction(models.Model):
     transaction_id = models.AutoField(primary_key=True)
     proposal = models.OneToOneField(Proposal, on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     transaction_type = models.CharField(max_length=10)
     date_completed = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Transaction {self.transaction_id}"
 
 class Review(models.Model):
     review_id = models.AutoField(primary_key=True)
@@ -85,9 +114,15 @@ class Review(models.Model):
     comment = models.TextField()
     date_posted = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return f"Review {self.review_id} by {self.reviewer.email}"
+
 class Notification(models.Model):
     notification_id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField()
     is_read = models.BooleanField(default=False)
     date_sent = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Notification {self.notification_id} for {self.user.email}"

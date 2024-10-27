@@ -1,15 +1,27 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Log In</title>
+    <title>Log In - SwapSpot</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
 </head>
 <body>
+    <header>
+        <h1>SwapSpot</h1>
+    </header>
     <h2>Log In</h2>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form.non_field_errors }}
+        <label for="{{ form.email.id_for_label }}">Email:</label>
+        {{ form.email }}
+        <label for="{{ form.password.id_for_label }}">Password:</label>
+        {{ form.password }}
         <button type="submit">Log In</button>
     </form>
-    <a href="{% url 'exchange:signup' %}">Sign Up</a>
+    <p>Don't have an account? <a href="{% url 'exchange:signup' %}">Sign Up</a></p>
+    <footer>
+        <p>&copy; 2023 SwapSpot</p>
+    </footer>
 </body>
 </html>
