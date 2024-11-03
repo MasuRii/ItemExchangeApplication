@@ -62,6 +62,7 @@ A community-based platform where users can list items they want to exchange or s
   
 
 - Django (Python web framework)
+- MySQL (Database)
 
   
 
