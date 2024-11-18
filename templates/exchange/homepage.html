@@ -1,0 +1,213 @@
+{% extends 'exchange/base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Header Section -->
+<header class="site-header">
+    <div class="container header-container">
+        <a href="{% url 'exchange:homepage' %}" class="logo">
+            <img src="{% static 'svg/swapspot-logo-light.svg' %}" alt="SwapSpot Logo" class="logo-image">
+        </a>
+        <!-- Search placeholder -->
+        <div class="search-placeholder">
+            <p>Search bar will be here</p>
+        </div>
+        <div class="header-icons">
+            <div class="icon-placeholder">
+                <img src="{% static 'svg/notification-icon.svg' %}" alt="Notifications" class="icon-image">
+            </div>
+            <div class="icon-placeholder">
+                <img src="{% static 'svg/user-icon.svg' %}" alt="User Profile" class="icon-image">
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-slideshow">
+        <!-- Slide 1 -->
+        <div class="slide">
+            <img src="{% static 'images/reduce_reuse_recycle.jpg' %}" alt="Reduce, Reuse, Recycle">
+            <div class="hero-content">
+                <h1>Reduce, Reuse, Recycle</h1>
+                <p>Join our November Campaign to make a difference!</p>
+            </div>
+        </div>
+        <!-- Slide 2 -->
+        <div class="slide">
+            <img src="{% static 'images/item_exchange.jpg' %}" alt="Item Exchange">
+            <div class="hero-content">
+                <h1>Exchange Items Easily</h1>
+                <p>Swap your items with others in your community.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Top Listings Section -->
+<section class="top-listings">
+    <div class="container">
+        <h2>Top Listings Near You</h2>
+        <div class="product-grid">
+            <!-- Sample Product 1 -->
+            <div class="product-card">
+                <img src="{% static 'images/sample-product1.jpg' %}" alt="Sample Product 1">
+                <div class="card-content">
+                    <h3>Vintage Bicycle</h3>
+                    <p class="price">$150</p>
+                    <p class="location">New York, NY</p>
+                </div>
+                <div class="card-actions">
+                    <button class="send-offer-btn">Send Offer</button>
+                    <button class="wishlist-btn">
+                        <img src="{% static 'svg/heart-icon.svg' %}" alt="Add to Wishlist" class="icon-image">
+                    </button>
+                </div>
+            </div>
+            <!-- Sample Product 2 -->
+            <div class="product-card">
+                <img src="{% static 'images/sample-product1.jpg' %}" alt="Sample Product 2">
+                <div class="card-content">
+                    <h3>Handmade Pottery Set</h3>
+                    <p class="price">$80</p>
+                    <p class="location">San Francisco, CA</p>
+                </div>
+                <div class="card-actions">
+                    <button class="send-offer-btn">Send Offer</button>
+                    <button class="wishlist-btn">
+                        <img src="{% static 'svg/heart-icon.svg' %}" alt="Add to Wishlist" class="icon-image">
+                    </button>
+                </div>
+            </div>
+            <!-- Sample Product 3 -->
+            <div class="product-card">
+                <img src="{% static 'images/sample-product1.jpg' %}" alt="Sample Product 3">
+                <div class="card-content">
+                    <h3>Acoustic Guitar</h3>
+                    <p class="price">$200</p>
+                    <p class="location">Austin, TX</p>
+                </div>
+                <div class="card-actions">
+                    <button class="send-offer-btn">Send Offer</button>
+                    <button class="wishlist-btn">
+                        <img src="{% static 'svg/heart-icon.svg' %}" alt="Add to Wishlist" class="icon-image">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Categories Section -->
+<section class="categories">
+    <div class="container">
+        <h2>Categories</h2>
+        <div class="category-buttons">
+            <span class="category-btn">Electronics</span>
+            <span class="category-btn">Furniture</span>
+            <span class="category-btn">Books</span>
+        </div>
+    </div>
+</section>
+
+<!-- Explore and Discover Section -->
+<section class="explore-discover">
+    <div class="container">
+        <h2>Explore and Discover</h2>
+        <div class="product-grid">
+            <!-- Sample Product 4 -->
+            <div class="product-card">
+                <img src="{% static 'images/sample-product1.jpg' %}" alt="Sample Product 4">
+                <div class="card-content">
+                    <h3>Mountain Bike</h3>
+                    <p class="price">$300</p>
+                    <p class="location">Denver, CO</p>
+                </div>
+                <div class="card-actions">
+                    <button class="send-offer-btn">Send Offer</button>
+                    <button class="wishlist-btn">
+                        <img src="{% static 'svg/heart-icon.svg' %}" alt="Add to Wishlist" class="icon-image">
+                    </button>
+                </div>
+            </div>
+            <!-- Sample Product 5 -->
+            <div class="product-card">
+                <img src="{% static 'images/sample-product1.jpg' %}" alt="Sample Product 5">
+                <div class="card-content">
+                    <h3>Leather Jacket</h3>
+                    <p class="price">$120</p>
+                    <p class="location">Chicago, IL</p>
+                </div>
+                <div class="card-actions">
+                    <button class="send-offer-btn">Send Offer</button>
+                    <button class="wishlist-btn">
+                        <img src="{% static 'svg/heart-icon.svg' %}" alt="Add to Wishlist" class="icon-image">
+                    </button>
+                </div>
+            </div>
+            <!-- Sample Product 6 -->
+            <div class="product-card">
+                <img src="{% static 'images/sample-product1.jpg' %}" alt="Sample Product 6">
+                <div class="card-content">
+                    <h3>Vintage Vinyl Records</h3>
+                    <p class="price">$60</p>
+                    <p class="location">Seattle, WA</p>
+                </div>
+                <div class="card-actions">
+                    <button class="send-offer-btn">Send Offer</button>
+                    <button class="wishlist-btn">
+                        <img src="{% static 'svg/heart-icon.svg' %}" alt="Add to Wishlist" class="icon-image">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer Section (Unchanged) -->
+<footer class="site-footer">
+    <div class="container footer-container">
+        <div class="footer-left">
+            <a href="{% url 'exchange:homepage' %}" class="footer-logo">
+                <img src="{% static 'svg/swapspot-logo-light.svg' %}" alt="SwapSpot Logo" class="logo-image">
+            </a>
+            <p>&copy; 2023 SwapSpot. All rights reserved.</p>
+        </div>
+        <div class="footer-links">
+            <div class="footer-column">
+                <h4>Sitemap</h4>
+                <ul>
+                    <li><span>About Us</span></li>
+                    <li><span>Contact</span></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Products</h4>
+                <ul>
+                    <li><span>Categories</span></li>
+                    <li><span>New Arrivals</span></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Help</h4>
+                <ul>
+                    <li><span>FAQ</span></li>
+                    <li><span>Support</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-social">
+            <div class="social-placeholder">
+                <img src="{% static 'svg/facebook-icon.svg' %}" alt="Facebook" class="icon-image">
+            </div>
+            <div class="social-placeholder">
+                <img src="{% static 'svg/twitter-icon.svg' %}" alt="Twitter" class="icon-image">
+            </div>
+            <div class="social-placeholder">
+                <img src="{% static 'svg/instagram-icon.svg' %}" alt="Instagram" class="icon-image">
+            </div>
+        </div>
+    </div>
+</footer>
+{% endblock %}

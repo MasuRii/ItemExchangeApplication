@@ -34,7 +34,7 @@ def login_view(request):
             user = authenticate(request, email=email, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('exchange:home')
+                return redirect('exchange:homepage')
     else:
         form = LoginForm()
     return render(request, 'exchange/login.html', {'form': form})
@@ -43,9 +43,8 @@ def logout_view(request):
     logout(request)
     return redirect('exchange:login')
 
-@login_required
 def home_view(request):
-    return render(request, 'exchange/home.html')
+    return render(request, 'exchange/homepage.html')
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
