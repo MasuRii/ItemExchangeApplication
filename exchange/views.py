@@ -1,17 +1,29 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
-from .forms import SignUpForm, LoginForm
+from .forms import LoginForm
+from rest_framework import viewsets
+from .models import (
+    User, PaymentMethod, Item, Tag, ItemTag,
+    Proposal, Transaction, Review, Notification
+)
+from .serializers import (
+    UserSerializer, PaymentMethodSerializer, ItemSerializer, TagSerializer,
+    ItemTagSerializer, ProposalSerializer, TransactionSerializer,
+    ReviewSerializer, NotificationSerializer
+)
 
-def signup_view(request):
+def signup_step1(request):
     if request.method == 'POST':
-        form = SignUpForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('exchange:login')
-    else:
-        form = SignUpForm()
-    return render(request, 'exchange/signup.html', {'form': form})
+        # Process form data and redirect to step 2
+        return redirect('exchange:signup_step2')
+    return render(request, 'exchange/signup_page1.html')  # Include 'exchange/' in the template path
+
+def signup_step2(request):
+    if request.method == 'POST':
+        # Process form data and create the user
+        return redirect('exchange:login')
+    return render(request, 'exchange/signup_page2.html')  # Include 'exchange/' in the template path
 
 def login_view(request):
     if request.method == 'POST':
@@ -35,16 +47,6 @@ def logout_view(request):
 def home_view(request):
     return render(request, 'exchange/home.html')
 
-from rest_framework import viewsets
-from .models import (
-    User, PaymentMethod, Item, Tag, ItemTag,
-    Proposal, Transaction, Review, Notification
-)
-from .serializers import (
-    UserSerializer, PaymentMethodSerializer, ItemSerializer, TagSerializer,
-    ItemTagSerializer, ProposalSerializer, TransactionSerializer,
-    ReviewSerializer, NotificationSerializer
-)
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer

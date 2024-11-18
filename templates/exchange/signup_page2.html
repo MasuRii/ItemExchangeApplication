@@ -1,0 +1,51 @@
+{% extends 'exchange/base.html' %}
+
+{% load static %}
+
+{% block title %}Sign Up - Step 2{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/signup_page2.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="left-section">
+        <img src="{% static 'images/signup-image.png' %}" alt="City and People">
+    </div>
+    <div class="right-section">
+        <h1>Almost There!</h1>
+        <form method="post">
+            {% csrf_token %}
+            <label for="full_name">Full Name:</label>
+            <input type="text" id="full_name" name="full_name" required>
+
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city">
+
+            <label for="state">State/Region:</label>
+            <input type="text" id="state" name="state">
+
+            <label for="country">Country:</label>
+            <select id="country" name="country">
+                <!-- Add country options here -->
+                <option value="United States">United States</option>
+                <option value="Canada">Canada</option>
+                <option value="Canada">Philippines</option>
+                <!-- ... -->
+            </select>
+
+            <label for="zip_code">Zip Code:</label>
+            <input type="text" id="zip_code" name="zip_code">
+
+            <label for="terms_agreed" class="checkbox-label">
+                <input type="checkbox" id="terms_agreed" name="terms_agreed" required>
+                I agree to the Terms of Service, Privacy Policy, and Community Guidelines</a>.
+            </label>
+
+            <button type="submit">Continue</button>
+        </form>
+        <a href="{% url 'exchange:signup_step1' %}" class="back-link">Back</a>
+    </div>
+</div>
+{% endblock %}

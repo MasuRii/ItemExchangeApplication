@@ -1,17 +1,15 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>{% block title %}SwapSpot{% endblock %}</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <meta charset="UTF-8">
+    <title>{% block title %}Item Exchange{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% block extra_css %}
+    {% endblock %}
 </head>
 <body>
-    <header>
-        <h1>SwapSpot</h1>
-    </header>
-    {% block content %}{% endblock %}
-    <footer>
-        <p>&copy; 2023 SwapSpot</p>
-    </footer>
+    {% block content %}
+    {% endblock %}
 </body>
 </html>

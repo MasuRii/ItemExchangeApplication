@@ -16,7 +16,8 @@ router.register(r'reviews', views.ReviewViewSet, basename='review')
 router.register(r'notifications', views.NotificationViewSet, basename='notification')
 
 urlpatterns = [
-    path('signup/', views.signup_view, name='signup'),
+    path('signup/step1/', views.signup_step1, name='signup_step1'),
+    path('signup/step2/', views.signup_step2, name='signup_step2'),
     path('login/', views.login_view, name='login'),
     path('logout/', views.logout_view, name='logout'),
     path('', views.home_view, name='home'),

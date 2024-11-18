@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = 'django-insecure-q(q!iao7xf1yj^+f0w1mk=@z__shavcv9%4-v$yr)pagy1jnul'
 
@@ -38,8 +38,11 @@ ROOT_URLCONF = 'ItemExchangeApplication.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
-        'APP_DIRS': True,
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),  # If using a global templates directory
+            # Or if templates are within apps, you can leave DIRS empty or include specific paths
+        ],
+        'APP_DIRS': True,  # This tells Django to look for templates within each app's 'templates' folder
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -64,6 +67,9 @@ DATABASES = {
     }
 }
 
+# Ensure session engine is configured
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'  # Default: stores session in database
+
 AUTH_PASSWORD_VALIDATORS = []
 
 LANGUAGE_CODE = 'en-us'
@@ -74,7 +80,10 @@ USE_I18N = True
 
 USE_TZ = True
 
-STATIC_URL = 'static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 
 LOGIN_URL = '/login/'
