@@ -1,27 +1,41 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Log In - SwapSpot</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <meta charset="UTF-8">
+    <title>SwapSpot - Login</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
 </head>
 <body>
-    <header>
-        <h1>SwapSpot</h1>
-    </header>
-    <h2>Log In</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.non_field_errors }}
-        <label for="{{ form.email.id_for_label }}">Email:</label>
-        {{ form.email }}
-        <label for="{{ form.password.id_for_label }}">Password:</label>
-        {{ form.password }}
-        <button type="submit">Log In</button>
-    </form>
-    <p>Don't have an account? <a href="{% url 'exchange:signup_step1' %}">Sign Up</a></p>
-    <footer>
-        <p>&copy; 2023 SwapSpot</p>
-    </footer>
+    <div class="login-container">
+        <div class="login-form">
+            <div class="logo">
+                <img src="{% static 'svg/swapspot-logo-dark.svg' %}" alt="SwapSpot Logo">
+            </div>
+            <h2>Welcome Back</h2>
+            <p>Login to your account</p>
+            <form method="post" action="{% url 'exchange:login' %}">
+                {% csrf_token %}
+                <div class="input-group">
+                    <label for="username">Username or Email</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="options">
+                    <div class="remember-me">
+                        <input type="checkbox" id="remember" name="remember">
+                        <label for="remember">Remember Me</label>
+                    </div>
+                    <!-- Removed "Forgot Password?" link as it's not defined in urlpatterns -->
+                </div>
+                <button type="submit" class="login-button">Login</button>
+            </form>
+            <p class="signup-link">Don't have an account? <a href="{% url 'exchange:signup_step1' %}">Sign Up</a></p>
+        </div>
+    </div>
 </body>
 </html>

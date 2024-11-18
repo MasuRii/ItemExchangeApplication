@@ -1,5 +1,15 @@
 /* signup_page1.css */
 
+/* Color Variables */
+:root {
+    --primary-color: #B84217;
+    --background-color: #F0F0F0;
+    --text-color: #333;
+    --label-color: #555;
+    --input-border-color: #ccc;
+    --hover-color: #9e3a14; /* Slightly darker shade of primary color */
+}
+
 /* Container for the signup page */
 .container {
     display: flex;
@@ -9,7 +19,7 @@
 /* Left section with the image */
 .left-section {
     flex: 1;
-    background-color: #FFA500; /* Fallback if image doesn't load */
+    background-color: var(--primary-color); /* Fallback if image doesn't load */
 }
 
 .left-section img {
@@ -21,7 +31,7 @@
 /* Right section with the form */
 .right-section {
     flex: 1;
-    background-color: #fff;
+    background-color: var(--background-color);
     padding: 40px;
     display: flex;
     flex-direction: column;
@@ -30,7 +40,7 @@
 
 .right-section h1 {
     margin-bottom: 30px;
-    color: #333;
+    color: var(--primary-color);
 }
 
 .right-section form {
@@ -40,7 +50,7 @@
 
 .right-section label {
     margin-bottom: 5px;
-    color: #555;
+    color: var(--label-color);
 }
 
 .right-section input[type="text"],
@@ -48,29 +58,41 @@
 .right-section input[type="password"] {
     padding: 10px;
     margin-bottom: 20px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--input-border-color);
     border-radius: 5px;
+    font-size: 16px;
+}
+
+.right-section input[type="text"]:focus,
+.right-section input[type="email"]:focus,
+.right-section input[type="password"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px rgba(184, 66, 23, 0.2);
 }
 
 .right-section button {
     padding: 12px;
-    background-color: #FFA500; /* Orange background */
+    background-color: var(--primary-color); /* Primary color background */
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 18px;
+    font-weight: bold;
     margin-top: 10px;
+    transition: background-color 0.3s;
 }
 
 .right-section button:hover {
-    background-color: #e69500;
+    background-color: var(--hover-color);
 }
 
 .back-link {
     margin-top: 20px;
-    color: #FFA500;
+    color: var(--primary-color);
     text-decoration: none;
+    font-size: 16px;
 }
 
 .back-link:hover {
