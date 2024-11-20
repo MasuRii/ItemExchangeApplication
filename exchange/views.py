@@ -27,17 +27,8 @@ def signup_step2(request):
 
 def login_view(request):
     if request.method == 'POST':
-        form = LoginForm(request.POST)
-        if form.is_valid():
-            email = form.cleaned_data.get('email')
-            password = form.cleaned_data.get('password')
-            user = authenticate(request, email=email, password=password)
-            if user is not None:
-                login(request, user)
-                return redirect('exchange:homepage')
-    else:
-        form = LoginForm()
-    return render(request, 'exchange/login.html', {'form': form})
+        return redirect('exchange:homepage')
+    return render(request, 'exchange/login.html')
 
 def logout_view(request):
     logout(request)
