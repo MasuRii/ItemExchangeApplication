@@ -1,7 +1,7 @@
-/* Import Base Styles */
+
 @import url('base.css');
 
-/* Global Styles */
+
 body {
     font-family: Arial, sans-serif;
     color: #333333;
@@ -9,19 +9,19 @@ body {
     padding: 0;
 }
 
-/* Background color for all sections except footer */
+
 section {
     background-color: #F5F5F5;
 }
 
-/* Container */
+
 .container {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-/* Header Section */
+
 .site-header {
     background-color: #B84217;
     padding: 10px 0;
@@ -37,7 +37,7 @@ section {
     height: 50px;
 }
 
-/* Search Placeholder */
+
 .search-placeholder {
     flex-grow: 1;
     margin: 0 20px;
@@ -46,7 +46,7 @@ section {
     font-size: 18px;
 }
 
-/* Header Icons */
+
 .header-icons {
     display: flex;
     align-items: center;
@@ -61,10 +61,10 @@ section {
     height: 24px;
 }
 
-/* Hero Section */
+
 .hero {
     position: relative;
-    height: 500px; /* Adjust the height as needed */
+    height: 500px;
     overflow: hidden;
 }
 
@@ -116,7 +116,7 @@ section {
     font-size: 24px;
 }
 
-/* Fade Animation */
+
 @keyframes fadeSlide {
     0% {
         opacity: 0;
@@ -135,7 +135,7 @@ section {
     }
 }
 
-/* Carousel Dots */
+
 .carousel-dots {
     position: absolute;
     bottom: 30px;
@@ -158,7 +158,7 @@ section {
     opacity: 1;
 }
 
-/* Section Headings */
+
 section h2 {
     font-size: 36px;
     margin-bottom: 40px;
@@ -166,7 +166,7 @@ section h2 {
     text-align: center;
 }
 
-/* Product Grid */
+
 .product-grid {
     display: flex;
     flex-wrap: wrap;
@@ -212,7 +212,7 @@ section h2 {
     color: #888888;
 }
 
-/* Card Actions */
+
 .card-actions {
     display: flex;
     justify-content: space-between;
@@ -245,7 +245,7 @@ section h2 {
     height: 20px;
 }
 
-/* Category Buttons */
+
 .category-buttons {
     display: flex;
     flex-wrap: wrap;
@@ -269,7 +269,7 @@ section h2 {
     color: #FFFFFF;
 }
 
-/* Footer Section (Unchanged) */
+
 .site-footer {
     background-color: #333333;
     color: #F0F0F0;
@@ -334,7 +334,7 @@ section h2 {
     height: 24px;
 }
 
-/* Responsive Styles */
+
 @media (max-width: 1024px) {
     .product-card {
         width: calc(33.333% - 30px);
@@ -390,7 +390,7 @@ section h2 {
     }
 }
 
-/* Icon Image Styling */
+
 .icon-image {
     display: inline-block;
     width: 24px;
@@ -402,7 +402,7 @@ section h2 {
     height: 20px;
 }
 
-/* Optional: Global Box Sizing */
+
 * {
     box-sizing: border-box;
 }

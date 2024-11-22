@@ -1,6 +1,6 @@
-/* base.css */
 
-/* Reset and base styles */
+
+
 body, h1, h2, h3, p, ul, li, form, input, label, select, button, a {
     margin: 0;
     padding: 0;
@@ -9,16 +9,16 @@ body, h1, h2, h3, p, ul, li, form, input, label, select, button, a {
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #FFA500; /* Orange background */
+    background-color: #FFA500;
 }
 
-/* Links */
+
 a {
     color: inherit;
     text-decoration: none;
 }
 
-/* Responsive Image */
+
 img {
     max-width: 100%;
     height: auto;

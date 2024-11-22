@@ -1,4 +1,4 @@
-/* Color Variables */
+
 :root {
     --primary-color: #B84217;
     --background-color: #F0F0F0;
@@ -10,7 +10,7 @@
     --link-color: #B84217;
 }
 
-/* Reset and Base Styles */
+
 * {
     margin: 0;
     padding: 0;
@@ -32,7 +32,7 @@ body {
 }
 
 .login-form {
-    background-color: #FFFFFF; /* Changed to solid white */
+    background-color: #FFFFFF;
     padding: 40px 30px;
     border-radius: 10px;
     width: 100%;
@@ -46,7 +46,7 @@ body {
 }
 
 .logo img {
-    width: 240px; /* Increased size by 60% from original 150px */
+    width: 240px;
 }
 
 .login-form h2 {
@@ -131,7 +131,7 @@ body {
 }
 
 .login-button:hover {
-    background-color: #9e3a14; /* Slightly darker shade of primary color */
+    background-color: #9e3a14;
 }
 
 .signup-link {
@@ -149,7 +149,7 @@ body {
     text-decoration: underline;
 }
 
-/* Responsive Design */
+
 @media screen and (max-width: 768px) {
     .login-form {
         padding: 30px 20px;
@@ -157,6 +157,6 @@ body {
     }
 
     .logo img {
-        width: 180px; /* Adjusted for smaller screens */
+        width: 180px;
     }
 }

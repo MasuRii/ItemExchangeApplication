@@ -1,16 +1,16 @@
-/* signup_page2.css */
 
-/* Color Variables */
+
+
 :root {
     --primary-color: #B84217;
     --background-color: #F0F0F0;
     --text-color: #333;
     --label-color: #555;
     --input-border-color: #ccc;
-    --hover-color: #9e3a14; /* Slightly darker shade of primary color */
+    --hover-color: #9e3a14;
 }
 
-/* Container for the signup page */
+
 .container {
     display: flex;
     min-height: 100vh;
@@ -18,7 +18,7 @@
 
 .left-section {
     flex: 1;
-    background-color: var(--primary-color); /* Fallback if image doesn't load */
+    background-color: var(--primary-color);
 }
 
 .left-section img {
@@ -27,7 +27,7 @@
     object-fit: cover;
 }
 
-/* Right section with the form */
+
 .right-section {
     flex: 1;
     background-color: var(--background-color);
@@ -89,7 +89,7 @@
 
 .right-section button {
     padding: 12px;
-    background-color: var(--primary-color); /* Primary color background */
+    background-color: var(--primary-color);
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -115,7 +115,7 @@
     text-decoration: underline;
 }
 
-/* Responsive styling */
+
 @media (max-width: 768px) {
     .container {
         flex-direction: column;

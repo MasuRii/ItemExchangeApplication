@@ -15,15 +15,15 @@ from .serializers import (
 
 def signup_step1(request):
     if request.method == 'POST':
-        # Process form data and redirect to step 2
+        
         return redirect('exchange:signup_step2')
-    return render(request, 'exchange/signup_page1.html')  # Include 'exchange/' in the template path
+    return render(request, 'exchange/signup_page1.html')  
 
 def signup_step2(request):
     if request.method == 'POST':
-        # Process form data and create the user
+        
         return redirect('exchange:login')
-    return render(request, 'exchange/signup_page2.html')  # Include 'exchange/' in the template path
+    return render(request, 'exchange/signup_page2.html')  
 
 def login_view(request):
     if request.method == 'POST':

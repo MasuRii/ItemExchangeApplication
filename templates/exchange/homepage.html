@@ -6,13 +6,11 @@
 {% endblock %}
 
 {% block content %}
-<!-- Header Section -->
 <header class="site-header">
     <div class="container header-container">
         <a href="{% url 'exchange:homepage' %}" class="logo">
             <img src="{% static 'svg/swapspot-logo-light.svg' %}" alt="SwapSpot Logo" class="logo-image">
         </a>
-        <!-- Search placeholder -->
         <div class="search-placeholder">
             <p>Search bar will be here</p>
         </div>
@@ -27,10 +25,8 @@
     </div>
 </header>
 
-<!-- Hero Section -->
 <section class="hero">
     <div class="hero-slideshow">
-        <!-- Slide 1 -->
         <div class="slide">
             <img src="{% static 'images/reduce_reuse_recycle.jpg' %}" alt="Reduce, Reuse, Recycle">
             <div class="hero-content">
@@ -38,7 +34,6 @@
                 <p>Join our November Campaign to make a difference!</p>
             </div>
         </div>
-        <!-- Slide 2 -->
         <div class="slide">
             <img src="{% static 'images/item_exchange.jpg' %}" alt="Item Exchange">
             <div class="hero-content">
@@ -49,12 +44,10 @@
     </div>
 </section>
 
-<!-- Top Listings Section -->
 <section class="top-listings">
     <div class="container">
         <h2>Top Listings Near You</h2>
         <div class="product-grid">
-            <!-- Sample Product 1 -->
             <div class="product-card">
                 <img src="{% static 'images/sample-product1.jpg' %}" alt="Sample Product 1">
                 <div class="card-content">
@@ -69,7 +62,6 @@
                     </button>
                 </div>
             </div>
-            <!-- Sample Product 2 -->
             <div class="product-card">
                 <img src="{% static 'images/sample-product1.jpg' %}" alt="Sample Product 2">
                 <div class="card-content">
@@ -84,7 +76,6 @@
                     </button>
                 </div>
             </div>
-            <!-- Sample Product 3 -->
             <div class="product-card">
                 <img src="{% static 'images/sample-product1.jpg' %}" alt="Sample Product 3">
                 <div class="card-content">
@@ -103,7 +94,6 @@
     </div>
 </section>
 
-<!-- Categories Section -->
 <section class="categories">
     <div class="container">
         <h2>Categories</h2>
@@ -115,12 +105,10 @@
     </div>
 </section>
 
-<!-- Explore and Discover Section -->
 <section class="explore-discover">
     <div class="container">
         <h2>Explore and Discover</h2>
         <div class="product-grid">
-            <!-- Sample Product 4 -->
             <div class="product-card">
                 <img src="{% static 'images/sample-product1.jpg' %}" alt="Sample Product 4">
                 <div class="card-content">
@@ -135,7 +123,6 @@
                     </button>
                 </div>
             </div>
-            <!-- Sample Product 5 -->
             <div class="product-card">
                 <img src="{% static 'images/sample-product1.jpg' %}" alt="Sample Product 5">
                 <div class="card-content">
@@ -150,7 +137,6 @@
                     </button>
                 </div>
             </div>
-            <!-- Sample Product 6 -->
             <div class="product-card">
                 <img src="{% static 'images/sample-product1.jpg' %}" alt="Sample Product 6">
                 <div class="card-content">
@@ -169,7 +155,6 @@
     </div>
 </section>
 
-<!-- Footer Section (Unchanged) -->
 <footer class="site-footer">
     <div class="container footer-container">
         <div class="footer-left">
