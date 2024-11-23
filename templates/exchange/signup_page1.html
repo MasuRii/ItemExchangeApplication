@@ -21,18 +21,85 @@
         <h1>Create Your Account</h1>
         <form method="post">
             {% csrf_token %}
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
 
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
+            {% if form.errors %}
+                <div class="error-messages">
+                    <p>Please correct the following errors:</p>
+                    <ul>
+                        {% for field, errors in form.errors.items %}
+                            {% for error in errors %}
+                                <li>{{ field|title }}: {{ error }}</li>
+                            {% endfor %}
+                        {% endfor %}
+                        {% if form.non_field_errors %}
+                            {% for error in form.non_field_errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        {% endif %}
+                    </ul>
+                </div>
+            {% endif %}
 
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
+            <div class="form-group">
+              <label for="{{ form.email.id_for_label }}">Email:</label>
+              {{ form.email }}
+              {% if form.email.errors %}
+                <div class="error-message">
+                  {% for error in form.email.errors %}
+                    <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+
+            <div class="form-group">
+              <label for="{{ form.username.id_for_label }}">Username:</label>
+              {{ form.username }}
+              {% if form.username.errors %}
+                  <div class="error-message">
+                    {% for error in form.username.errors %}
+                      <span>{{ error }}</span>
+                    {% endfor %}
+                  </div>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+              <label for="{{ form.password.id_for_label }}">Password:</label>
+              {{ form.password }}
+              {% if form.password.errors %}
+                  <div class="error-message">
+                    {% for error in form.password.errors %}
+                      <span>{{ error }}</span>
+                    {% endfor %}
+                  </div>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="confirm_password">Confirm Password:</label>
+                <input type="password" id="confirm_password" name="confirm_password" required>
+                <span id="password-match-error" style="color: red; display: none;">Passwords do not match</span>
+            </div>
 
             <button type="submit">Continue</button>
         </form>
         <a href="{% url 'exchange:login' %}" class="back-link">Back</a>
     </div>
 </div>
+
+<script>
+    const passwordField = document.getElementById('password');
+    const confirmPasswordField = document.getElementById('confirm_password');
+    const passwordMatchError = document.getElementById('password-match-error');
+
+    confirmPasswordField.addEventListener('input', () => {
+        if (passwordField.value !== confirmPasswordField.value) {
+            passwordMatchError.style.display = 'block';
+        } else {
+            passwordMatchError.style.display = 'none';
+        }
+    });
+</script>
+
 {% endblock %}

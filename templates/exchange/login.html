@@ -1,40 +1,67 @@
-{% load static %}
+{% load static i18n %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>SwapSpot - Login</title>
+    <title>{% trans "Login" %}</title>
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
-    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
 </head>
 <body>
-    <div class="login-container">
-        <div class="login-form">
-            <div class="logo">
-                <img src="{% static 'svg/swapspot-logo-dark.svg' %}" alt="SwapSpot Logo">
+    <div class="overlay" id="overlay"></div>  </body>
+
+
+<div class="login-container" id="loginContainer">
+    <div class="login-form">
+        <div class="logo">
+            <img src="{% static 'svg/swapspot-logo-dark.svg' %}" alt="SwapSpot Logo">
+        </div>
+
+        <h2>{% trans "Welcome Back" %}</h2>
+
+        <form method="post">
+            {% csrf_token %}
+             <div class="input-group">
+                <label for="{{ form.username.id_for_label }}">{% trans "Username or Email" %}:</label>
+                {{ form.username.as_widget }}
+                {% for error in form.username.errors %}
+                    <div class="error-message">{{ error }}</div>
+                {% endfor %}
             </div>
-            <h2>Welcome Back</h2>
-            <p>Login to your account</p>
-            <form method="post" action="{% url 'exchange:login' %}">
-                {% csrf_token %}
-                <div class="input-group">
-                    <label for="username">Username or Email</label>
-                    <input type="text" id="username" name="username" required>
+
+            <div class="input-group">
+                <label for="{{ form.password.id_for_label }}">{% trans "Password" %}:</label>
+                {{ form.password.as_widget }}
+                {% for error in form.password.errors %}
+                    <div class="error-message">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+
+            <div class="options">
+                <div class="remember-me">
+                    {{ form.remember_me }}
+                    <label for="{{ form.remember_me.id_for_label }}">{% trans "Remember me" %}</label>
                 </div>
-                <div class="input-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required>
-                </div>
-                <div class="options">
-                    <div class="remember-me">
-                        <input type="checkbox" id="remember" name="remember">
-                        <label for="remember">Remember Me</label>
-                    </div>
-                </div>
-                <button type="submit" class="login-button">Login</button>
-            </form>
-            <p class="signup-link">Don't have an account? <a href="{% url 'exchange:signup_step1' %}">Sign Up</a></p>
+            </div>
+
+            <button type="submit" class="login-button">{% trans "Login" %}</button>
+        </form>
+
+        <div class="signup-link">
+            <p>{% trans "Don't have an account?" %} <a href="{{ signup_url }}">{% trans "Sign up" %}</a></p>
         </div>
     </div>
-</body>
+</div>
+
+
+<script>
+    const overlay = document.getElementById('overlay');
+    const loginContainer = document.getElementById('loginContainer');
+
+    overlay.addEventListener('click', () => {
+        overlay.style.display = 'none';
+        loginContainer.style.display = 'flex';
+    });
+</script>
 </html>

@@ -1,14 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from django.core.validators import URLValidator
+from django.core.exceptions import ValidationError
 
 class UserManager(BaseUserManager):
     def create_user(self, email, username, password=None, **extra_fields):
         if not email:
-            raise ValueError('Users must have an email address')
-        if not username:
-            raise ValueError('Users must have a username')
+            raise ValueError('The Email field must be set')
         email = self.normalize_email(email)
-        username = username.lower()
         user = self.model(email=email, username=username, **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
@@ -17,6 +16,12 @@ class UserManager(BaseUserManager):
     def create_superuser(self, email, username, password=None, **extra_fields):
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
+
+        if extra_fields.get('is_staff') is not True:
+            raise ValueError('Superuser must have is_staff=True.')
+        if extra_fields.get('is_superuser') is not True:
+            raise ValueError('Superuser must have is_superuser=True.')
+
         return self.create_user(email, username, password, **extra_fields)
 
 class User(AbstractBaseUser, PermissionsMixin):
@@ -29,7 +34,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     country = models.CharField(max_length=255, blank=True, null=True)
     zip_code = models.CharField(max_length=20, blank=True, null=True)
     bio = models.TextField(blank=True, null=True)
-    profile_picture_url = models.CharField(max_length=255, blank=True, null=True)
+    profile_picture_url = models.CharField(max_length=255, blank=True, null=True, validators=[URLValidator()])
     average_rating = models.DecimalField(max_digits=5, decimal_places=2, default=0.0)
     date_joined = models.DateTimeField(auto_now_add=True)
     terms_agreed = models.BooleanField(default=False)
@@ -43,6 +48,14 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
+
+    def clean(self):
+        super().clean()
+        if self.profile_picture_url:
+            try:
+                URLValidator()(self.profile_picture_url)
+            except ValidationError:
+                raise ValidationError({'profile_picture_url': 'Enter a valid URL.'})
 
 class PaymentMethod(models.Model):
     payment_method_id = models.AutoField(primary_key=True)

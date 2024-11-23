@@ -1,6 +1,4 @@
-
-
-
+/* Define custom colors and variables */
 :root {
     --primary-color: #B84217;
     --background-color: #F0F0F0;
@@ -10,12 +8,13 @@
     --hover-color: #9e3a14;
 }
 
-
+/* Container layout */
 .container {
     display: flex;
     min-height: 100vh;
 }
 
+/* Left section (image) */
 .left-section {
     flex: 1;
     background-color: var(--primary-color);
@@ -27,7 +26,7 @@
     object-fit: cover;
 }
 
-
+/* Right section (form area) */
 .right-section {
     flex: 1;
     background-color: var(--background-color);
@@ -42,51 +41,66 @@
     color: var(--primary-color);
 }
 
+/* Form layout */
 .right-section form {
     display: flex;
     flex-direction: column;
 }
 
-.right-section label {
-    margin-bottom: 5px;
-    color: var(--label-color);
-}
-
-.right-section input[type="text"],
-.right-section input[type="email"],
-.right-section select {
+/* Input and select fields */
+.right-section form .form-group input[type="text"],
+.right-section form .form-group input[type="email"],
+.right-section form .form-group select {
     padding: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     border: 1px solid var(--input-border-color);
     border-radius: 5px;
     font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-.right-section input[type="text"]:focus,
-.right-section input[type="email"]:focus,
-.right-section select:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 5px rgba(184, 66, 23, 0.2);
-}
-
-.checkbox-label {
+/* Terms checkbox and label alignment */
+.right-section form .form-group.checkbox-group {
     display: flex;
-    align-items: center;
-    margin-bottom: 20px;
+    align-items: center; /* Align checkbox and label vertically */
+    gap: 10px; /* Add space between checkbox and label */
+    margin-bottom: 20px; /* Add spacing below this group */
+}
+
+.right-section form .form-group.checkbox-group input[type="checkbox"] {
+    width: auto; /* Prevent checkbox from stretching */
+    margin: 0; /* Remove any default margin */
+}
+
+/* Label for checkbox */
+.right-section form .form-group.checkbox-group label {
     color: var(--label-color);
     font-size: 14px;
+    margin: 0; /* Remove default margin */
+    line-height: 1.5; /* Adjust line height for better spacing */
 }
 
-.checkbox-label input[type="checkbox"] {
-    margin-right: 10px;
+/* Labels for other fields */
+.right-section form .form-group label {
+    display: block;
+    margin-bottom: 5px; /* Add spacing below labels */
+    color: var(--label-color);
 }
 
-.checkbox-label a {
-    color: var(--primary-color);
-    text-decoration: underline;
+/* Error messages */
+.error-messages {
+    color: red;
+    margin-bottom: 10px;
 }
 
+.error-message {
+    color: red;
+    margin-top: 5px;
+    font-size: 12px;
+}
+
+/* Submit button */
 .right-section button {
     padding: 12px;
     background-color: var(--primary-color);
@@ -104,6 +118,7 @@
     background-color: var(--hover-color);
 }
 
+/* Back link */
 .back-link {
     margin-top: 20px;
     color: var(--primary-color);
@@ -115,13 +130,13 @@
     text-decoration: underline;
 }
 
-
+/* Responsive design for smaller screens */
 @media (max-width: 768px) {
     .container {
         flex-direction: column;
     }
 
     .left-section img {
-        height: 200px;
+        height: 200px; /* Reduce image height for mobile */
     }
 }
