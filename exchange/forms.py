@@ -50,83 +50,15 @@ class SignUpStep2Form(forms.ModelForm):
         }
 
 class LoginForm(AuthenticationForm):
-    username = forms.CharField(
-        max_length=254,
-        widget=forms.TextInput(attrs={
-            'class': 'form-control',
-            'placeholder': _('Enter your username or email')
-        })
-    )
-    password = forms.CharField(
-        widget=forms.PasswordInput(attrs={
-            'class': 'form-control',
-            'placeholder': _('Enter your password')
-        })
-    )
-    remember_me = forms.BooleanField(required=False, widget=forms.CheckboxInput(), label=_("Remember me"))
-
-    def __init__(self, request=None, *args, **kwargs):
-        self.request = request
-        super().__init__(*args, **kwargs)
-
-    def clean_username(self):
-        username = self.cleaned_data.get('username')
-        if username:
-            self.user = self._get_user_by_username_or_email(username)
-            if self.user is None:
-                raise ValidationError(
-                    _("Invalid username or email."),
-                    code='invalid_login'
-                )
-            if not self.user.is_active:
-                raise ValidationError(
-                    _("This account is inactive."),
-                    code='inactive_account'
-                )
-        return username
-
-    def _get_user_by_username_or_email(self, username):
-        try:
-            user = User.objects.get(email__iexact=username)
-            return user
-        except User.DoesNotExist:
-            try:
-                user = User.objects.get(username__iexact=username)
-                return user
-            except User.DoesNotExist:
-                return None
-
-    def clean_password(self):
-        password = self.cleaned_data.get('password')
-        if password and self.user:
-            if not self.user.check_password(password):
-                raise ValidationError(
-                    _("Invalid password."),
-                    code='invalid_login'
-                )
-        return password
-
-    def clean(self):
-        cleaned_data = super().clean()
-        if self.user:
-           # This method would be called if all fields are valid.
-            user = authenticate(self.request, username=self.user.email, password=cleaned_data.get('password'))
-
-            if user is None:
-                 raise ValidationError(
-                     _("Unable to log in with provided credentials."),
-                     code='invalid_login'
-                 )
-            else:
-                self.user_cache = user
-
-        return cleaned_data
+    remember_me = forms.BooleanField(required=False, widget=forms.CheckboxInput())
 
     def login(self):
-        if self.is_valid():
-            login(self.request, self.user_cache)
-            if not self.cleaned_data.get('remember_me'):
-               # Set session expiry to browser close if remember me is not checked.
-                self.request.session.set_expiry(0)
+        user = authenticate(
+            self.request,
+            username=self.cleaned_data.get('username'),
+            password=self.cleaned_data.get('password')
+        )
+        if user:
+            login(self.request, user)
             return True
         return False

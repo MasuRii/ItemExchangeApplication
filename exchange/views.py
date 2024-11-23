@@ -70,19 +70,35 @@ def signup_step2(request):
     return render(request, 'exchange/signup_page2.html', {'form': form})
 
 def login_view(request):
+    invalid_fields = []  # Track which fields are invalid
+    show_login = False   # Flag to indicate if the login form should be visible
+
     if request.method == 'POST':
         form = LoginForm(request=request, data=request.POST)
-        if form.login():
-            # Redirect to the desired page after successful login
-            return redirect('exchange:homepage')  # Replace 'home' with your actual success URL name
+
+        if form.is_valid():
+            if form.login():  # Perform the login
+                return redirect('exchange:homepage')  # Redirect on successful login
+        else:
+            show_login = True  # Show the login form on failed login
+            # Add invalid fields to the list
+            if form.errors.get('username'):
+                invalid_fields.append('username')
+            if form.errors.get('password'):
+                invalid_fields.append('password')
     else:
         form = LoginForm()
 
+    # Pass the form, invalid fields, and show_login flag to the template
     context = {
         'form': form,
-        'signup_url': reverse('exchange:signup_step1')
+        'invalid_fields': invalid_fields,
+        'signup_url': reverse('exchange:signup_step1'),
+        'show_login': show_login  # Ensure the login form stays visible
     }
-    return render(request, 'exchange/login.html', context)  # Corrected template path
+    return render(request, 'exchange/login.html', context)
+
+
 
 def logout_view(request):
     logout(request)
