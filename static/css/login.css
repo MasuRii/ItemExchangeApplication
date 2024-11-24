@@ -1,68 +1,37 @@
 :root {
-    --primary-color: #B84217; /* Main color */
-    --background-color: #F0F0F0; /* Page background */
-    --text-color: #333333; /* Default text color */
-    --input-background: #FFFFFF; /* Input fields */
-    --input-border-color: #CCCCCC; /* Input border */
-    --focus-border-color: #B84217; /* Input focus color */
-    --button-text-color: #FFFFFF; /* Button text */
-    --link-color: #B84217; /* Links */
-    --error-color: #D9534F; /* Errors */
+    --primary-color: #B84217;
+    --background-color: #F0F0F0;
+    --text-color: #333333;
+    --input-background: #FFFFFF;
+    --input-border-color: #CCCCCC;
+    --focus-border-color: #B84217;
+    --button-text-color: #FFFFFF;
+    --link-color: #B84217;
+    --error-color: #D9534F;
 }
 
-/* General Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Body Styling */
 body {
-    font-family: 'Open Sans', Arial, sans-serif;
+    font-family: 'Open Sans', Arial, sans-serif; /* Or any other font you want */
     color: var(--text-color);
     background: var(--background-color) url('../images/login-background.png') no-repeat center center fixed;
     background-size: cover;
-    overflow: hidden; /* Prevent scrolling when overlay is active */
 }
 
-/* Overlay */
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Dimmed background */
-    display: none; /* Hide by default */
-    z-index: 1000; /* Place above other elements */
-    justify-content: center;
-    align-items: center;
-    cursor: pointer; /* Indicate it's clickable */
-    transition: opacity 0.3s ease-in-out; /* Smooth fade-in animation */
-}
-
-body.overlay-active .overlay {
-    display: flex; /* Show overlay when active */
-    opacity: 1; /* Ensure full opacity */
-}
-
-/* Login Container */
+/* Login Container Styles */
 .login-container {
-    display: none; /* Hidden by default */
+    display: none; /* Initially hidden */
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     padding: 20px;
-    position: relative;
-    z-index: 1100; /* Ensure it's above the overlay */
 }
 
-body.overlay-active .login-container {
-    display: flex; /* Show when overlay is active */
-}
-
-/* Login Form */
 .login-form {
     background-color: var(--input-background);
     padding: 40px 30px;
@@ -80,7 +49,6 @@ body.overlay-active .login-container {
 
 .logo img {
     width: 240px;
-    max-width: 100%; /* Ensure responsiveness */
 }
 
 .login-form h2 {
@@ -97,7 +65,6 @@ body.overlay-active .login-container {
     color: var(--text-color);
 }
 
-/* Input Groups */
 .input-group {
     margin-bottom: 15px;
 }
@@ -118,7 +85,7 @@ body.overlay-active .login-container {
     background-color: var(--input-background);
     font-size: 14px;
     color: var(--text-color);
-    transition: border-color 0.3s, box-shadow 0.3s;
+    transition: border-color 0.3s, box-shadow 0.3s; /* Smooth transition for focus state */
 }
 
 .input-group input:focus {
@@ -127,21 +94,12 @@ body.overlay-active .login-container {
     box-shadow: 0 0 5px rgba(184, 66, 23, 0.2);
 }
 
-/* Highlight Invalid Fields */
-.input-error {
-    border-color: var(--error-color); /* Red border for errors */
-    box-shadow: 0 0 5px rgba(217, 83, 79, 0.5); /* Subtle red glow */
-    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
-
-/* Error Messages */
 .error-message {
     color: var(--error-color);
     font-size: 14px;
     margin-top: 5px;
 }
 
-/* Options Section */
 .options {
     display: flex;
     justify-content: space-between;
@@ -173,7 +131,6 @@ body.overlay-active .login-container {
     text-decoration: underline;
 }
 
-/* Login Button */
 .login-button {
     width: 100%;
     padding: 12px;
@@ -189,10 +146,8 @@ body.overlay-active .login-container {
 
 .login-button:hover {
     background-color: #9e3a14;
-    transition: background-color 0.3s ease-in-out;
 }
 
-/* Signup Link */
 .signup-link {
     text-align: center;
     margin-top: 15px;
@@ -208,10 +163,32 @@ body.overlay-active .login-container {
     text-decoration: underline;
 }
 
-/* Media Queries - Responsive Design */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    cursor: pointer;
+}
+
+.login-container {
+    display: none; /* Initially hidden */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Media Queries for Responsiveness */
 @media screen and (max-width: 768px) {
     .login-form {
         padding: 30px 20px;
+        margin: 20px;
     }
 
     .logo img {
@@ -238,7 +215,7 @@ body.overlay-active .login-container {
     }
 }
 
-/* Fade-in Animation */
+/* Fade-in animation */
 @keyframes fadeIn {
     from {
         opacity: 0;
