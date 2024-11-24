@@ -1,0 +1,201 @@
+/* User Profile CSS */
+
+/* Reset default margins and paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* General Styles */
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #F5F5F5; /* Light gray */
+    padding: 10px 20px;
+    box-shadow: 0px 1px 5px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+.navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+}
+
+.brand-logo img {
+    height: 40px;
+}
+
+.nav-links {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-links ul {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links ul li {
+    margin-left: 30px;
+}
+
+.nav-links ul li a {
+    text-decoration: none;
+    color: #000; /* Black */
+    font-size: 16px;
+    position: relative;
+    padding: 5px;
+}
+
+.nav-links ul li a:hover,
+.nav-links ul li a.active {
+    font-weight: bold;
+}
+
+.nav-links ul li a.active::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #FF5722; /* Orange */
+    bottom: -2px;
+    left: 0;
+}
+
+/* User Account Thumbnail */
+.user-profile {
+    display: flex;
+    align-items: center;
+    margin-left: 30px;
+}
+
+.user-profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* Profile Banner */
+.profile-banner {
+    width: 100%;
+    height: 250px;
+    background-image: url('../images/jellyfish-banner.jpg');
+    background-size: cover;
+    background-position: center;
+    margin-top: 70px; /* To account for fixed navbar */
+    position: relative;
+}
+
+/* Profile Container */
+.profile-container {
+    background-color: #FFFFFF;
+    text-align: center;
+    padding-top: 0;
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.profile-picture-container {
+    width: 150px;
+    height: 150px;
+    border: 5px solid #FF5722;
+    border-radius: 50%;
+    overflow: hidden;
+    position: absolute;
+    top: -75px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #FFFFFF;
+}
+
+.profile-picture {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Profile Information */
+.profile-info {
+    padding-top: 90px;
+}
+
+.username {
+    font-size: 32px;
+    font-weight: bold;
+    color: #000000;
+    margin-bottom: 5px;
+}
+
+.title {
+    font-size: 20px;
+    color: #777777;
+    margin-bottom: 10px;
+}
+
+.location {
+    font-size: 18px;
+    color: #777777;
+    margin-bottom: 15px;
+}
+
+.bio {
+    font-size: 16px;
+    color: #555555;
+    max-width: 600px;
+    margin: 0 auto 25px;
+    padding: 0 15px;
+    line-height: 1.5;
+}
+
+/* Call-to-Action Buttons */
+.profile-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.btn {
+    font-size: 16px;
+    padding: 10px 30px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.follow-btn {
+    background-color: #FF5722;
+    color: #FFFFFF;
+    border: none;
+}
+
+.follow-btn:hover {
+    background-color: #E64A19;
+}
+
+.message-btn {
+    background-color: #FFFFFF;
+    color: #FF5722;
+    border: 2px solid #FF5722;
+}
+
+.message-btn:hover {
+    background-color: #FF5722;
+    color: #FFFFFF;
+}

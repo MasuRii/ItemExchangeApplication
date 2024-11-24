@@ -38,10 +38,11 @@ class SignUpStep1Form(forms.Form):
 class SignUpStep2Form(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['full_name', 'city', 'state', 'country', 'zip_code', 'terms_agreed']
+        fields = ['first_name','last_name', 'city', 'state', 'country', 'zip_code', 'terms_agreed']
 
         widgets = {
-            'full_name': forms.TextInput(attrs={'required': True}),
+            'first_name': forms.TextInput(attrs={'required': True}),
+            'last_name': forms.TextInput(attrs={'required': True}),
             'terms_agreed': forms.CheckboxInput(attrs={'required': True}),
         }
 
@@ -62,3 +63,20 @@ class LoginForm(AuthenticationForm):
             login(self.request, user)
             return True
         return False
+    
+class ProfileSettingsForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = [
+            'first_name',
+            'last_name',
+            'title',
+            'email',
+            'city',
+            'state',
+            'country',
+            'bio',
+        ]
+        widgets = {
+            'bio': forms.Textarea(attrs={'rows': 4}),
+        }    

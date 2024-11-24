@@ -1,12 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
-from django.core.validators import URLValidator
-from django.core.exceptions import ValidationError
-
+from django.utils import timezone
 class UserManager(BaseUserManager):
     def create_user(self, email, username, password=None, **extra_fields):
         if not email:
-            raise ValueError('The Email field must be set')
+            raise ValueError('Users must have an email address')
+        if not username:
+            raise ValueError('Users must have a username')
+        
         email = self.normalize_email(email)
         user = self.model(email=email, username=username, **extra_fields)
         user.set_password(password)
@@ -28,34 +29,38 @@ class User(AbstractBaseUser, PermissionsMixin):
     user_id = models.AutoField(primary_key=True)
     email = models.EmailField(unique=True)
     username = models.CharField(max_length=150, unique=True)
-    full_name = models.CharField(max_length=255)
+    
+    first_name = models.CharField(max_length=30, blank=True)
+    last_name = models.CharField(max_length=30, blank=True)
+    title = models.CharField(max_length=255, blank=True, null=True)
+    bio = models.TextField(blank=True, null=True)
+    
     city = models.CharField(max_length=255, blank=True, null=True)
     state = models.CharField(max_length=255, blank=True, null=True)
     country = models.CharField(max_length=255, blank=True, null=True)
     zip_code = models.CharField(max_length=20, blank=True, null=True)
-    bio = models.TextField(blank=True, null=True)
-    profile_picture_url = models.CharField(max_length=255, blank=True, null=True, validators=[URLValidator()])
+    
+    profile_picture = models.ImageField(upload_to='profile_pictures/', blank=True, null=True)
+    
     average_rating = models.DecimalField(max_digits=5, decimal_places=2, default=0.0)
-    date_joined = models.DateTimeField(auto_now_add=True)
+    date_joined = models.DateTimeField(default=timezone.now)
     terms_agreed = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
-
-    objects = UserManager()
-
+    
+    objects = UserManager()  # Make sure your UserManager is properly defined
+    
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
-
+    
     def __str__(self):
         return self.email
-
-    def clean(self):
-        super().clean()
-        if self.profile_picture_url:
-            try:
-                URLValidator()(self.profile_picture_url)
-            except ValidationError:
-                raise ValidationError({'profile_picture_url': 'Enter a valid URL.'})
+    
+    def get_full_name(self):
+        return f"{self.first_name} {self.last_name}".strip()
+    
+    def get_short_name(self):
+        return self.first_name or self.username
 
 class PaymentMethod(models.Model):
     payment_method_id = models.AutoField(primary_key=True)

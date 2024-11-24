@@ -1,8 +1,9 @@
-from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate, logout
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
-from .forms import LoginForm, SignUpStep1Form, SignUpStep2Form  # Import forms
+from .forms import LoginForm, SignUpStep1Form, SignUpStep2Form, ProfileSettingsForm
 from rest_framework import viewsets
+from django.contrib import messages
 from django.urls import reverse
 from .models import (
     User, PaymentMethod, Item, Tag, ItemTag,
@@ -46,7 +47,8 @@ def signup_step2(request):
                     email=email,
                     username=username,
                     password=password,
-                    full_name=form.cleaned_data['full_name'],
+                    first_name=form.cleaned_data['first_name'],
+                    last_name=form.cleaned_data['last_name'],
                     city=form.cleaned_data['city'],
                     state=form.cleaned_data['state'],
                     country=form.cleaned_data['country'],
@@ -108,6 +110,48 @@ def logout_view(request):
 @login_required
 def home_view(request):
     return render(request, 'exchange/homepage.html')
+
+@login_required
+def user_profile(request, username):
+    profile_user = get_object_or_404(User, username=username)
+    context = {
+        'user': profile_user
+    }
+    return render(request, 'exchange/user_profile.html', context)
+
+@login_required
+def user_profile_settings(request):
+    user = request.user  # Get the logged-in user
+
+    if request.method == 'POST':
+        form = ProfileSettingsForm(request.POST, instance=user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your profile has been updated successfully.')
+            return redirect('exchange:user_profile_settings')
+        else:
+            messages.error(request, 'Please correct the errors below.')
+    else:
+        form = ProfileSettingsForm(instance=user)
+
+    return render(request, 'exchange/user_profile_settings.html', {'form': form, 'user': user})
+
+@login_required
+def upload_avatar(request):
+    if request.method == 'POST':
+        avatar = request.FILES.get('avatar')
+
+        if avatar:
+            user = request.user
+            user.profile_picture = avatar
+            user.save()
+            messages.success(request, 'Your profile picture has been updated.')
+        else:
+            messages.error(request, 'Please select an image to upload.')
+        
+        return redirect('exchange:user_profile_settings')
+
+    return redirect('exchange:user_profile_settings')
 
 # Rest of your ViewSets remain the same...
 class UserViewSet(viewsets.ModelViewSet):

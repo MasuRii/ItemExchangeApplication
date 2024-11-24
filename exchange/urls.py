@@ -1,5 +1,7 @@
 from django.urls import include, path
 from rest_framework import routers
+from django.conf import settings
+from django.conf.urls.static import static
 from . import views
 
 app_name = 'exchange'
@@ -21,8 +23,11 @@ urlpatterns = [
     path('login/', views.login_view, name='login'),
     path('logout/', views.logout_view, name='logout'),
     path('homepage/', views.home_view, name='homepage'),
+    path('profile/<str:username>/', views.user_profile, name='user_profile'),
+    path('settings/', views.user_profile_settings, name='user_profile_settings'),
+    path('upload-avatar/', views.upload_avatar, name='upload_avatar'),
     path('', views.landing, name='landing'),
 
     path('api/', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
