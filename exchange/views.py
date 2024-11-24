@@ -98,7 +98,8 @@ def login_view(request):
     }
     return render(request, 'exchange/login.html', context)
 
-
+def landing(request):
+    return render(request, 'exchange/landing.html')
 
 def logout_view(request):
     logout(request)

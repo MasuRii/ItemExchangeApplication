@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+    {% load static %} <!-- Load the static template tag -->
+    <link rel="stylesheet" href="{% static 'css/landing.css' %}">
+</head>
+<body onclick="redirectToLogin()">
+    <script>
+        function redirectToLogin() {
+            window.location.href = "{% url 'exchange:login' %}";
+        }
+    </script>
+</body>
+</html>
