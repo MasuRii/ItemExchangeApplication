@@ -3,17 +3,12 @@
 
 
 body {
-    font-family: Arial, sans-serif;
-    color: #333333;
-    margin: 0;
-    padding: 0;
+    background-color: white;
 }
-
 
 section {
-    background-color: #F5F5F5;
+    background-color: #ffffff;
 }
-
 
 .container {
     width: 90%;
@@ -21,51 +16,63 @@ section {
     margin: 0 auto;
 }
 
-
+/* Header background color */
 .site-header {
     background-color: #B84217;
-    padding: 10px 0;
+    padding: 10px 0; /* Adjust header padding */
 }
 
+/* Header container setup */
 .header-container {
     display: flex;
+    align-items: center;  /* Vertically center items */
+    justify-content: flex-start;  /* Align to the left */
+}
+
+.logo {
+    display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    text-decoration: none;
 }
 
+/* Logo image styling */
 .logo-image {
-    height: 50px;
+    max-width: 200px;  /* Adjust width if necessary */
+    height: auto;      /* Ensure the height scales with the width */
+    margin-left: 8px; /* Reduced left margin */
+    margin-right: 8px; /* Added right margin */
+    z-index: 99;
 }
 
-
-.search-placeholder {
+/* Search bar container */
+.search-bar {
     flex-grow: 1;
-    margin: 0 20px;
-    text-align: center;
-    color: #FFFFFF;
-    font-size: 18px;
+    max-width: 400px;
+    margin-left: 5px;  /* Adjust this margin for spacing */
 }
 
+/* Search input styling */
+.search-input {
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
 
+/* Header icons container */
 .header-icons {
     display: flex;
     align-items: center;
 }
 
-.icon-placeholder {
-    margin-left: 15px;
-}
-
-.icon-placeholder .icon-image {
-    width: 24px;
-    height: 24px;
-}
-
-
 .hero {
     position: relative;
     height: 500px;
     overflow: hidden;
+    margin-bottom: 30px;
+    background-color: transparent;
 }
 
 .hero-slideshow {
@@ -166,7 +173,6 @@ section h2 {
     text-align: center;
 }
 
-
 .product-grid {
     display: flex;
     flex-wrap: wrap;
@@ -185,9 +191,16 @@ section h2 {
     position: relative;
 }
 
+.explore-discover {
+    margin-top: 50px;
+}
+
 .product-card img {
     width: 100%;
     height: auto;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: none; 
 }
 
 .card-content {
@@ -218,62 +231,91 @@ section h2 {
     justify-content: space-between;
     align-items: center;
     padding: 15px;
+    gap: 10px; 
 }
 
 .send-offer-btn {
-    background-color: #B84217;
-    color: #FFFFFF;
-    border: none;
+    background-color: transparent;
+    color: #808080; /* Grey text by default */
+    border: 2px solid #c2c2c2; /* Grey border by default */
     padding: 10px 20px;
-    border-radius: 25px;
+    border-radius: 12px;
     cursor: pointer;
     font-size: 16px;
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
 }
 
 .send-offer-btn:hover {
-    background-color: #9A370F;
+    background-color: #B84217; /* Orange background on hover */
+    color: #FFFFFF; /* White text on hover */
+    border-color: #B84217; /* Orange border on hover */
 }
-
-.wishlist-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-}
-
-.wishlist-btn .icon-image {
-    width: 20px;
-    height: 20px;
-}
-
 
 .category-buttons {
     display: flex;
-    flex-wrap: wrap;
     gap: 15px;
     justify-content: center;
+    flex-wrap: nowrap;
+    overflow-x: auto;
 }
 
 .category-btn {
-    display: inline-block;
-    background-color: #FFFFFF;
-    color: #B84217;
-    padding: 10px 20px;
-    border-radius: 25px;
-    border: 1px solid #B84217;
-    font-size: 16px;
+    width: 130px;
+    height: 60px;
+    display: flex;
+    align-items: center; /* Vertically center text */
+    justify-content: flex-end; /* Align text to the right */
+    padding-right: 10px; /* Add space between the text and edge of the button */
+    background-color: #FFFFFF; /* Placeholder color */
+    color: #FFFFFF; /* Text color */
+    border-radius: 10px; /* Slightly rounded corners */
+    border: none; /* No border for a clean look */
+    font-size: 14px; /* Adjust font size to fit button size */
+    font-weight: bold;
+    text-align: right;
     cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.category-btn.books-media {
+    background-color: #C0392B; /* Red */
+}
+
+.category-btn.clothing-accessories {
+    background-color: #2980B9; /* Blue */
+}
+
+.category-btn.personal-care {
+    background-color: #F1C40F; /* Yellow */
+}
+
+.category-btn.home-furniture {
+    background-color: #27AE60; /* Light Green */
+}
+
+.category-btn.electronics-gadgets {
+    background-color: #8E44AD; /* Purple */
+}
+
+.category-btn.sports-gear {
+    background-color: #1ABC9C; /* Cyan */
+}
+
+.category-btn.services {
+    background-color: #E67E22; /* Orange */
 }
 
 .category-btn:hover {
-    background-color: #B84217;
-    color: #FFFFFF;
+    transform: translateY(-3px); /* Lift on hover */
+    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.25); /* More prominent shadow */
 }
-
 
 .site-footer {
     background-color: #333333;
     color: #F0F0F0;
     padding: 40px 0;
+    margin-top: 50px;
 }
 
 .footer-container {
@@ -349,7 +391,14 @@ section h2 {
     }
 
     .product-card {
-        width: calc(50% - 30px);
+        width: calc(16.666% - 20px);
+        background-color: #FFFFFF;
+        border: 1px solid #E0E0E0;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        position: relative;
     }
 
     .footer-social {
@@ -402,6 +451,15 @@ section h2 {
     height: 20px;
 }
 
+.clickable-heart {
+    font-size: 24px;
+    color: #cbc7c5;  
+    cursor: pointer;
+}
+
+.clickable-heart:hover {
+    color: #ff4848; 
+}
 
 * {
     box-sizing: border-box;

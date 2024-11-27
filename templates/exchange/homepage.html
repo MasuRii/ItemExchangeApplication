@@ -6,21 +6,22 @@
 {% endblock %}
 
 {% block content %}
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
 <header class="site-header">
     <div class="container header-container">
+        <!-- Logo Section -->
         <a href="{% url 'exchange:homepage' %}" class="logo">
-            <img src="{% static 'svg/swapspot-logo-light.svg' %}" alt="SwapSpot Logo" class="logo-image">
+            <img src="{% static 'images/logoheaderdark.png'%}" alt="SwapSpot Logo" class="logo-image">
         </a>
-        <div class="search-placeholder">
-            <p>Search bar will be here</p>
+        
+        <!-- Search Bar Section -->
+        <div class="search-bar">
+            <input type="text" placeholder="Search" class="search-input">
         </div>
-        <div class="header-icons">
-            <div class="icon-placeholder">
-                <img src="{% static 'svg/notification-icon.svg' %}" alt="Notifications" class="icon-image">
-            </div>
-            <div class="icon-placeholder">
-                <img src="{% static 'svg/user-icon.svg' %}" alt="User Profile" class="icon-image">
-            </div>
+
         </div>
     </div>
 </header>
@@ -28,17 +29,13 @@
 <section class="hero">
     <div class="hero-slideshow">
         <div class="slide">
-            <img src="{% static 'images/reduce_reuse_recycle.jpg' %}" alt="Reduce, Reuse, Recycle">
+            <img src="{% static 'images/image1.png' %}" alt="firstphoto">
             <div class="hero-content">
-                <h1>Reduce, Reuse, Recycle</h1>
-                <p>Join our November Campaign to make a difference!</p>
             </div>
         </div>
         <div class="slide">
-            <img src="{% static 'images/item_exchange.jpg' %}" alt="Item Exchange">
+            <img src="{% static 'images/image2.png' %}" alt="secondphoto">
             <div class="hero-content">
-                <h1>Exchange Items Easily</h1>
-                <p>Swap your items with others in your community.</p>
             </div>
         </div>
     </div>
@@ -48,59 +45,20 @@
     <div class="container">
         <h2>Top Listings Near You</h2>
         <div class="product-grid">
+
             <div class="product-card">
-                <img src="{% static 'images/sample-product1.jpg' %}" alt="Sample Product 1">
+                <img class="product-card-img" src="{% static 'images/sample-product1.jpg' %}" alt="Sample Product 1">
                 <div class="card-content">
                     <h3>Vintage Bicycle</h3>
-                    <p class="price">$150</p>
+                    <p class="price">PHP 2,500.00</p>
                     <p class="location">New York, NY</p>
                 </div>
                 <div class="card-actions">
                     <button class="send-offer-btn">Send Offer</button>
-                    <button class="wishlist-btn">
-                        <img src="{% static 'svg/heart-icon.svg' %}" alt="Add to Wishlist" class="icon-image">
-                    </button>
+                    <i class="material-icons clickable-heart">favorite</i>
                 </div>
-            </div>
-            <div class="product-card">
-                <img src="{% static 'images/sample-product1.jpg' %}" alt="Sample Product 2">
-                <div class="card-content">
-                    <h3>Handmade Pottery Set</h3>
-                    <p class="price">$80</p>
-                    <p class="location">San Francisco, CA</p>
-                </div>
-                <div class="card-actions">
-                    <button class="send-offer-btn">Send Offer</button>
-                    <button class="wishlist-btn">
-                        <img src="{% static 'svg/heart-icon.svg' %}" alt="Add to Wishlist" class="icon-image">
-                    </button>
-                </div>
-            </div>
-            <div class="product-card">
-                <img src="{% static 'images/sample-product1.jpg' %}" alt="Sample Product 3">
-                <div class="card-content">
-                    <h3>Acoustic Guitar</h3>
-                    <p class="price">$200</p>
-                    <p class="location">Austin, TX</p>
-                </div>
-                <div class="card-actions">
-                    <button class="send-offer-btn">Send Offer</button>
-                    <button class="wishlist-btn">
-                        <img src="{% static 'svg/heart-icon.svg' %}" alt="Add to Wishlist" class="icon-image">
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+            </div>            
 
-<section class="categories">
-    <div class="container">
-        <h2>Categories</h2>
-        <div class="category-buttons">
-            <span class="category-btn">Electronics</span>
-            <span class="category-btn">Furniture</span>
-            <span class="category-btn">Books</span>
         </div>
     </div>
 </section>
@@ -108,49 +66,21 @@
 <section class="explore-discover">
     <div class="container">
         <h2>Explore and Discover</h2>
-        <div class="product-grid">
+        <div class="product-grid explore-discover">
+
             <div class="product-card">
-                <img src="{% static 'images/sample-product1.jpg' %}" alt="Sample Product 4">
+                <img class="product-card-img" src="{% static 'images/sample-product1.jpg' %}" alt="Sample Product 1">
                 <div class="card-content">
-                    <h3>Mountain Bike</h3>
-                    <p class="price">$300</p>
-                    <p class="location">Denver, CO</p>
+                    <h3>Vintage Bicycle</h3>
+                    <p class="price">PHP 2,500.00</p>
+                    <p class="location">New York, NY</p>
                 </div>
                 <div class="card-actions">
                     <button class="send-offer-btn">Send Offer</button>
-                    <button class="wishlist-btn">
-                        <img src="{% static 'svg/heart-icon.svg' %}" alt="Add to Wishlist" class="icon-image">
-                    </button>
+                    <i class="material-icons clickable-heart">favorite</i>
                 </div>
-            </div>
-            <div class="product-card">
-                <img src="{% static 'images/sample-product1.jpg' %}" alt="Sample Product 5">
-                <div class="card-content">
-                    <h3>Leather Jacket</h3>
-                    <p class="price">$120</p>
-                    <p class="location">Chicago, IL</p>
-                </div>
-                <div class="card-actions">
-                    <button class="send-offer-btn">Send Offer</button>
-                    <button class="wishlist-btn">
-                        <img src="{% static 'svg/heart-icon.svg' %}" alt="Add to Wishlist" class="icon-image">
-                    </button>
-                </div>
-            </div>
-            <div class="product-card">
-                <img src="{% static 'images/sample-product1.jpg' %}" alt="Sample Product 6">
-                <div class="card-content">
-                    <h3>Vintage Vinyl Records</h3>
-                    <p class="price">$60</p>
-                    <p class="location">Seattle, WA</p>
-                </div>
-                <div class="card-actions">
-                    <button class="send-offer-btn">Send Offer</button>
-                    <button class="wishlist-btn">
-                        <img src="{% static 'svg/heart-icon.svg' %}" alt="Add to Wishlist" class="icon-image">
-                    </button>
-                </div>
-            </div>
+            </div>        
+            
         </div>
     </div>
 </section>
