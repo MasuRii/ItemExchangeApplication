@@ -16,17 +16,71 @@ section {
     margin: 0 auto;
 }
 
+/* User Profile Thumbnail */
+.user-profile {
+    margin-left: 20px;
+    position: relative; /* Needed for dropdown positioning */
+    cursor: pointer;  /* Makes the profile picture clickable */
+}
+
+.user-profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Dropdown Menu Styling */
+.dropdown-menu {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 50px; /* Position it below the profile picture */
+    right: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+}
+
+.dropdown-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown-menu ul li {
+    padding: 10px;
+    text-align: left;
+}
+
+.dropdown-menu ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    display: block;
+}
+
+.dropdown-menu ul li a:hover {
+    background-color: #f0f0f0;
+}
+
 /* Header background color */
 .site-header {
     background-color: #B84217;
     padding: 10px 0; /* Adjust header padding */
 }
 
-/* Header container setup */
 .header-container {
     display: flex;
     align-items: center;  /* Vertically center items */
-    justify-content: flex-start;  /* Align to the left */
+    justify-content: space-between;  /* Space between left and right sections */
+}
+
+/* Left Section (Logo and Search Bar) */
+.left-header {
+    display: flex;
+    align-items: center; /* Vertically center logo and search bar */
 }
 
 .logo {
@@ -38,18 +92,15 @@ section {
 
 /* Logo image styling */
 .logo-image {
-    max-width: 200px;  /* Adjust width if necessary */
-    height: auto;      /* Ensure the height scales with the width */
-    margin-left: 8px; /* Reduced left margin */
-    margin-right: 8px; /* Added right margin */
-    z-index: 99;
+    max-width: 200px;
+    height: auto;
+    margin-right: 8px; /* Space between logo and search bar */
 }
 
-/* Search bar container */
+/* Search bar styling */
 .search-bar {
-    flex-grow: 1;
-    max-width: 400px;
-    margin-left: 5px;  /* Adjust this margin for spacing */
+    margin-left: 10px;  /* Add space between search bar and logo */
+    width: 400px;
 }
 
 /* Search input styling */
@@ -320,7 +371,7 @@ section h2 {
 
 .footer-container {
     display: flex;
-    flex-wrap: wrap;
+    height: 50px;
     justify-content: space-between;
 }
 
@@ -329,7 +380,6 @@ section h2 {
 }
 
 .footer-logo .logo-image {
-    height: 50px;
     margin-bottom: 10px;
 }
 
@@ -399,11 +449,6 @@ section h2 {
         flex-direction: column;
         overflow: hidden;
         position: relative;
-    }
-
-    .footer-social {
-        justify-content: center;
-        margin-top: 20px;
     }
 }
 

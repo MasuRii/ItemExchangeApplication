@@ -8,20 +8,48 @@
 {% block content %}
 <head>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script defer>
+        // Function to toggle the dropdown visibility
+        function toggleDropdown() {
+            const dropdown = document.getElementById('dropdownMenu');
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // Close the dropdown if the user clicks anywhere outside the user profile
+        document.addEventListener('click', function(event) {
+            const profile = document.querySelector('.user-profile');
+            const dropdown = document.getElementById('dropdownMenu');
+            if (!profile.contains(event.target)) {
+                dropdown.style.display = 'none';
+            }
+        });
+    </script>
 </head>
 
 <header class="site-header">
     <div class="container header-container">
-        <!-- Logo Section -->
-        <a href="{% url 'exchange:homepage' %}" class="logo">
-            <img src="{% static 'images/logoheaderdark.png'%}" alt="SwapSpot Logo" class="logo-image">
-        </a>
-        
-        <!-- Search Bar Section -->
-        <div class="search-bar">
-            <input type="text" placeholder="Search" class="search-input">
+        <div class="left-header">
+            <a href="{% url 'exchange:homepage' %}" class="logo">
+                <img src="{% static 'images/logoheaderdark.png'%}" alt="SwapSpot Logo" class="logo-image">
+            </a>
+            <div class="search-bar">
+                <input type="text" placeholder="Search" class="search-input">
+            </div>
         </div>
 
+        <div class="user-profile" onclick="toggleDropdown()">
+            {% if user.profile_picture %}
+                <img src="{{ user.profile_picture.url }}" alt="Profile Picture">
+            {% else %}
+                <img src="{% static 'images/defaultpfp.png' %}" alt="Profile Picture">
+            {% endif %}
+            <div class="dropdown-menu" id="dropdownMenu">
+                <ul>
+                    <li><a href="{% url 'exchange:user_profile' username='skrptt' %}">Profile</a></li>
+                    <li><a href="{% url 'exchange:user_profile_settings' %}">Settings</a></li>
+                    <li><a href="{% url 'exchange:logout' %}">Logout</a></li>
+                </ul>
+            </div>
         </div>
     </div>
 </header>
@@ -30,13 +58,9 @@
     <div class="hero-slideshow">
         <div class="slide">
             <img src="{% static 'images/image1.png' %}" alt="firstphoto">
-            <div class="hero-content">
-            </div>
         </div>
         <div class="slide">
             <img src="{% static 'images/image2.png' %}" alt="secondphoto">
-            <div class="hero-content">
-            </div>
         </div>
     </div>
 </section>
@@ -45,7 +69,6 @@
     <div class="container">
         <h2>Top Listings Near You</h2>
         <div class="product-grid">
-
             <div class="product-card">
                 <img class="product-card-img" src="{% static 'images/sample-product1.jpg' %}" alt="Sample Product 1">
                 <div class="card-content">
@@ -58,7 +81,6 @@
                     <i class="material-icons clickable-heart">favorite</i>
                 </div>
             </div>            
-
         </div>
     </div>
 </section>
@@ -67,7 +89,6 @@
     <div class="container">
         <h2>Explore and Discover</h2>
         <div class="product-grid explore-discover">
-
             <div class="product-card">
                 <img class="product-card-img" src="{% static 'images/sample-product1.jpg' %}" alt="Sample Product 1">
                 <div class="card-content">
@@ -80,7 +101,6 @@
                     <i class="material-icons clickable-heart">favorite</i>
                 </div>
             </div>        
-            
         </div>
     </div>
 </section>
@@ -93,40 +113,7 @@
             </a>
             <p>&copy; 2023 SwapSpot. All rights reserved.</p>
         </div>
-        <div class="footer-links">
-            <div class="footer-column">
-                <h4>Sitemap</h4>
-                <ul>
-                    <li><span>About Us</span></li>
-                    <li><span>Contact</span></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h4>Products</h4>
-                <ul>
-                    <li><span>Categories</span></li>
-                    <li><span>New Arrivals</span></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h4>Help</h4>
-                <ul>
-                    <li><span>FAQ</span></li>
-                    <li><span>Support</span></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-social">
-            <div class="social-placeholder">
-                <img src="{% static 'svg/facebook-icon.svg' %}" alt="Facebook" class="icon-image">
-            </div>
-            <div class="social-placeholder">
-                <img src="{% static 'svg/twitter-icon.svg' %}" alt="Twitter" class="icon-image">
-            </div>
-            <div class="social-placeholder">
-                <img src="{% static 'svg/instagram-icon.svg' %}" alt="Instagram" class="icon-image">
-            </div>
-        </div>
     </div>
 </footer>
+
 {% endblock %}
