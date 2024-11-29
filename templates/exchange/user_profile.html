@@ -14,6 +14,23 @@
            const dropdown = document.getElementById('dropdownMenu');
            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
          }
+
+         // Functions to handle Add Item modal
+         function openAddItemModal() {
+           document.getElementById('addItemModal').style.display = 'block';
+         }
+
+         function closeAddItemModal() {
+           document.getElementById('addItemModal').style.display = 'none';
+         }
+
+         // Close the modal when clicking outside of it
+         window.onclick = function(event) {
+           const modal = document.getElementById('addItemModal');
+           if (event.target == modal) {
+             modal.style.display = 'none';
+           }
+         }
       </script>
    </head>
    <body>
@@ -30,7 +47,7 @@
             <div class="nav-links">
                <ul>
                   <li>
-                     <a href="{% url 'exchange:user_profile' user.username %} " class="active">Profile</a>
+                     <a href="{% url 'exchange:user_profile' user.username %}" class="active">Profile</a>
                   </li>
                   <li>
                      <a href="#">List</a>
@@ -45,7 +62,11 @@
             </div>
             <!-- User Account Thumbnail -->
             <div class="user-profile" onclick="toggleDropdown(event)">
-               {% if user.profile_picture %} <img src="{{ user.profile_picture.url }}" alt="Profile Picture"> {% else %} <img src="{% static 'images/default-profile-picture.jpg' %}" alt="Profile Picture"> {% endif %} 
+               {% if user.profile_picture %}
+                 <img src="{{ user.profile_picture.url }}" alt="Profile Picture">
+               {% else %}
+                 <img src="{% static 'images/default-profile-picture.jpg' %}" alt="Profile Picture">
+               {% endif %} 
                <div class="dropdown-menu" id="dropdownMenu">
                   <ul>
                      <li>
@@ -67,11 +88,23 @@
          <!-- Left Section -->
          <div class="left-section">
             <!-- Profile Picture -->
-            <div class="profile-picture-container"> {% if user.profile_picture %} <img src="{{ user.profile_picture.url }}" alt="Profile Picture" class="profile-picture"> {% else %} <img src="{% static 'images/default-profile-picture.jpg' %}" alt="Profile Picture" class="profile-picture"> {% endif %} </div>
+            <div class="profile-picture-container">
+              {% if user.profile_picture %}
+                <img src="{{ user.profile_picture.url }}" alt="Profile Picture" class="profile-picture">
+              {% else %}
+                <img src="{% static 'images/default-profile-picture.jpg' %}" alt="Profile Picture" class="profile-picture">
+              {% endif %}
+            </div>
             <!-- Name -->
             <h1 class="username">{{ user.get_full_name|default:user.username }}</h1>
             <!-- Bio -->
-            <p class="bio"> {% if user.bio %} {{ user.bio }} {% else %} This user hasn't written a bio yet. {% endif %} </p>
+            <p class="bio">
+              {% if user.bio %}
+                {{ user.bio }}
+              {% else %}
+                This user hasn't written a bio yet.
+              {% endif %}
+            </p>
             <!-- Divider -->
             <hr class="section-divider">
             <!-- Additional Details -->
@@ -85,7 +118,9 @@
                   <span class="rating-count">(321)</span>
                </p>
                <p>
-                  <strong>Location:</strong> {% if user.country %}{{ user.country }}{% else %}Country{% endif %}, {% if user.city %}{{ user.city }}{% else %}City{% endif %}
+                  <strong>Location:</strong> 
+                  {% if user.country %}{{ user.country }}{% else %}Country{% endif %}, 
+                  {% if user.city %}{{ user.city }}{% else %}City{% endif %}
                </p>
                <p>
                   <strong>Contact:</strong> {{ user.contact|default:"N/A" }}
@@ -94,66 +129,102 @@
                   <strong>Email:</strong> {{ user.email }}
                </p>
             </div>
+            <!-- Add Item Button -->
+            <button class="add-product-btn" onclick="openAddItemModal()">+</button>
          </div>
          <!-- Grey Grid -->
-         <button class="add-product-btn">+</button>
          <div class="grid-container">
-            <div class="product-card">
-               <img class="product-card-img" src="{% static 'images/sample-product1.jpg' %}" alt="Sample Product 1">
-               <div class="card-content">
-                  <h3>Vintage Bicycle</h3>
-                  <p class="price">PHP 2,500.00</p>
-                  <p class="location">New York, NY</p>
-               </div>
-               <div class="card-actions">
-                  <button class="send-offer-btn">View Listing</button>
-               </div>
-            </div>
-            <div class="product-card">
-               <img class="product-card-img" src="{% static 'images/sample-product1.jpg' %}" alt="Sample Product 1">
-               <div class="card-content">
-                  <h3>Vintage Bicycle</h3>
-                  <p class="price">PHP 2,500.00</p>
-                  <p class="location">New York, NY</p>
-               </div>
-               <div class="card-actions">
-                  <button class="send-offer-btn">View Listing</button>
-               </div>
-            </div>
-            <div class="product-card">
-               <img class="product-card-img" src="{% static 'images/sample-product1.jpg' %}" alt="Sample Product 1">
-               <div class="card-content">
-                  <h3>Vintage Bicycle</h3>
-                  <p class="price">PHP 2,500.00</p>
-                  <p class="location">New York, NY</p>
-               </div>
-               <div class="card-actions">
-                  <button class="send-offer-btn">View Listing</button>
-               </div>
-            </div>
-            <div class="product-card">
-               <img class="product-card-img" src="{% static 'images/sample-product1.jpg' %}" alt="Sample Product 1">
-               <div class="card-content">
-                  <h3>Vintage Bicycle</h3>
-                  <p class="price">PHP 2,500.00</p>
-                  <p class="location">New York, NY</p>
-               </div>
-               <div class="card-actions">
-                  <button class="send-offer-btn">View Listing</button>
-               </div>
-            </div>
-            <div class="product-card">
-               <img class="product-card-img" src="{% static 'images/sample-product1.jpg' %}" alt="Sample Product 1">
-               <div class="card-content">
-                  <h3>Vintage Bicycle</h3>
-                  <p class="price">PHP 2,500.00</p>
-                  <p class="location">New York, NY</p>
-               </div>
-               <div class="card-actions">
-                  <button class="send-offer-btn">View Listing</button>
-               </div>
-            </div>
+            {% for item in items %}
+              <div class="product-card">
+                {% if item.picture %}
+                  <img class="product-card-img" src="{{ item.picture.url }}" alt="{{ item.title }}">
+                {% else %}
+                  <img class="product-card-img" src="{% static 'images/default-product.jpg' %}" alt="Default Product">
+                {% endif %}
+                <div class="card-content">
+                  <h3>{{ item.title }}</h3>
+                  <p class="price">PHP {{ item.price }}</p>
+                  <p class="location">{{ item.city }}, {{ item.country }}</p>
+                </div>
+                <div class="card-actions">
+                  <a href="#">
+                    <button class="send-offer-btn">View Listing</button>
+                  </a>
+                </div>
+              </div>
+            {% empty %}
+              <p>No items listed yet.</p>
+            {% endfor %}
          </div>
+      </div>
+      
+      <!-- Add Item Modal -->
+      <div id="addItemModal" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeAddItemModal()">&times;</span>
+          <h2>Add New Item</h2>
+          <form id="addItemForm" enctype="multipart/form-data" method="POST" action="{% url 'exchange:add_item' %}">
+            {% csrf_token %}
+            {% if form.errors %}
+              <div class="form-errors">
+                <ul>
+                  {% for field in form %}
+                    {% for error in field.errors %}
+                      <li>{{ error }}</li>
+                    {% endfor %}
+                  {% endfor %}
+                  {% for error in form.non_field_errors %}
+                    <li>{{ error }}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+            {% endif %}
+            <div class="form-group">
+              <label for="title">Title:</label>
+              <input type="text" id="title" name="title" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="description">Description:</label>
+              <textarea id="description" name="description" required></textarea>
+            </div>
+            
+            <div class="form-group">
+              <label for="category">Category:</label>
+              <input type="text" id="category" name="category" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="condition">Condition:</label>
+              <select id="condition" name="condition" required>
+                <option value="New">New</option>
+                <option value="Like New">Like New</option>
+                <option value="Used">Used</option>
+                <option value="Refurbished">Refurbished</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="price">Price (PHP):</label>
+              <input type="number" step="0.01" id="price" name="price" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="listing_type">Listing Type:</label>
+              <select id="listing_type" name="listing_type" required>
+                <option value="Sell">Sell</option>
+                <option value="Exchange">Exchange</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="picture">Picture:</label>
+              <input type="file" id="picture" name="picture" accept="image/*">
+            </div>
+            
+            <button type="submit" class="submit-btn">Add Item</button>
+          </form>
+        </div>
       </div>
    </body>
 </html>

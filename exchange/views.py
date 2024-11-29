@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
-from .forms import LoginForm, SignUpStep1Form, SignUpStep2Form, ProfileSettingsForm
+from .forms import LoginForm, SignUpStep1Form, SignUpStep2Form, ProfileSettingsForm, ItemForm
 from rest_framework import viewsets
 from django.contrib import messages
 from django.urls import reverse
@@ -113,11 +113,39 @@ def home_view(request):
 
 @login_required
 def user_profile(request, username):
-    profile_user = get_object_or_404(User, username=username)
+    user = request.user
+    items = Item.objects.filter(user=user, is_available=True).order_by('-date_listed')
+    
+    if request.method == 'POST':
+        form = ItemForm(request.POST, request.FILES)
+        if form.is_valid():
+            new_item = form.save(commit=False)
+            new_item.user = user
+            new_item.save()
+            return redirect('exchange:user_profile', username=user.username)
+    else:
+        form = ItemForm()
+    
     context = {
-        'user': profile_user
+        'user': user,
+        'items': items,
+        'form': form,
     }
     return render(request, 'exchange/user_profile.html', context)
+
+@login_required
+def add_item(request):
+    if request.method == 'POST':
+        form = ItemForm(request.POST, request.FILES)
+        if form.is_valid():
+            new_item = form.save(commit=False)
+            new_item.user = request.user
+            new_item.save()
+            return redirect('exchange:user_profile', username=request.user.username)
+    else:
+        form = ItemForm()
+    
+    return render(request, 'exchange/add_item.html', {'form': form})
 
 @login_required
 def user_profile_settings(request):

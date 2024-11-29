@@ -4,7 +4,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 from django.conf import settings
-from .models import User
+from .models import User, Item
 
 class SignUpStep1Form(forms.Form):
     email = forms.EmailField(widget=forms.EmailInput(attrs={'required': True}))
@@ -81,3 +81,14 @@ class ProfileSettingsForm(forms.ModelForm):
         widgets = {
             'bio': forms.Textarea(attrs={'rows': 4}),
         }    
+        
+
+class ItemForm(forms.ModelForm):
+    class Meta:
+        model = Item
+        fields = ['title', 'description', 'category', 'condition', 'price', 'listing_type', 'picture']
+        widgets = {
+            'description': forms.Textarea(attrs={'rows': 4}),
+            'condition': forms.Select(),
+            'listing_type': forms.Select(),
+        }        

@@ -24,6 +24,7 @@ urlpatterns = [
     path('logout/', views.logout_view, name='logout'),
     path('homepage/', views.home_view, name='homepage'),
     path('profile/<str:username>/', views.user_profile, name='user_profile'),
+    path('add-item/', views.add_item, name='add_item'),
     path('settings/', views.user_profile_settings, name='user_profile_settings'),
     path('upload-avatar/', views.upload_avatar, name='upload_avatar'),
     path('', views.landing, name='landing'),
