@@ -45,7 +45,7 @@
             {% endif %}
             <div class="dropdown-menu" id="dropdownMenu">
                 <ul>
-                    <li><a href="{% url 'exchange:user_profile' username='skrptt' %}">Profile</a></li>
+                    <li><a href="{% url 'exchange:user_profile' username=user.username %}">Profile</a></li>
                     <li><a href="{% url 'exchange:user_profile_settings' %}">Settings</a></li>
                     <li><a href="{% url 'exchange:logout' %}">Logout</a></li>
                 </ul>
