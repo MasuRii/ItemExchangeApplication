@@ -1,119 +1,110 @@
 {% extends 'exchange/base.html' %}
 {% load static %}
-
 {% block page_css %}
 <link rel="stylesheet" href="{% static 'css/homepage.css' %}">
 {% endblock %}
-
 {% block content %}
 <head>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script defer>
-        // Function to toggle the dropdown visibility
-        function toggleDropdown() {
-            const dropdown = document.getElementById('dropdownMenu');
-            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-        }
-
-        // Close the dropdown if the user clicks anywhere outside the user profile
-        document.addEventListener('click', function(event) {
-            const profile = document.querySelector('.user-profile');
-            const dropdown = document.getElementById('dropdownMenu');
-            if (!profile.contains(event.target)) {
-                dropdown.style.display = 'none';
-            }
-        });
-    </script>
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   <script defer>
+      // Function to toggle the dropdown visibility
+      function toggleDropdown() {
+          const dropdown = document.getElementById('dropdownMenu');
+          dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+      }
+      
+      // Close the dropdown if the user clicks anywhere outside the user profile
+      document.addEventListener('click', function(event) {
+          const profile = document.querySelector('.user-profile');
+          const dropdown = document.getElementById('dropdownMenu');
+          if (!profile.contains(event.target)) {
+              dropdown.style.display = 'none';
+          }
+      });
+   </script>
 </head>
-
 <header class="site-header">
-    <div class="container header-container">
-        <div class="left-header">
-            <a href="{% url 'exchange:homepage' %}" class="logo">
-                <img src="{% static 'images/logoheaderdark.png'%}" alt="SwapSpot Logo" class="logo-image">
-            </a>
-            <div class="search-bar">
-                <input type="text" placeholder="Search" class="search-input">
-            </div>
-        </div>
-
-        <div class="user-profile" onclick="toggleDropdown()">
-            {% if user.profile_picture %}
-                <img src="{{ user.profile_picture.url }}" alt="Profile Picture">
-            {% else %}
-                <img src="{% static 'images/defaultpfp.png' %}" alt="Profile Picture">
-            {% endif %}
-            <div class="dropdown-menu" id="dropdownMenu">
-                <ul>
-                    <li><a href="{% url 'exchange:user_profile' username=user.username %}">Profile</a></li>
-                    <li><a href="{% url 'exchange:user_profile_settings' %}">Settings</a></li>
-                    <li><a href="{% url 'exchange:logout' %}">Logout</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
+   <div class="container header-container">
+      <div class="left-header">
+         <a href="{% url 'exchange:homepage' %}" class="logo">
+         <img src="{% static 'images/logoheaderdark.png'%}" alt="SwapSpot Logo" class="logo-image">
+         </a>
+         <div class="search-bar">
+            <input type="text" placeholder="Search" class="search-input">
+         </div>
+      </div>
+      <div class="user-profile" onclick="toggleDropdown()">
+         {% if user.profile_picture %}
+         <img src="{{ user.profile_picture.url }}" alt="Profile Picture">
+         {% else %}
+         <img src="{% static 'images/defaultpfp.png' %}" alt="Profile Picture">
+         {% endif %}
+         <div class="dropdown-menu" id="dropdownMenu">
+            <ul>
+               <li><a href="{% url 'exchange:user_profile' username=user.username %}">Profile</a></li>
+               <li><a href="{% url 'exchange:user_profile_settings' %}">Settings</a></li>
+               <li><a href="{% url 'exchange:logout' %}">Logout</a></li>
+            </ul>
+         </div>
+      </div>
+   </div>
 </header>
-
 <section class="hero">
-    <div class="hero-slideshow">
-        <div class="slide">
-            <img src="{% static 'images/image1.png' %}" alt="firstphoto">
-        </div>
-        <div class="slide">
-            <img src="{% static 'images/image2.png' %}" alt="secondphoto">
-        </div>
-    </div>
+   <div class="hero-slideshow">
+      <div class="slide">
+         <img src="{% static 'images/image1.png' %}" alt="firstphoto">
+      </div>
+      <div class="slide">
+         <img src="{% static 'images/image2.png' %}" alt="secondphoto">
+      </div>
+   </div>
 </section>
-
 <section class="top-listings">
-    <div class="container">
-        <h2>Top Listings Near You</h2>
-        <div class="product-grid">
-            <div class="product-card">
-                <img class="product-card-img" src="{% static 'images/sample-product1.jpg' %}" alt="Sample Product 1">
-                <div class="card-content">
-                    <h3>Vintage Bicycle</h3>
-                    <p class="price">PHP 2,500.00</p>
-                    <p class="location">New York, NY</p>
-                </div>
-                <div class="card-actions">
-                    <button class="send-offer-btn">Send Offer</button>
-                    <i class="material-icons clickable-heart">favorite</i>
-                </div>
-            </div>            
-        </div>
-    </div>
+   <div class="container">
+      <h2>Top Listings Near You</h2>
+      <div class="product-grid">
+         <div class="product-card">
+            <img class="product-card-img" src="{% static 'images/sample-product1.jpg' %}" alt="Sample Product 1">
+            <div class="card-content">
+               <h3>Vintage Bicycle</h3>
+               <p class="price">PHP 2,500.00</p>
+               <p class="location">New York, NY</p>
+            </div>
+            <div class="card-actions">
+               <button class="send-offer-btn">Send Offer</button>
+               <i class="material-icons clickable-heart">favorite</i>
+            </div>
+         </div>
+      </div>
+   </div>
 </section>
-
 <section class="explore-discover">
-    <div class="container">
-        <h2>Explore and Discover</h2>
-        <div class="product-grid explore-discover">
-            <div class="product-card">
-                <img class="product-card-img" src="{% static 'images/sample-product1.jpg' %}" alt="Sample Product 1">
-                <div class="card-content">
-                    <h3>Vintage Bicycle</h3>
-                    <p class="price">PHP 2,500.00</p>
-                    <p class="location">New York, NY</p>
-                </div>
-                <div class="card-actions">
-                    <button class="send-offer-btn">Send Offer</button>
-                    <i class="material-icons clickable-heart">favorite</i>
-                </div>
-            </div>        
-        </div>
-    </div>
+   <div class="container">
+      <h2>Explore and Discover</h2>
+      <div class="product-grid explore-discover">
+         <div class="product-card">
+            <img class="product-card-img" src="{% static 'images/sample-product1.jpg' %}" alt="Sample Product 1">
+            <div class="card-content">
+               <h3>Vintage Bicycle</h3>
+               <p class="price">PHP 2,500.00</p>
+               <p class="location">New York, NY</p>
+            </div>
+            <div class="card-actions">
+               <button class="send-offer-btn">Send Offer</button>
+               <i class="material-icons clickable-heart">favorite</i>
+            </div>
+         </div>
+      </div>
+   </div>
 </section>
-
 <footer class="site-footer">
-    <div class="container footer-container">
-        <div class="footer-left">
-            <a href="{% url 'exchange:homepage' %}" class="footer-logo">
-                <img src="{% static 'svg/swapspot-logo-light.svg' %}" alt="SwapSpot Logo" class="logo-image">
-            </a>
-            <p>&copy; 2023 SwapSpot. All rights reserved.</p>
-        </div>
-    </div>
+   <div class="container footer-container">
+      <div class="footer-left">
+         <a href="{% url 'exchange:homepage' %}" class="footer-logo">
+         <img src="{% static 'svg/swapspot-logo-light.svg' %}" alt="SwapSpot Logo" class="logo-image">
+         </a>
+         <p>&copy; 2023 SwapSpot. All rights reserved.</p>
+      </div>
+   </div>
 </footer>
-
 {% endblock %}

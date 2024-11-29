@@ -1,158 +1,160 @@
-    {% load static %}
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <!-- Meta tags -->
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>{{ user.get_full_name }} - SwapSpot</title>
-        <!-- Include the external CSS file -->
-        <link rel="stylesheet" href="{% static 'css/user_profile.css' %}">
-    </head>
-    <body>
-        <!-- Header Section -->
-        <nav class="navbar">
-            <div class="navbar-container">
-                <!-- Brand Logo -->
-                <div class="brand-logo">
-                    <a href="{% url 'exchange:homepage' %}">
-                        <img src="{% static 'svg/swapspot-logo-dark.svg' %}" alt="SwapSpot Logo" class="logo-icon">
-                    </a>
-                </div>
-    
-                <!-- Navigation Links -->
-                <div class="nav-links">
-                    <ul>
-                        <li><a href="{% url 'exchange:user_profile' user.username %} " class="active">Profile</a></li>
-                        <li><a href="#">List</a></li>
-                        <li><a href="{% url 'exchange:user_profile_settings' %}">Settings</a></li>
-                        <li><a href="#">Help & Support</a></li>
-                    </ul>
-                </div>
-    
-                <!-- User Account Thumbnail -->
-                <div class="user-profile">
-                    {% if user.profile_picture %}
-                        <img src="{{ user.profile_picture.url }}" alt="Profile Picture">
-                    {% else %}
-                        <img src="{% static 'images/default-profile-picture.jpg' %}" alt="Profile Picture">
-                    {% endif %}
-                </div>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <!-- Meta tags -->
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>{{ user.get_full_name }} - SwapSpot</title>
+      <!-- Include the external CSS file -->
+      <link rel="stylesheet" href="{% static 'css/user_profile.css' %}">
+      <script src="{% static 'js/user_profile_settings.js' %}"></script>
+      <script defer>
+         // Function to toggle the dropdown visibility
+         function toggleDropdown() {
+           const dropdown = document.getElementById('dropdownMenu');
+           dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+         }
+      </script>
+   </head>
+   <body>
+      <!-- Header Section -->
+      <nav class="navbar">
+         <div class="navbar-container">
+            <!-- Brand Logo -->
+            <div class="brand-logo">
+               <a href="{% url 'exchange:homepage' %}">
+               <img src="{% static 'svg/swapspot-logo-dark.svg' %}" alt="SwapSpot Logo" class="logo-icon">
+               </a>
             </div>
-        </nav>
-
-        <!-- Profile Container -->
-        <div class="profile-layout">
-        
-            <!-- Left Section -->
-            <div class="left-section">
-                <!-- Profile Picture -->
-                <div class="profile-picture-container">
-                    {% if user.profile_picture %}
-                        <img src="{{ user.profile_picture.url }}" alt="Profile Picture" class="profile-picture">
-                    {% else %}
-                        <img src="{% static 'images/default-profile-picture.jpg' %}" alt="Profile Picture" class="profile-picture">
-                    {% endif %}
-                </div>
-            
-                <!-- Name -->
-                <h1 class="username">{{ user.get_full_name|default:user.username }}</h1>
-                
-                <!-- Bio -->
-                <p class="bio">
-                    {% if user.bio %}
-                        {{ user.bio }}
-                    {% else %}
-                        This user hasn't written a bio yet.
-                    {% endif %}
-                </p>
-                
-                <!-- Divider -->
-                <hr class="section-divider">
-            
-                <!-- Additional Details -->
-                <div class="details">
-                    <p><strong>Joined:</strong> {{ user.date_joined|date:"F d, Y" }}</p>
-                    <p><strong>Current rating:</strong> 
-                        <span class="stars">⭐⭐⭐⭐☆</span>
-                        <span class="rating-count">(321)</span>
-                    </p>
-                    <p><strong>Location:</strong> 
-                        {% if user.country %}{{ user.country }}{% else %}Country{% endif %},
-                        {% if user.city %}{{ user.city }}{% else %}City{% endif %}
-                    </p>
-                    <p><strong>Contact:</strong> {{ user.contact|default:"N/A" }}</p>
-                    <p><strong>Email:</strong> {{ user.email }}</p>
-                </div>
+            <!-- Navigation Links -->
+            <div class="nav-links">
+               <ul>
+                  <li>
+                     <a href="{% url 'exchange:user_profile' user.username %} " class="active">Profile</a>
+                  </li>
+                  <li>
+                     <a href="#">List</a>
+                  </li>
+                  <li>
+                     <a href="{% url 'exchange:user_profile_settings' %}">Settings</a>
+                  </li>
+                  <li>
+                     <a href="#">Help & Support</a>
+                  </li>
+               </ul>
             </div>
-            
-            <!-- Grey Grid -->
-            <button class="add-product-btn">+</button>
-<div class="grid-container">
-
-    <div class="product-card">
-        <img class="product-card-img" src="{% static 'images/sample-product1.jpg' %}" alt="Sample Product 1">
-        <div class="card-content">
-            <h3>Vintage Bicycle</h3>
-            <p class="price">PHP 2,500.00</p>
-            <p class="location">New York, NY</p>
-        </div>
-        <div class="card-actions">
-            <button class="send-offer-btn">View Listing</button>
-        </div>
-    </div>
-    
-    <div class="product-card">
-        <img class="product-card-img" src="{% static 'images/sample-product1.jpg' %}" alt="Sample Product 1">
-        <div class="card-content">
-            <h3>Vintage Bicycle</h3>
-            <p class="price">PHP 2,500.00</p>
-            <p class="location">New York, NY</p>
-        </div>
-        <div class="card-actions">
-            <button class="send-offer-btn">View Listing</button>
-        </div>
-    </div>
-
-    <div class="product-card">
-        <img class="product-card-img" src="{% static 'images/sample-product1.jpg' %}" alt="Sample Product 1">
-        <div class="card-content">
-            <h3>Vintage Bicycle</h3>
-            <p class="price">PHP 2,500.00</p>
-            <p class="location">New York, NY</p>
-        </div>
-        <div class="card-actions">
-            <button class="send-offer-btn">View Listing</button>
-        </div>
-    </div>
-
-    <div class="product-card">
-        <img class="product-card-img" src="{% static 'images/sample-product1.jpg' %}" alt="Sample Product 1">
-        <div class="card-content">
-            <h3>Vintage Bicycle</h3>
-            <p class="price">PHP 2,500.00</p>
-            <p class="location">New York, NY</p>
-        </div>
-        <div class="card-actions">
-            <button class="send-offer-btn">View Listing</button>
-        </div>
-    </div>
-    
-    <div class="product-card">
-        <img class="product-card-img" src="{% static 'images/sample-product1.jpg' %}" alt="Sample Product 1">
-        <div class="card-content">
-            <h3>Vintage Bicycle</h3>
-            <p class="price">PHP 2,500.00</p>
-            <p class="location">New York, NY</p>
-        </div>
-        <div class="card-actions">
-            <button class="send-offer-btn">View Listing</button>
-        </div>
-    </div>
-    
-</div>
-            
-        </div>
-        
-    </body>
-    </html>
+            <!-- User Account Thumbnail -->
+            <div class="user-profile" onclick="toggleDropdown(event)">
+               {% if user.profile_picture %} <img src="{{ user.profile_picture.url }}" alt="Profile Picture"> {% else %} <img src="{% static 'images/default-profile-picture.jpg' %}" alt="Profile Picture"> {% endif %} 
+               <div class="dropdown-menu" id="dropdownMenu">
+                  <ul>
+                     <li>
+                        <a href="{% url 'exchange:user_profile' username=user.username %}">Profile</a>
+                     </li>
+                     <li>
+                        <a href="{% url 'exchange:user_profile_settings' %}">Settings</a>
+                     </li>
+                     <li>
+                        <a href="{% url 'exchange:logout' %}">Logout</a>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </nav>
+      <!-- Profile Container -->
+      <div class="profile-layout">
+         <!-- Left Section -->
+         <div class="left-section">
+            <!-- Profile Picture -->
+            <div class="profile-picture-container"> {% if user.profile_picture %} <img src="{{ user.profile_picture.url }}" alt="Profile Picture" class="profile-picture"> {% else %} <img src="{% static 'images/default-profile-picture.jpg' %}" alt="Profile Picture" class="profile-picture"> {% endif %} </div>
+            <!-- Name -->
+            <h1 class="username">{{ user.get_full_name|default:user.username }}</h1>
+            <!-- Bio -->
+            <p class="bio"> {% if user.bio %} {{ user.bio }} {% else %} This user hasn't written a bio yet. {% endif %} </p>
+            <!-- Divider -->
+            <hr class="section-divider">
+            <!-- Additional Details -->
+            <div class="details">
+               <p>
+                  <strong>Joined:</strong> {{ user.date_joined|date:"F d, Y" }}
+               </p>
+               <p>
+                  <strong>Current rating:</strong>
+                  <span class="stars">⭐⭐⭐⭐☆</span>
+                  <span class="rating-count">(321)</span>
+               </p>
+               <p>
+                  <strong>Location:</strong> {% if user.country %}{{ user.country }}{% else %}Country{% endif %}, {% if user.city %}{{ user.city }}{% else %}City{% endif %}
+               </p>
+               <p>
+                  <strong>Contact:</strong> {{ user.contact|default:"N/A" }}
+               </p>
+               <p>
+                  <strong>Email:</strong> {{ user.email }}
+               </p>
+            </div>
+         </div>
+         <!-- Grey Grid -->
+         <button class="add-product-btn">+</button>
+         <div class="grid-container">
+            <div class="product-card">
+               <img class="product-card-img" src="{% static 'images/sample-product1.jpg' %}" alt="Sample Product 1">
+               <div class="card-content">
+                  <h3>Vintage Bicycle</h3>
+                  <p class="price">PHP 2,500.00</p>
+                  <p class="location">New York, NY</p>
+               </div>
+               <div class="card-actions">
+                  <button class="send-offer-btn">View Listing</button>
+               </div>
+            </div>
+            <div class="product-card">
+               <img class="product-card-img" src="{% static 'images/sample-product1.jpg' %}" alt="Sample Product 1">
+               <div class="card-content">
+                  <h3>Vintage Bicycle</h3>
+                  <p class="price">PHP 2,500.00</p>
+                  <p class="location">New York, NY</p>
+               </div>
+               <div class="card-actions">
+                  <button class="send-offer-btn">View Listing</button>
+               </div>
+            </div>
+            <div class="product-card">
+               <img class="product-card-img" src="{% static 'images/sample-product1.jpg' %}" alt="Sample Product 1">
+               <div class="card-content">
+                  <h3>Vintage Bicycle</h3>
+                  <p class="price">PHP 2,500.00</p>
+                  <p class="location">New York, NY</p>
+               </div>
+               <div class="card-actions">
+                  <button class="send-offer-btn">View Listing</button>
+               </div>
+            </div>
+            <div class="product-card">
+               <img class="product-card-img" src="{% static 'images/sample-product1.jpg' %}" alt="Sample Product 1">
+               <div class="card-content">
+                  <h3>Vintage Bicycle</h3>
+                  <p class="price">PHP 2,500.00</p>
+                  <p class="location">New York, NY</p>
+               </div>
+               <div class="card-actions">
+                  <button class="send-offer-btn">View Listing</button>
+               </div>
+            </div>
+            <div class="product-card">
+               <img class="product-card-img" src="{% static 'images/sample-product1.jpg' %}" alt="Sample Product 1">
+               <div class="card-content">
+                  <h3>Vintage Bicycle</h3>
+                  <p class="price">PHP 2,500.00</p>
+                  <p class="location">New York, NY</p>
+               </div>
+               <div class="card-actions">
+                  <button class="send-offer-btn">View Listing</button>
+               </div>
+            </div>
+         </div>
+      </div>
+   </body>
+</html>
