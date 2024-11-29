@@ -71,6 +71,7 @@ class ProfileSettingsForm(forms.ModelForm):
             'first_name',
             'last_name',
             'title',
+            'contact',
             'email',
             'city',
             'state',

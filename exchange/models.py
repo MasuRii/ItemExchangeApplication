@@ -32,6 +32,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     
     first_name = models.CharField(max_length=30, blank=True)
     last_name = models.CharField(max_length=30, blank=True)
+    contact = models.CharField(max_length=255, blank=True)
     title = models.CharField(max_length=255, blank=True, null=True)
     bio = models.TextField(blank=True, null=True)
     
@@ -83,6 +84,7 @@ class Item(models.Model):
     listing_type = models.CharField(max_length=10)
     is_available = models.BooleanField(default=True)
     date_listed = models.DateTimeField(auto_now_add=True)
+    picture = models.ImageField(upload_to='item_pictures/', null=True, blank=True)
 
     def __str__(self):
         return self.title
