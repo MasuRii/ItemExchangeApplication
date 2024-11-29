@@ -8,6 +8,13 @@
       <title>Profile Settings - SwapSpot</title>
       <!-- Include the external CSS file -->
       <link rel="stylesheet" href="{% static 'css/user_profile_settings.css' %}">
+      <script defer>
+         // Function to toggle the dropdown visibility
+         function toggleDropdown() {
+            const dropdown = document.getElementById('dropdownMenu');
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+         }
+      </script>
    </head>
    <body>
       <!-- Header Section -->
@@ -30,12 +37,22 @@
                </ul>
             </div>
             <!-- User Account Thumbnail -->
-            <div class="user-profile">
-               {% if user.profile_picture %}
-               <img src="{{ user.profile_picture.url }}" alt="Profile Picture">
-               {% else %}
-               <img src="{% static 'images/default-profile-picture.jpg' %}" alt="Profile Picture">
-               {% endif %}
+            <div class="user-profile" onclick="toggleDropdown(event)">
+               {% if user.profile_picture %} <img src="{{ user.profile_picture.url }}" alt="Profile Picture"> {% else %} <img
+                  src="{% static 'images/default-profile-picture.jpg' %}" alt="Profile Picture"> {% endif %}
+               <div class="dropdown-menu" id="dropdownMenu">
+                  <ul>
+                     <li>
+                        <a href="{% url 'exchange:user_profile' username=user.username %}">Profile</a>
+                     </li>
+                     <li>
+                        <a href="{% url 'exchange:user_profile_settings' %}">Settings</a>
+                     </li>
+                     <li>
+                        <a href="{% url 'exchange:logout' %}">Logout</a>
+                     </li>
+                  </ul>
+               </div>
             </div>
          </div>
       </nav>

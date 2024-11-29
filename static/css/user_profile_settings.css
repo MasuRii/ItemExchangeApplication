@@ -249,6 +249,47 @@ ul {
 	line-height: 1.5;
 }
 
+/* Add styles for the dropdown menu */
+.dropdown-menu {
+	display: none;
+	/* Initially hidden */
+	position: absolute;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	z-index: 1000;
+	margin-top: 10px;
+	padding: 10px;
+	list-style: none;
+	width: 150px;
+	/* Adjust as needed */
+}
+
+.dropdown-menu ul {
+	padding: 0;
+	margin: 0;
+}
+
+.dropdown-menu ul li {
+	margin: 0;
+	padding: 5px 0;
+}
+
+.dropdown-menu ul li a {
+	text-decoration: none;
+	color: #333;
+	display: block;
+}
+
+.dropdown-menu ul li a:hover {
+	background-color: #f0f0f0;
+}
+
+/* Visible state for the dropdown */
+.dropdown-menu.show {
+	display: block;
+}
+
 /* Info Section (Right Panel) */
 .info-section {
 	width: 65%;
