@@ -122,16 +122,16 @@
 
         <!-- Seller Information -->
         <div class="seller-info-section">
-            <h3>Seller Information</h3>
-            <div class="seller-details">
-                {% if item.user.profile.profile_picture %}
-                    <img src="{{ item.user.profile.profile_picture.url }}" alt="{{ item.user.username }}" class="seller-pfp">
-                {% else %}
-                    <img src="{% static 'images/defaultpfp.png' %}" alt="{{ item.user.username }}" class="seller-pfp">
-                {% endif %}
-                <p class="seller-username">{{ item.user.username }}</p>
-            </div>
-        </div>
+          <h3>Seller Information</h3>
+          <div class="seller-details">
+              {% if item.user.profile_picture %}
+                  <img src="{{ item.user.profile_picture.url }}" alt="{{ item.user.username }}" class="seller-pfp">
+              {% else %}
+                  <img src="{% static 'images/defaultpfp.png' %}" alt="{{ item.user.username }}" class="seller-pfp">
+              {% endif %}
+              <p class="seller-username">{{ item.user.username }}</p>
+          </div>
+      </div>
 
         <!-- Actions -->
         <div class="item-actions">
