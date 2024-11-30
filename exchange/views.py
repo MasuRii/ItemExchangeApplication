@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from .forms import LoginForm, SignUpStep1Form, SignUpStep2Form, ProfileSettingsForm, ItemForm
@@ -109,7 +109,11 @@ def logout_view(request):
 
 @login_required
 def home_view(request):
-    return render(request, 'exchange/homepage.html')
+    items = Item.objects.filter(is_available=True).select_related('user')
+    context = {
+        'items': items
+    }
+    return render(request, 'exchange/homepage.html', context)
 
 @login_required
 def user_profile(request, username):

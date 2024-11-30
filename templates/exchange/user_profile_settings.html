@@ -40,6 +40,10 @@
             <div class="user-profile" onclick="toggleDropdown(event)">
                {% if user.profile_picture %} <img src="{{ user.profile_picture.url }}" alt="Profile Picture"> {% else %} <img
                   src="{% static 'images/defaultpfp.png' %}" alt="Profile Picture"> {% endif %}
+               <!-- Username Display -->
+               <span class="user-name">
+                  {{ user.username }}
+              </span>   
                <div class="dropdown-menu" id="dropdownMenu">
                   <ul>
                      <li>

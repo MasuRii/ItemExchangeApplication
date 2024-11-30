@@ -27,7 +27,7 @@
    <div class="container header-container">
       <div class="left-header">
          <a href="{% url 'exchange:homepage' %}" class="logo">
-         <img src="{% static 'images/logoheaderdark.png'%}" alt="SwapSpot Logo" class="logo-image">
+            <img src="{% static 'images/logoheaderdark.png' %}" alt="SwapSpot Logo" class="logo-image">
          </a>
          <div class="search-bar">
             <input type="text" placeholder="Search" class="search-input">
@@ -35,10 +35,16 @@
       </div>
       <div class="user-profile" onclick="toggleDropdown()">
          {% if user.profile_picture %}
-         <img src="{{ user.profile_picture.url }}" alt="Profile Picture">
+            <img src="{{ user.profile_picture.url }}" alt="Profile Picture">
          {% else %}
-         <img src="{% static 'images/defaultpfp.png' %}" alt="Profile Picture">
+            <img src="{% static 'images/defaultpfp.png' %}" alt="Profile Picture">
          {% endif %}
+         
+         <!-- Username Display -->
+         <span class="user-name">
+            {{ user.username }}
+         </span>
+         
          <div class="dropdown-menu" id="dropdownMenu">
             <ul>
                <li><a href="{% url 'exchange:user_profile' username=user.username %}">Profile</a></li>
@@ -63,37 +69,32 @@
    <div class="container">
       <h2>Top Listings Near You</h2>
       <div class="product-grid">
+         {% for item in items %}
          <div class="product-card">
-            <img class="product-card-img" src="{% static 'images/sample-product1.jpg' %}" alt="Sample Product 1">
+            <img class="product-card-img" src="{{ item.picture.url }}" alt="{{ item.title }}">
             <div class="card-content">
-               <h3>Vintage Bicycle</h3>
-               <p class="price">PHP 2,500.00</p>
-               <p class="location">New York, NY</p>
+               <h3>{{ item.title }}</h3>
+               <p class="price">PHP {{ item.price }}</p>
+               <p class="location">
+                  {% if item.user.city and item.user.state %}
+                     {{ item.user.city }}, {{ item.user.state }}
+                  {% elif item.user.city %}
+                     {{ item.user.city }}
+                  {% elif item.user.state %}
+                     {{ item.user.state }}
+                  {% else %}
+                     Location not specified
+                  {% endif %}
+               </p>
             </div>
             <div class="card-actions">
                <button class="send-offer-btn">Send Offer</button>
                <i class="material-icons clickable-heart">favorite</i>
             </div>
          </div>
-      </div>
-   </div>
-</section>
-<section class="explore-discover">
-   <div class="container">
-      <h2>Explore and Discover</h2>
-      <div class="product-grid explore-discover">
-         <div class="product-card">
-            <img class="product-card-img" src="{% static 'images/sample-product1.jpg' %}" alt="Sample Product 1">
-            <div class="card-content">
-               <h3>Vintage Bicycle</h3>
-               <p class="price">PHP 2,500.00</p>
-               <p class="location">New York, NY</p>
-            </div>
-            <div class="card-actions">
-               <button class="send-offer-btn">Send Offer</button>
-               <i class="material-icons clickable-heart">favorite</i>
-            </div>
-         </div>
+         {% empty %}
+         <p>No items available at the moment.</p>
+         {% endfor %}
       </div>
    </div>
 </section>
