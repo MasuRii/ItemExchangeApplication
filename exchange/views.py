@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from .forms import LoginForm, SignUpStep1Form, SignUpStep2Form, ProfileSettingsForm, ItemForm
@@ -160,6 +160,13 @@ def add_item(request):
         form = ItemForm()
     
     return render(request, 'exchange/add_item.html', {'form': form})
+
+def item_detail(request, item_id):
+    item = get_object_or_404(Item, item_id=item_id)
+    context = {
+        'item': item,
+    }
+    return render(request, 'exchange/item_detail.html', context)
 
 @login_required
 def user_profile_settings(request):
