@@ -23,16 +23,21 @@
       });
    </script>
 </head>
+<!-- Header Section -->
 <header class="site-header">
    <div class="container header-container">
       <div class="left-header">
          <a href="{% url 'exchange:homepage' %}" class="logo">
             <img src="{% static 'images/logoheaderdark.png' %}" alt="SwapSpot Logo" class="logo-image">
          </a>
-         <div class="search-bar">
-            <input type="text" placeholder="Search" class="search-input">
-         </div>
+         
+         <!-- Search Form -->
+         <form method="GET" action="{% url 'exchange:homepage' %}" class="search-bar">
+            <input type="text" name="q" placeholder="Search" class="search-input" value="{{ request.GET.q }}">
+         </form>
+         
       </div>
+      
       <div class="user-profile" onclick="toggleDropdown()">
          {% if user.profile_picture %}
             <img src="{{ user.profile_picture.url }}" alt="Profile Picture">

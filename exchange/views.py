@@ -109,9 +109,19 @@ def logout_view(request):
 
 @login_required
 def home_view(request):
-    items = Item.objects.filter(is_available=True).select_related('user')
+    query = request.GET.get('q', '')  # Retrieve the search query from GET parameters
+    if query:
+        # Perform a case-insensitive search on the title field
+        items = Item.objects.filter(
+            is_available=True,
+            title__icontains=query
+        ).select_related('user')
+    else:
+        items = Item.objects.filter(is_available=True).select_related('user')
+    
     context = {
-        'items': items
+        'items': items,
+        'query': query,  # Optional: Pass the query back if needed elsewhere
     }
     return render(request, 'exchange/homepage.html', context)
 
