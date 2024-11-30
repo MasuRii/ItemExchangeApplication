@@ -121,7 +121,7 @@ def home_view(request):
     
     context = {
         'items': items,
-        'query': query,  # Optional: Pass the query back if needed elsewhere
+        'query': query,  # Pass the query back to the context
     }
     return render(request, 'exchange/homepage.html', context)
 
