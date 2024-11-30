@@ -132,14 +132,61 @@
 <!-- Footer Section -->
 {% if not query %}
 <footer class="site-footer">
-   <div class="container footer-container">
-      <div class="footer-left">
-         <a href="{% url 'exchange:homepage' %}" class="footer-logo">
-         <img src="{% static 'svg/swapspot-logo-light.svg' %}" alt="SwapSpot Logo" class="logo-image">
-         </a>
-         <p>&copy; 2023 SwapSpot. All rights reserved.</p>
-      </div>
+   <div class="footer-container">
+ 
+     <!-- Logo and Company Info -->
+     <div class="footer-section logo-section">
+       <img alt="SwapSpot Logo" class="footer-logo" src="{% static 'images/logoheaderdark.png' %}">
+       <p class="copyright">© 2024 All rights reserved.</p>
+       <p class="company-info">SwapSpot Company, Cebu City.</p>
+     </div>
+ 
+     <!-- Sitemap Section -->
+     <div class="footer-section sitemap">
+       <h3>Sitemap</h3>
+       <ul>
+         <li><a href="#">About Us</a></li>
+         <li><a href="#">Our Goals</a></li>
+         <li><a href="#">Our Pledge</a></li>
+         <li><a href="#">Contact</a></li>
+       </ul>
+     </div>
+ 
+     <!-- Products Section -->
+     <div class="footer-section products">
+       <h3>Products</h3>
+       <ul>
+         <li><a href="#">How Bartering Works</a></li>
+         <li><a href="#">User Rating System</a></li>
+         <li><a href="#">Customer Protection</a></li>
+       </ul>
+     </div>
+ 
+     <!-- Help Section -->
+     <div class="footer-section help">
+       <h3>Help</h3>
+       <ul>
+         <li><a href="#">Getting Started</a></li>
+         <li><a href="#">FAQ</a></li>
+         <li><a href="#">Referral Program</a></li>
+         <li><a href="#">Customer Support</a></li>
+       </ul>
+     </div>
+ 
+     <!-- Social Media Section -->
+     <div class="footer-section social-media">
+       <a href="#" rel="noopener noreferrer" target="_blank" aria-label="Facebook">
+         <img alt="Facebook" class="social-icon" src="{% static 'svg/facebook-icon.svg' %}">
+       </a>
+       <a href="#" rel="noopener noreferrer" target="_blank" aria-label="Instagram">
+         <img alt="Instagram" class="social-icon" src="{% static 'svg/instagram-icon.svg' %}">
+       </a>
+       <a href="#" rel="noopener noreferrer" target="_blank" aria-label="Twitter">
+         <img alt="Twitter" class="social-icon" src="{% static 'svg/twitter-icon.svg' %}">
+       </a>
+     </div>
+ 
    </div>
-</footer>
+ </footer>
 {% endif %}
 {% endblock %}

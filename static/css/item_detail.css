@@ -237,30 +237,194 @@
     margin-top: 50px;
 }
 
-.footer-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+/* -------------------------------------------------------------------
+   Footer Styles
+------------------------------------------------------------------- */
+
+/* Root Variables for Maintainability */
+:root {
+    --footer-bg-color: #333333;
+    --footer-text-color: #F0F0F0;
+    --footer-accent-color: #B84217;
+    --font-family: 'Arial, sans-serif'; /* Example font */
+    --font-size-base: 14px;
+    --font-size-heading: 18px;
+    --gap-default: 40px;
+    --padding-footer: 40px 20px;
 }
 
-.footer-left {
+/* General Footer Styling */
+.site-footer {
+    background-color: var(--footer-bg-color);
+    color: var(--footer-text-color);
+    padding: var(--padding-footer);
+    margin-top: 50px;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: var(--gap-default);
+}
+
+/* -------------------------------------------------------------------
+   Logo and Company Info Section
+------------------------------------------------------------------- */
+.logo-section {
     flex: 1 1 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .footer-logo {
-    display: inline-block;
+    max-width: 150px;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.logo-section p {
+    font-size: var(--font-size-base);
+    margin: 5px 0;
+}
+
+/* -------------------------------------------------------------------
+   Sitemap, Products, and Help Sections
+------------------------------------------------------------------- */
+.footer-section {
+    flex: 1 1 200px;
+}
+
+.footer-section h3 {
+    font-size: var(--font-size-heading);
+    margin-bottom: 15px;
+    color: var(--footer-text-color);
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-section ul li {
     margin-bottom: 10px;
 }
 
-.footer-logo .logo-image {
-    max-width: 150px;
-    height: auto;
+.footer-section ul li a {
+    text-decoration: none;
+    color: var(--footer-text-color);
+    font-size: var(--font-size-base);
+    transition: color 0.3s ease;
 }
 
-.footer-left p {
-    font-size: 14px;
-    margin-top: 10px;
+.footer-section ul li a:hover,
+.footer-section ul li a:focus {
+    color: var(--footer-accent-color);
+}
+
+/* -------------------------------------------------------------------
+   Social Media Section
+------------------------------------------------------------------- */
+.social-media {
+    flex: 1 1 200px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Adjusted for proper alignment */
+    gap: 15px;
+}
+
+.social-media a {
+    display: inline-block;
+}
+
+.social-icon {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.social-icon:hover,
+.social-icon:focus {
+    transform: scale(1.1);
+    opacity: 0.8;
+}
+
+/* -------------------------------------------------------------------
+   Responsive Styles
+------------------------------------------------------------------- */
+
+/* Tablets and Small Desktops (768px to 1024px) */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .footer-container {
+        justify-content: space-around;
+    }
+
+    .social-media {
+        justify-content: center;
+    }
+}
+
+/* Mobile Devices (Up to 768px) */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 30px; /* Reduced gap for mobile */
+    }
+
+    .logo-section,
+    .footer-section {
+        flex: 1 1 100%;
+        max-width: 300px;
+        align-items: center;
+    }
+
+    .logo-section {
+        align-items: center;
+    }
+
+    .footer-section h3 {
+        font-size: 16px;
+    }
+
+    .footer-section ul li a {
+        font-size: 13px;
+    }
+
+    .footer-logo {
+        max-width: 120px;
+        margin-bottom: 10px;
+    }
+
+    .social-media {
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .social-icon {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+/* -------------------------------------------------------------------
+   Accessibility Enhancements
+------------------------------------------------------------------- */
+
+/* Focus States for Accessibility */
+.footer-section ul li a:focus {
+    outline: 2px dashed var(--footer-accent-color);
+    outline-offset: 2px;
+}
+
+.social-media a:focus .social-icon {
+    outline: 2px dashed var(--footer-accent-color);
+    outline-offset: 2px;
 }
 
 /* Responsive Styles */
