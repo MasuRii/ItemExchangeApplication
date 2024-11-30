@@ -468,7 +468,7 @@ body {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	gap: 16px;
-	background-color: #efefef;
+	background-color: #f5f5f5;
 	padding: 20px;
 	width: 850px;
 	height: "wrap-content";
