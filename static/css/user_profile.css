@@ -421,7 +421,7 @@ ul {
 
 .grid-container {
 	display: grid;
-	grid-template-columns: repeat(6, 1fr);
+	grid-template-columns: repeat(5, 1fr);
 	gap: 16px;
 	background-color: #efefef;
 	padding: 20px;
@@ -459,7 +459,6 @@ ul {
 .modal {
 	display: none;
 	position: fixed;
-	z-index: 1000;
 	padding-top: 100px; 
 	left: 0;
 	top: 0;
@@ -522,7 +521,9 @@ ul {
 	background-color: #45a049;
   }
 
-  .product-card {
+
+
+.product-card {
     background-color: #FFFFFF;
     border: 1px solid #E0E0E0;
     border-radius: 10px;
@@ -531,14 +532,16 @@ ul {
     flex-direction: column;
     overflow: hidden;
     position: relative;
+	width: 140px;
 }
 
 .product-card img {
     width: 100%;
     height: auto;
     object-fit: cover;
-    border-radius: 20px;
+    border-radius: 12px;
     box-shadow: none;
+	padding: 3px;
 }
 
 .card-content {
