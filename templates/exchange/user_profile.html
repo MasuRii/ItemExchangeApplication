@@ -36,53 +36,57 @@
    <body>
       <!-- Header Section -->
       <nav class="navbar">
-         <div class="navbar-container">
+        <div class="navbar-container">
             <!-- Brand Logo -->
             <div class="brand-logo">
-               <a href="{% url 'exchange:homepage' %}">
-               <img src="{% static 'svg/swapspot-logo-dark.svg' %}" alt="SwapSpot Logo" class="logo-icon">
-               </a>
+                <a href="{% url 'exchange:homepage' %}">
+                    <img src="{% static 'svg/swapspot-logo-dark.svg' %}" alt="SwapSpot Logo" class="logo-icon">
+                </a>
             </div>
             <!-- Navigation Links -->
             <div class="nav-links">
-               <ul>
-                  <li>
-                     <a href="{% url 'exchange:user_profile' user.username %}" class="active">Profile</a>
-                  </li>
-                  <li>
-                     <a href="#">List</a>
-                  </li>
-                  <li>
-                     <a href="{% url 'exchange:user_profile_settings' %}">Settings</a>
-                  </li>
-                  <li>
-                     <a href="#">Help & Support</a>
-                  </li>
-               </ul>
-            </div>
-            <!-- User Account Thumbnail -->
-            <div class="user-profile" onclick="toggleDropdown(event)">
-               {% if user.profile_picture %}
-                 <img src="{{ user.profile_picture.url }}" alt="Profile Picture">
-               {% else %}
-                 <img src="{% static 'images/defaultpfp.png' %}" alt="Profile Picture">
-               {% endif %} 
-               <div class="dropdown-menu" id="dropdownMenu">
-                  <ul>
-                     <li>
-                        <a href="{% url 'exchange:user_profile' username=user.username %}">Profile</a>
-                     </li>
-                     <li>
+                <ul>
+                    <li>
+                        <a href="{% url 'exchange:user_profile' user.username %}" class="active">Profile</a>
+                    </li>
+                    <li>
+                        <a href="#">List</a>
+                    </li>
+                    <li>
                         <a href="{% url 'exchange:user_profile_settings' %}">Settings</a>
-                     </li>
-                     <li>
-                        <a href="{% url 'exchange:logout' %}">Logout</a>
-                     </li>
-                  </ul>
-               </div>
+                    </li>
+                    <li>
+                        <a href="#">Help & Support</a>
+                    </li>
+                </ul>
             </div>
-         </div>
-      </nav>
+            <!-- User Account Thumbnail with Username -->
+            <div class="user-profile" onclick="toggleDropdown(event)">
+                {% if user.profile_picture %}
+                    <img src="{{ user.profile_picture.url }}" alt="Profile Picture">
+                {% else %}
+                    <img src="{% static 'images/defaultpfp.png' %}" alt="Profile Picture">
+                {% endif %} 
+                <!-- Username Display -->
+                <span class="user-name">
+                    {{ user.username }}
+                </span>
+                <div class="dropdown-menu" id="dropdownMenu">
+                    <ul>
+                        <li>
+                            <a href="{% url 'exchange:user_profile' username=user.username %}">Profile</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'exchange:user_profile_settings' %}">Settings</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'exchange:logout' %}">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
       <!-- Profile Container -->
       <div class="profile-layout">
          <!-- Left Section -->

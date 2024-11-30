@@ -118,6 +118,16 @@ ul {
 	border-radius: 50%;
 }
 
+.user-name {
+    font-size: 16px;
+    color: #333;
+    font-weight: 500; /* Maintains visibility */
+    margin-left: 10px; /* Provides space between the image and username */
+    display: inline-block; /* Allows margin and alignment adjustments */
+    vertical-align: middle; /* Vertically centers the text with the image */
+    line-height: normal; /* Ensures the text doesn't stretch */
+}
+
 /* Profile Container */
 .profile-container {
 	background-color: #FFFFFF;

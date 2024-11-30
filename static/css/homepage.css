@@ -24,6 +24,16 @@ section {
 	/* Makes the profile picture clickable */
 }
 
+.user-name {
+    font-size: 16px;
+    color: #333;
+    font-weight: 500; /* Maintains visibility */
+    margin-left: 10px; /* Provides space between the image and username */
+    display: inline-block; /* Allows margin and alignment adjustments */
+    vertical-align: middle; /* Vertically centers the username with the image */
+    line-height: 40px; /* Matches the height of the profile image for perfect vertical alignment */
+}
+
 .user-profile img {
 	width: 40px;
 	height: 40px;
