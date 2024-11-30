@@ -255,14 +255,14 @@ section h2 {
 }
 
 .product-card {
-	background-color: #FFFFFF;
-	border: 1px solid #E0E0E0;
-	border-radius: 10px;
-	width: calc(25% - 30px);
-	display: flex;
-	flex-direction: column;
-	overflow: hidden;
-	position: relative;
+    background-color: #ffffff;
+    border: 1px solid #E0E0E0;
+    border-radius: 10px;
+    width: 190px; /* Fixed width */
+    height: 330px; /* Fixed height */
+    flex-direction: column; /* Stack content vertically */
+    position: static;
+    overflow: hidden; /* Prevent content overflow */
 }
 
 .explore-discover {
@@ -270,65 +270,76 @@ section h2 {
 }
 
 .product-card img {
-	width: 100%;
-	height: auto;
-	object-fit: cover;
-	border-radius: 20px;
-	box-shadow: none;
+    width: 188px;
+    height: 188px; /* Maintain frame size */
+    object-fit: cover; /* Scale and crop image to fit frame */
+    border-radius: 12px;
+    box-shadow: none;
+    padding: 4px;
 }
 
 .card-content {
-	padding: 15px;
-	flex-grow: 1;
+    padding: 8px;
+    flex-grow: 1; /* Ensure content section grows to fill available space */
+    margin-bottom: 3px;
 }
 
-.product-card h3 {
-	font-size: 20px;
-	margin-bottom: 10px;
-	color: #333333;
+.title { 
+    font-size: 16px;
+    color: #303030;
+    margin-bottom: 8px;
+    margin-top: -10px;
+
+    display: block;
+    width: calc(100% - 8px); /* Accounts for padding/margin */
+    white-space: nowrap; /* Prevents text from wrapping */
+    overflow: hidden; /* Hides overflow */
+    text-overflow: ellipsis; /* Adds ellipsis for overflowing text */
+    
+    display: -webkit-box;
+    -webkit-line-clamp: 1; /* Limit to 1 line */
+    -webkit-box-orient: vertical; /* Set the box layout for a single line of text */
+    line-height: 1.2; /* Adjust line height for better control */
+    max-height: 1.2em; /* Limit to a single line height */
 }
 
 .product-card .price {
-	font-size: 18px;
-	color: #B84217;
-	margin-bottom: 5px;
+    font-size: 14px;
+	font-weight: bold;
+    color: #B84217;
+    margin-bottom: 5px;
 }
 
 .product-card .location {
-	font-size: 14px;
-	color: #888888;
+    font-size: 11px;
+    color: #b7b7b7;
+    margin-bottom: auto; /* Allow the location text to take up space */
 }
 
 
 .card-actions {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 15px;
-	gap: 10px;
+    margin-top: auto; /* Push actions to the bottom */
+    padding: 15px;
+    display: flex;
+    justify-content: center; /* Center-align button */
 }
 
 .send-offer-btn {
-	background-color: transparent;
-	color: #808080;
-	/* Grey text by default */
-	border: 2px solid #c2c2c2;
-	/* Grey border by default */
-	padding: 10px 20px;
-	border-radius: 12px;
-	cursor: pointer;
-	font-size: 16px;
-	transition: all 0.3s ease;
-	/* Smooth transition for hover effects */
+    background-color: transparent;
+    color: #808080; /* Default grey text */
+    border: 2px solid #c2c2c2; /* Default grey border */
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+	width: 170px;
+    transition: all 0.3s ease; 
 }
 
 .send-offer-btn:hover {
-	background-color: #B84217;
-	/* Orange background on hover */
-	color: #FFFFFF;
-	/* White text on hover */
-	border-color: #B84217;
-	/* Orange border on hover */
+    background-color: #B84217; /* Orange background on hover */
+    color: #FFFFFF; /* White text on hover */
+    border-color: #B84217; /* Orange border on hover */
 }
 
 .category-buttons {

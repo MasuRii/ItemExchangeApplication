@@ -479,20 +479,22 @@ body {
 }
 
 .add-product-btn {
-	position: absolute;
-	top: 130px;
-	right: 160px;
-	width: 40px;
-	height: 20px;
-	background-color: transparent;
-	border: 2px solid #bbbbbb;
-	border-radius: 16%;
-	font-size: 20px;
-	color: #aaaaaa;
-	text-align: center;
-	line-height: 17px;
-	cursor: pointer;
-	transition: all 0.3s ease;
+    position: relative; /* Use relative positioning for better control */
+    margin-top: 20px; /* Add spacing from profile */
+    padding: 12px 30px; /* Add padding for a better button size */
+    background-color: transparent; /* Light green background */
+    border-radius: 2px; /* Slightly rounded corners */
+	border: 2px solid #c2c2c2;
+    font-size: 14px; /* Adjust font size for better readability */
+    color: #808080; /* Dark text for visibility */
+    text-align: center; /* Center the text */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+    width: 95%; /* Make it stretch to the container's width */
+    max-width: 400px; /* Limit the width to 400px */
+    display: block; /* Ensure it behaves like a block element */
+    margin-left: auto; /* Center the button horizontally */
+    margin-right: auto; /* Center the button horizontally */
 }
 
 .add-product-btn:hover {
@@ -566,27 +568,15 @@ body {
 	background-color: #45a049;
   }
 
-  .product-card {
+.product-card {
     background-color: #ffffff;
     border: 1px solid #E0E0E0;
     border-radius: 10px;
     width: 190px; /* Fixed width */
-    height: 325px; /* Fixed height */
+    height: 330px; /* Fixed height */
     flex-direction: column; /* Stack content vertically */
     position: static;
     overflow: hidden; /* Prevent content overflow */
-}
-
-.empty-product-card {
-    background-color: transparent;  /* Makes the background transparent */
-    border: 2px dotted #E0E0E0;     /* Dotted border with a lighter color */
-    border-radius: 10px;            /* Keeps the rounded corners */
-    width: 190px;                   /* Fixed width */
-    height: 325px;                  /* Fixed height */
-    display: flex;                  /* Use flexbox for layout */
-    flex-direction: column;         /* Stack content vertically */
-    position: static;               /* Normal positioning */
-    overflow: hidden;               /* Prevent content overflow */
 }
 
 .product-card img {
@@ -638,7 +628,7 @@ body {
 }
 
 .card-actions {
-    margin-top: auto; /* Push actions to the bottom */
+    margin-top: 5px; /* Push actions to the bottom */
     padding: 15px;
     display: flex;
     justify-content: center; /* Center-align button */

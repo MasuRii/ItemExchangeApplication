@@ -97,7 +97,7 @@
             {% endif %}
             
             <div class="card-content">
-               <h3>{{ item.title }}</h3>
+               <p class="title">{{ item.title }}</p>
                <p class="price">PHP {{ item.price }}</p>
                <p class="location">
                   {% if item.user.city and item.user.state %}
@@ -113,7 +113,6 @@
             </div>
             <div class="card-actions">
                <button class="send-offer-btn">Send Offer</button>
-               <i class="material-icons clickable-heart">favorite</i>
             </div>
          </div>
          {% empty %}
