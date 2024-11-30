@@ -132,25 +132,23 @@
             
          </div>
 
-         <!-- Add Item Button -->
-         <button class="add-product-btn" onclick="openAddItemModal()">+</button>
          <!-- Grey Grid -->
          <div class="grid-container">
             {% for item in items %}
             <div class="product-card">
               {% if item.picture %}
-                 <img class="product-card-img" src="{{ item.picture.url }}" alt="{{ item.title }}">
+                 <img class="product-img-frame" src="{{ item.picture.url }}" alt="{{ item.title }}">
               {% else %}
-                 <img class="product-card-img" src="{% static 'images/default-product.jpg' %}" alt="Default Product">
+                 <img class="product-img-frame" src="{% static 'images/default-product.jpg' %}" alt="Default Product">
               {% endif %}
               <div class="card-content">
-                 <h3>{{ item.title }}</h3>
+                <p class="title">{{ item.title }}</p>
                  <p class="price">PHP {{ item.price }}</p>
-                 <p class="location">{{ item.city }}, {{ item.country }}</p>
+                 <p class="location">{{ item.user.city }}, {{ item.user.country }}</p>
               </div>
               <div class="card-actions">
                  <a href="#">
-                    <button class="send-offer-btn">View Listing</button>
+                    <button class="view-listing-btn">View Listing</button>
                  </a>
               </div>
             </div>
@@ -230,12 +228,13 @@
       </div>
 
       <!-- Profile Divider -->
-      <hr class="profile-divider">
-      <p class="terms">SwapSpot's Terms and Conditions</p>
-      <p class="security">Safety and Security</p>
-      <p class="how">How bartering works</p>
-      <p class="pledge">Swapspot's Pledge</p>
-      <p class="contact">Contact Us</p>
-      <p class="copyright">© The SwapSpot Company, Cebu City, 2024</p>
+      <footer class="footer">
+        <p class="terms">SwapSpot's Terms and Conditions</p>
+        <p class="security">Safety and Security</p>
+        <p class="how">How bartering works</p>
+        <p class="pledge">SwapSpot's Pledge</p>
+        <p class="contact">Contact Us</p>
+        <p class="copyright">© The SwapSpot Company, Cebu City, 2024</p>
+      </footer>
    </body>
 </html>

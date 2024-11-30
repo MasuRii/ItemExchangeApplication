@@ -7,8 +7,30 @@
 
 /* General Styles */
 body {
+	display: flex;
 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	flex-direction: column;
+	min-height: 100vh;
 }
+
+.footer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+	background-color: #f8f8f8;
+	padding: 16px;
+	font-size: 12px;
+	font-family: Arial, Helvetica, sans-serif;
+	text-align: center;
+	border-top: 1px solid #d8d8d8;
+	margin-top: auto; /* Pushes footer to the bottom */
+ }
+
+ .footer p {
+	margin: 4px 0;
+	opacity: 0.4;
+ }
 
 /* Navbar */
 .navbar {
@@ -131,12 +153,6 @@ ul {
 	font-size: 24px;
 	font-weight: bold;
 	text-align: left;
-	margin-bottom: 10px;
-}
-
-.title {
-	font-size: 20px;
-	color: #777777;
 	margin-bottom: 10px;
 }
 
@@ -270,59 +286,78 @@ ul {
 	margin: 16px 0;
 }
 
-.terms  {
-	position: absolute;
+/* Ensures the body takes up full height and arranges the content */
+body {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+ }
+ 
+ /* Profile content takes up remaining space */
+ .profile-layout {
+	flex: 1; /* Makes the profile section flexible */
+ }
+ 
+ /* Footer at the bottom */
+ .footer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+	background-color: #f8f8f8;
+	padding: 16px;
 	font-size: 12px;
 	font-family: Arial, Helvetica, sans-serif;
-	top: 730px;
-	left: 140px;
+	text-align: center;
+	border-top: 1px solid #d8d8d8;
+	margin-top: auto; /* Pushes footer to the bottom */
+ }
+ 
+ /* Footer items (Terms, Security, etc.) */
+ .footer p {
+	margin: 2px 0; /* Optional, if you want some vertical spacing */
 	opacity: 0.4;
-}
+ }
+ 
+ .terms, .security, .how, .pledge, .contact {
+	margin-right: 10px; /* Adds space between items */
+ }
 
-.security  {
-	position: absolute;
-	font-size: 12px;
-	font-family: Arial, Helvetica, sans-serif;
-	top: 730px;
-	left: 340px;
-	opacity: 0.4;
-}
-
-.how  {
-	position: absolute;
-	font-size: 12px;
-	font-family: Arial, Helvetica, sans-serif;
-	top: 730px;
-	left: 460px;
-	opacity: 0.4;
-}
-
-.pledge  {
-	position: absolute;
-	font-size: 12px;
-	font-family: Arial, Helvetica, sans-serif;
-	top: 730px;
-	left: 580px;
-	opacity: 0.4;
-}
-
-.contact  {
-	position: absolute;
-	font-size: 12px;
-	font-family: Arial, Helvetica, sans-serif;
-	top: 730px;
-	left: 690px;
-	opacity: 0.4;
-}
-
-.copyright  {
-	position: absolute;
-	font-size: 12px;
-	font-family: Arial, Helvetica, sans-serif;
-	top: 730px;
-	right: 140px;
-	opacity: 0.4;
-}
+ /* Footer items specific positioning */
+ .terms {
+	margin-right: 20px;
+ }
+ 
+ .security {
+	margin-left: 20px;
+ }
+ 
+ .how {
+	margin-left: 20px;
+ }
+ 
+ .pledge {
+	margin-left: 20px;
+ }
+ 
+ .contact {
+	margin-left: 20px;
+ }
+ 
+.copyright {
+	margin-left: auto; /* Pushes it to the far right */
+	margin-right: 20px; /* Ensures some space from the right edge */
+ }
+ 
+ /* Divider Styling */
+ .profile-divider {
+	width: 100%;
+	border: 0;
+	height: 1px;
+	background-color: #d8d8d8;
+	margin-top: 24px;
+ }
+ 
 
 .details {
 	font-size: 14px;
@@ -421,11 +456,11 @@ ul {
 
 .grid-container {
 	display: grid;
-	grid-template-columns: repeat(5, 1fr);
+	grid-template-columns: repeat(4, 1fr);
 	gap: 16px;
 	background-color: #efefef;
 	padding: 20px;
-	width: 800px;
+	width: 850px;
 	height: "wrap-content";
 	min-height: 200px;
 	margin-right: 130px;
@@ -521,80 +556,100 @@ ul {
 	background-color: #45a049;
   }
 
-
-
-.product-card {
-    background-color: #FFFFFF;
+  .product-card {
+    background-color: #ffffff;
     border: 1px solid #E0E0E0;
     border-radius: 10px;
-    width: calc(25% - 30px);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    position: relative;
-	width: 140px;
+    width: 190px; /* Fixed width */
+    height: 325px; /* Fixed height */
+    flex-direction: column; /* Stack content vertically */
+    position: static;
+    overflow: hidden; /* Prevent content overflow */
+}
+
+.empty-product-card {
+    background-color: transparent;  /* Makes the background transparent */
+    border: 2px dotted #E0E0E0;     /* Dotted border with a lighter color */
+    border-radius: 10px;            /* Keeps the rounded corners */
+    width: 190px;                   /* Fixed width */
+    height: 325px;                  /* Fixed height */
+    display: flex;                  /* Use flexbox for layout */
+    flex-direction: column;         /* Stack content vertically */
+    position: static;               /* Normal positioning */
+    overflow: hidden;               /* Prevent content overflow */
 }
 
 .product-card img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
+    width: 188px;
+    height: 188px; /* Maintain frame size */
+    object-fit: cover; /* Scale and crop image to fit frame */
     border-radius: 12px;
     box-shadow: none;
-	padding: 3px;
+    padding: 4px;
 }
 
 .card-content {
-    padding: 15px;
-    flex-grow: 1;
+    padding: 8px;
+    flex-grow: 1; /* Ensure content section grows to fill available space */
+    margin-bottom: 3px;
 }
 
-.product-card h3 {
-    font-size: 20px;
-    margin-bottom: 10px;
-    color: #333333;
+.title { 
+    font-size: 16px;
+    color: #303030;
+    margin-bottom: 8px;
+    margin-top: -10px;
+
+    display: block; 
+    width: calc(100% - 8px); /* Accounts for padding/margin */
+    white-space: normal; /* Allow text to wrap */
+    overflow: hidden; /* Hides overflow */
+    text-overflow: ellipsis; /* Adds ellipsis for overflowing text */
+
+    /* Control maximum height and allow 2 lines of text */
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Limit text to 2 lines */
+    -webkit-box-orient: vertical; /* Set the box layout for multiline text */
+    line-height: 1.2; /* Adjust line height for better control */
+    max-height: 2.6em; /* Set maximum height for two lines */
 }
 
 .product-card .price {
-    font-size: 18px;
+    font-size: 14px;
+	font-weight: bold;
     color: #B84217;
     margin-bottom: 5px;
 }
 
 .product-card .location {
-    font-size: 14px;
-    color: #888888;
+    font-size: 11px;
+    color: #b7b7b7;
+    margin-bottom: auto; /* Allow the location text to take up space */
 }
 
 .card-actions {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    margin-top: auto; /* Push actions to the bottom */
     padding: 15px;
-    gap: 10px;
+    display: flex;
+    justify-content: center; /* Center-align button */
 }
 
-.send-offer-btn {
+.view-listing-btn {
     background-color: transparent;
-    color: #808080;
-    /* Grey text by default */
-    border: 2px solid #c2c2c2;
-    /* Grey border by default */
-    padding: 10px 20px;
-    border-radius: 12px;
+    color: #808080; /* Default grey text */
+    border: 2px solid #c2c2c2; /* Default grey border */
+    padding: 10px;
+    border-radius: 8px;
     cursor: pointer;
     font-size: 16px;
-    transition: all 0.3s ease;
-    /* Smooth transition for hover effects */
+	width: 170px;
+    transition: all 0.3s ease; 
 }
 
-.send-offer-btn:hover {
-    background-color: #B84217;
-    /* Orange background on hover */
-    color: #FFFFFF;
-    /* White text on hover */
-    border-color: #B84217;
-    /* Orange border on hover */
+.view-listing-btn:hover {
+    background-color: #B84217; /* Orange background on hover */
+    color: #FFFFFF; /* White text on hover */
+    border-color: #B84217; /* Orange border on hover */
 }
 
 @media (max-width: 1024px) {
