@@ -1,0 +1,155 @@
+<!-- exchange/templates/exchange/item_detail.html -->
+
+{% extends 'exchange/base.html' %}
+{% load static %}
+
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'css/item_detail.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script defer>
+       // Function to toggle the dropdown visibility
+       function toggleDropdown() {
+           const dropdown = document.getElementById('dropdownMenu');
+           dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+       }
+       
+       // Close the dropdown if the user clicks anywhere outside the user profile
+       document.addEventListener('click', function(event) {
+           const profile = document.querySelector('.user-profile');
+           const dropdown = document.getElementById('dropdownMenu');
+           if (!profile.contains(event.target)) {
+               dropdown.style.display = 'none';
+           }
+       });
+    </script>
+ </head>
+
+<!-- Header Section -->
+<header class="site-header">
+    <div class="container header-container">
+       <div class="left-header">
+          <a href="{% url 'exchange:homepage' %}" class="logo">
+             <img src="{% static 'images/logoheaderdark.png' %}" alt="SwapSpot Logo" class="logo-image">
+          </a>
+          
+          <!-- Search Form -->
+          <form method="GET" action="{% url 'exchange:homepage' %}" class="search-bar">
+             <input type="text" name="q" placeholder="Search" class="search-input" value="{{ request.GET.q }}">
+          </form>
+          
+       </div>
+       
+       <div class="user-profile" onclick="toggleDropdown()">
+          {% if user.profile_picture %}
+             <img src="{{ user.profile_picture.url }}" alt="Profile Picture">
+          {% else %}
+             <img src="{% static 'images/defaultpfp.png' %}" alt="Profile Picture">
+          {% endif %}
+          
+          <!-- Username Display -->
+          <span class="user-name">
+             {{ user.username }}
+          </span>
+          
+          <div class="dropdown-menu" id="dropdownMenu">
+             <ul>
+                <li><a href="{% url 'exchange:user_profile' username=user.username %}">Profile</a></li>
+                <li><a href="{% url 'exchange:user_profile_settings' %}">Settings</a></li>
+                <li><a href="{% url 'exchange:logout' %}">Logout</a></li>
+             </ul>
+          </div>
+       </div>
+    </div>
+ </header>
+
+<div class="item-detail-container">
+    <!-- Item Image Section -->
+    <div class="item-image-section">
+        {% if item.images.all %}
+            <div class="image-slider">
+                {% for image in item.images.all %}
+                    <img src="{{ image.image.url }}" alt="{{ item.title }} Image {{ forloop.counter }}" class="item-image">
+                {% endfor %}
+            </div>
+        {% elif item.picture %}
+            <img src="{{ item.picture.url }}" alt="{{ item.title }}" class="item-image">
+        {% else %}
+            <img src="{% static 'images/default_item.png' %}" alt="Default Item Image" class="item-image">
+        {% endif %}
+    </div>
+
+    <!-- Item Information Section -->
+    <div class="item-info-section">
+        <h1 class="item-title">{{ item.title }}</h1>
+        <p class="item-price">PHP {{ item.price }}</p>
+        
+        <!-- Category and Condition -->
+        <p class="item-category"><strong>Category:</strong> {{ item.category }}</p>
+        <p class="item-condition"><strong>Condition:</strong> {{ item.condition }}</p>
+        
+        <!-- Listing Type and Availability -->
+        <p class="item-listing-type"><strong>Listing Type:</strong> {{ item.listing_type }}</p>
+
+        <!-- Description -->
+        <div class="item-description">
+            <h3>Description</h3>
+            <p>{{ item.description }}</p>
+        </div>
+
+        <!-- Location -->
+        <p class="item-location">
+            <strong>Location:</strong>
+            {% if item.user.city and item.user.state %}
+                {{ item.user.city }}, {{ item.user.state }}
+            {% elif item.user.city %}
+                {{ item.user.city }}
+            {% elif item.user.state %}
+                {{ item.user.state }}
+            {% else %}
+                Not specified
+            {% endif %}
+        </p>
+
+        <!-- Date Listed -->
+        <p class="item-date-listed">
+            <strong>Listed On:</strong> {{ item.date_listed|date:"F j, Y, g:i a" }}
+        </p>
+
+        <!-- Seller Information -->
+        <div class="seller-info-section">
+            <h3>Seller Information</h3>
+            <div class="seller-details">
+                {% if item.user.profile.profile_picture %}
+                    <img src="{{ item.user.profile.profile_picture.url }}" alt="{{ item.user.username }}" class="seller-pfp">
+                {% else %}
+                    <img src="{% static 'images/defaultpfp.png' %}" alt="{{ item.user.username }}" class="seller-pfp">
+                {% endif %}
+                <p class="seller-username">{{ item.user.username }}</p>
+            </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="item-actions">
+            <button class="send-offer-btn">Send Offer</button>
+        </div>
+    </div>
+</div>
+
+<!-- Footer Section -->
+<footer class="site-footer">
+   <div class="container footer-container">
+      <div class="footer-left">
+         <a href="{% url 'exchange:homepage' %}" class="footer-logo">
+         <img src="{% static 'svg/swapspot-logo-light.svg' %}" alt="SwapSpot Logo" class="logo-image">
+         </a>
+         <p>&copy; 2023 SwapSpot. All rights reserved.</p>
+      </div>
+   </div>
+</footer>
+
+{% endblock %}
