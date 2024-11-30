@@ -39,7 +39,7 @@
             <!-- User Account Thumbnail -->
             <div class="user-profile" onclick="toggleDropdown(event)">
                {% if user.profile_picture %} <img src="{{ user.profile_picture.url }}" alt="Profile Picture"> {% else %} <img
-                  src="{% static 'images/default-profile-picture.jpg' %}" alt="Profile Picture"> {% endif %}
+                  src="{% static 'images/defaultpfp.png' %}" alt="Profile Picture"> {% endif %}
                <div class="dropdown-menu" id="dropdownMenu">
                   <ul>
                      <li>
@@ -74,7 +74,7 @@
                   {% if user.profile_picture %}
                   <img src="{{ user.profile_picture.url }}" alt="Profile Picture" class="avatar">
                   {% else %}
-                  <img src="{% static 'images/default-profile-picture.jpg' %}" alt="Profile Picture" class="avatar">
+                  <img src="{% static 'images/defaultpfp.png' %}" alt="Profile Picture" class="avatar">
                   {% endif %}
                   <form method="POST" action="{% url 'exchange:upload_avatar' %}" enctype="multipart/form-data">
                      {% csrf_token %}

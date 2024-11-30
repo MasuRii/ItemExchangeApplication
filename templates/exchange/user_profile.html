@@ -65,7 +65,7 @@
                {% if user.profile_picture %}
                  <img src="{{ user.profile_picture.url }}" alt="Profile Picture">
                {% else %}
-                 <img src="{% static 'images/default-profile-picture.jpg' %}" alt="Profile Picture">
+                 <img src="{% static 'images/defaultpfp.png' %}" alt="Profile Picture">
                {% endif %} 
                <div class="dropdown-menu" id="dropdownMenu">
                   <ul>
@@ -92,7 +92,7 @@
               {% if user.profile_picture %}
                 <img src="{{ user.profile_picture.url }}" alt="Profile Picture" class="profile-picture">
               {% else %}
-                <img src="{% static 'images/default-profile-picture.jpg' %}" alt="Profile Picture" class="profile-picture">
+                <img src="{% static 'images/defaultpfp.png' %}" alt="Profile Picture" class="profile-picture">
               {% endif %}
             </div>
             <!-- Name -->
@@ -129,31 +129,33 @@
                   <strong>Email:</strong> {{ user.email }}
                </p>
             </div>
-            <!-- Add Item Button -->
-            <button class="add-product-btn" onclick="openAddItemModal()">+</button>
+            
          </div>
+
+         <!-- Add Item Button -->
+         <button class="add-product-btn" onclick="openAddItemModal()">+</button>
          <!-- Grey Grid -->
          <div class="grid-container">
             {% for item in items %}
-              <div class="product-card">
-                {% if item.picture %}
-                  <img class="product-card-img" src="{{ item.picture.url }}" alt="{{ item.title }}">
-                {% else %}
-                  <img class="product-card-img" src="{% static 'images/default-product.jpg' %}" alt="Default Product">
-                {% endif %}
-                <div class="card-content">
-                  <h3>{{ item.title }}</h3>
-                  <p class="price">PHP {{ item.price }}</p>
-                  <p class="location">{{ item.city }}, {{ item.country }}</p>
-                </div>
-                <div class="card-actions">
-                  <a href="#">
-                    <button class="send-offer-btn">View Listing</button>
-                  </a>
-                </div>
+            <div class="product-card">
+              {% if item.picture %}
+                 <img class="product-card-img" src="{{ item.picture.url }}" alt="{{ item.title }}">
+              {% else %}
+                 <img class="product-card-img" src="{% static 'images/default-product.jpg' %}" alt="Default Product">
+              {% endif %}
+              <div class="card-content">
+                 <h3>{{ item.title }}</h3>
+                 <p class="price">PHP {{ item.price }}</p>
+                 <p class="location">{{ item.city }}, {{ item.country }}</p>
               </div>
+              <div class="card-actions">
+                 <a href="#">
+                    <button class="send-offer-btn">View Listing</button>
+                 </a>
+              </div>
+            </div>
             {% empty %}
-              <p>No items listed yet.</p>
+              <p class="item-listings-text">No items listed yet.</p>
             {% endfor %}
          </div>
       </div>
@@ -226,5 +228,14 @@
           </form>
         </div>
       </div>
+
+      <!-- Profile Divider -->
+      <hr class="profile-divider">
+      <p class="terms">SwapSpot's Terms and Conditions</p>
+      <p class="security">Safety and Security</p>
+      <p class="how">How bartering works</p>
+      <p class="pledge">Swapspot's Pledge</p>
+      <p class="contact">Contact Us</p>
+      <p class="copyright">© The SwapSpot Company, Cebu City, 2024</p>
    </body>
 </html>
