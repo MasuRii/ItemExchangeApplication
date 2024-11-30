@@ -46,11 +46,7 @@
          {% else %}
             <img src="{% static 'images/defaultpfp.png' %}" alt="Profile Picture">
          {% endif %}
-         
-         <!-- Username Display -->
-         <span class="user-name">
-            {{ user.username }}
-         </span>
+      
          
          <div class="dropdown-menu" id="dropdownMenu">
             <ul>
@@ -86,22 +82,18 @@
       {% if query %}
          <h2>Showing results for: "{{ query }}"</h2>
       {% else %}
-         <h2>Top Listings Near You</h2>
+         <h2>New Listings</h2>
       {% endif %}
       
       <div class="product-grid">
-         {% for item in items %}
+         {% for item in items|slice:":15" %}
          <div class="product-card">
-            <!-- Link to Item Detail Page -->
             <a href="{% url 'exchange:item_detail' item_id=item.item_id %}" class="product-link">
-               
-               <!-- Display item picture if available, else show a default image -->
                {% if item.picture %}
                   <img class="product-card-img" src="{{ item.picture.url }}" alt="{{ item.title }}">
                {% else %}
-                  <img class="product-card-img" src="{% static 'images/default_item.png' %}" alt="Default Item Image">
+                  <img class="product-card-img" src="{% static 'images/default_item.png' %}" alt="Default Item Image" width="200" height="200">
                {% endif %}
-               
                <div class="card-content">
                   <p class="title">{{ item.title }}</p>
                   <p class="price">PHP {{ item.price }}</p>
@@ -117,17 +109,18 @@
                      {% endif %}
                   </p>
                </div>
-            </a> <!-- Close the link here -->
+            </a>
             <div class="card-actions">
                <button class="send-offer-btn">Send Offer</button>
             </div>
          </div>
          {% empty %}
-         <p>No items available{% if query %} matching your search{% endif %}.</p>
+         <p>No items available{% if query %} matching your search{% else %}. Check back soon for new listings!{% endif %}.</p>
          {% endfor %}
       </div>
    </div>
 </section>
+
 
 <!-- Footer Section -->
 {% if not query %}

@@ -575,7 +575,7 @@ body {
     width: 190px; /* Fixed width */
     height: 330px; /* Fixed height */
     flex-direction: column; /* Stack content vertically */
-    position: static;
+    position: flex;
     overflow: hidden; /* Prevent content overflow */
 }
 
@@ -601,14 +601,14 @@ body {
     margin-top: -10px;
 
     display: block; 
-    width: calc(100% - 8px); /* Accounts for padding/margin */
+    width: calc(100% - 1px); /* Accounts for padding/margin */
     white-space: normal; /* Allow text to wrap */
     overflow: hidden; /* Hides overflow */
     text-overflow: ellipsis; /* Adds ellipsis for overflowing text */
 
     /* Control maximum height and allow 2 lines of text */
     display: -webkit-box;
-    -webkit-line-clamp: 2; /* Limit text to 2 lines */
+    -webkit-line-clamp: 1; /* Limit text to 2 lines */
     -webkit-box-orient: vertical; /* Set the box layout for multiline text */
     line-height: 1.2; /* Adjust line height for better control */
     max-height: 2.6em; /* Set maximum height for two lines */
@@ -643,7 +643,8 @@ body {
     cursor: pointer;
     font-size: 16px;
 	width: 170px;
-    transition: all 0.3s ease; 
+    transition: all 0.3s ease;
+	margin-bottom: auto; 
 }
 
 .view-listing-btn:hover {

@@ -311,9 +311,20 @@ section h2 {
 }
 
 .product-card .location {
+	display: block; 
+	width: calc(100% - 1px); /* Accounts for padding/margin */
+    white-space: normal; /* Allow text to wrap */
+    overflow: hidden; /* Hides overflow */
+    text-overflow: ellipsis; /* Adds ellipsis for overflowing text */
+
+	display: -webkit-box;
+    -webkit-line-clamp: 1; /* Limit text to 2 lines */
+    -webkit-box-orient: vertical; /* Set the box layout for multiline text */
+    line-height: 1.2; /* Adjust line height for better control */
+    max-height: 2.6em; /* Set maximum height for two lines */
     font-size: 11px;
     color: #b7b7b7;
-    margin-bottom: auto; /* Allow the location text to take up space */
+    margin-bottom: auto;
 }
 
 
