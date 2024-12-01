@@ -490,3 +490,29 @@
         text-align: center;
     }
 }
+
+.edit-item-btn,
+.delete-item-btn {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    color: #fff;
+}
+
+.edit-item-btn {
+    background-color: #4CAF50; /* Green */
+}
+
+.delete-item-btn {
+    background-color: #f44336; /* Red */
+}
+
+.send-offer-btn {
+    padding: 10px 20px;
+    background-color: #008CBA; /* Blue */
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}

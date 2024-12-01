@@ -139,8 +139,20 @@
 
         <!-- Actions -->
         <div class="item-actions">
-            <button class="send-offer-btn">Send Offer</button>
-        </div>
+          {% if is_owner %}
+              <!-- Display Edit and Delete buttons for the owner -->
+              <a href="{% url 'exchange:edit_item' item_id=item.item_id %}" class="edit-item-btn">Edit Item</a>
+      
+              <!-- Delete Item Form -->
+              <form action="{% url 'exchange:delete_item' item_id=item.item_id %}" method="post" style="display:inline;">
+                  {% csrf_token %}
+                  <button type="submit" class="delete-item-btn" onclick="return confirm('Are you sure you want to delete this item?');">Delete Item</button>
+              </form>
+          {% else %}
+              <!-- Display Send Offer button for other users -->
+              <button class="send-offer-btn">Send Offer</button>
+          {% endif %}
+      </div>
     </div>
 </div>
 

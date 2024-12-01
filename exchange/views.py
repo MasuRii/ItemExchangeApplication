@@ -189,6 +189,30 @@ def item_detail(request, item_id):
     return render(request, 'exchange/item_detail.html', context)
 
 @login_required
+def edit_item(request, item_id):
+    item = get_object_or_404(Item, item_id=item_id, user=request.user)
+    if request.method == 'POST':
+        form = ItemForm(request.POST, request.FILES, instance=item)
+        if form.is_valid():
+            form.save()
+            return redirect('exchange:item_detail', item_id=item.item_id)
+    else:
+        form = ItemForm(instance=item)
+    return render(request, 'exchange/edit_item.html', {'form': form})
+
+@login_required
+def delete_item(request, item_id):
+    item = get_object_or_404(Item, item_id=item_id, user=request.user)
+
+    if request.method == 'POST':
+        item.delete()
+        messages.success(request, 'Item has been successfully deleted.')
+        return redirect('exchange:homepage')
+    else:
+        raise PermissionDenied("Deletion can only occur via POST request.")
+
+
+@login_required
 def user_profile_settings(request):
     user = request.user  # Get the logged-in user
 

@@ -136,31 +136,85 @@
   </div>
 
   {% if is_own_profile %}
-    <div class="modal" id="addItemModal">
-      <div class="modal-content">
-        <span class="close" onclick="closeAddItemModal()">×</span>
-        <h2>Add New Item</h2>
-        <form action="{% url 'exchange:add_item' %}" enctype="multipart/form-data" id="addItemForm" method="POST">
-          {% csrf_token %}
-          {% if form.errors %}
-            <div class="form-errors">
-              <ul>
-                {% for field in form %}
-                  {% for error in field.errors %}
-                    <li>{{ error }}</li>
-                  {% endfor %}
-                {% endfor %}
-                {% for error in form.non_field_errors %}
+  <div id="addItemModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeAddItemModal()">&times;</span>
+      <h2>Add New Item</h2>
+      <form id="addItemForm" enctype="multipart/form-data" method="POST" action="{% url 'exchange:add_item' %}">
+        {% csrf_token %}
+        {% if form.errors %}
+          <div class="form-errors">
+            <ul>
+              {% for field in form %}
+                {% for error in field.errors %}
                   <li>{{ error }}</li>
                 {% endfor %}
-              </ul>
-            </div>
-          {% endif %}
-          {{ form.as_p }}
-          <button class="submit-btn" type="submit">Add Item</button>
-        </form>
-      </div>
+              {% endfor %}
+              {% for error in form.non_field_errors %}
+                <li>{{ error }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+        <div class="form-group">
+          <label for="title">Title:</label>
+          <input type="text" id="title" name="title" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="description">Description:</label>
+          <textarea id="description" name="description" required></textarea>
+        </div>
+        
+        <div class="form-group">
+          <label for="category">Category:</label>
+          <select id="category" name="category" required>
+            <option value="" disabled selected>Select a category</option>
+            <option value="books-media">Books and Media</option>
+            <option value="clothing-accessories">Clothing and Accessories</option>
+            <option value="Personal Care">Personal Care</option>
+            <option value="electronics">Electronics</option>
+            <option value="home-kitchen">Home and Kitchen</option>
+            <option value="sports-outdoors">Sports and Outdoors</option>
+            <option value="toys-games">Toys and Games</option>
+            <option value="automotive">Automotive</option>
+            <option value="furniture">Furniture</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="condition">Condition:</label>
+          <select id="condition" name="condition" required>
+            <option value="New">New</option>
+            <option value="Like New">Like New</option>
+            <option value="Used">Used</option>
+            <option value="Refurbished">Refurbished</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="price">Price (PHP):</label>
+          <input type="number" step="0.01" id="price" name="price" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="listing_type">Listing Type:</label>
+          <select id="listing_type" name="listing_type" required>
+            <option value="Sell">Sell</option>
+            <option value="Exchange">Exchange</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="picture">Picture:</label>
+          <input type="file" id="picture" name="picture" accept="image/*">
+        </div>
+        
+        <button type="submit" class="submit-btn">Add Item</button>
+      </form>
     </div>
+  </div>
   {% endif %}
 
   <footer class="footer">
