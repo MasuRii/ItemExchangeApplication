@@ -93,6 +93,4 @@ class ItemForm(forms.ModelForm):
         fields = ['title', 'description', 'category', 'condition', 'price', 'listing_type', 'picture']
         widgets = {
             'description': forms.Textarea(attrs={'rows': 4}),
-            'condition': forms.Select(),
-            'listing_type': forms.Select(),
-        }        
+        } 

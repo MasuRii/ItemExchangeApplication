@@ -180,11 +180,16 @@ def add_item(request):
 @login_required
 def item_detail(request, item_id):
     item = get_object_or_404(Item, item_id=item_id)
-    is_owner = request.user == item.user
+    is_owner = (item.user == request.user)
+    form = None
+
+    if is_owner:
+        form = ItemForm(instance=item)
 
     context = {
         'item': item,
         'is_owner': is_owner,
+        'form': form,
     }
     return render(request, 'exchange/item_detail.html', context)
 
@@ -195,10 +200,19 @@ def edit_item(request, item_id):
         form = ItemForm(request.POST, request.FILES, instance=item)
         if form.is_valid():
             form.save()
-            return redirect('exchange:item_detail', item_id=item.item_id)
+            return redirect('exchange:homepage')
+        else:
+            # Form is invalid; re-render the page with form errors
+            is_owner = True  # The user is the owner since they are editing
+            context = {
+                'item': item,
+                'is_owner': is_owner,
+                'form': form,  # Include the form with errors
+            }
+            return render(request, 'exchange/item_detail.html', context)
     else:
-        form = ItemForm(instance=item)
-    return render(request, 'exchange/edit_item.html', {'form': form})
+        # Redirect to item detail page for GET requests
+        return redirect('exchange:item_detail', item_id=item.item_id)
 
 @login_required
 def delete_item(request, item_id):

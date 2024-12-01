@@ -11,22 +11,6 @@
 
 <head>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script defer>
-       // Function to toggle the dropdown visibility
-       function toggleDropdown() {
-           const dropdown = document.getElementById('dropdownMenu');
-           dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-       }
-       
-       // Close the dropdown if the user clicks anywhere outside the user profile
-       document.addEventListener('click', function(event) {
-           const profile = document.querySelector('.user-profile');
-           const dropdown = document.getElementById('dropdownMenu');
-           if (!profile.contains(event.target)) {
-               dropdown.style.display = 'none';
-           }
-       });
-    </script>
  </head>
 
 <!-- Header Section -->
@@ -141,16 +125,87 @@
         <div class="item-actions">
           {% if is_owner %}
               <!-- Display Edit and Delete buttons for the owner -->
-              <a href="{% url 'exchange:edit_item' item_id=item.item_id %}" class="edit-item-btn">Edit Item</a>
+              <button class="button edit-item-btn" onclick="openModal()">Edit Item</button>
+              <!-- The Modal -->
+                <!-- The Modal -->
+                  <div id="editItemModal" class="modal">
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                      <span class="close" onclick="closeModal()">&times;</span>
+                      <div class="modal-header">
+                        <h2>Edit Item</h2>
+                      </div>
+                      <div class="modal-body">
+                        <!-- Display form errors here -->
+                        <form id="editItemForm" action="{% url 'exchange:edit_item' item_id=item.item_id %}" method="post" enctype="multipart/form-data">
+                          {% csrf_token %}
+                          {{ form.non_field_errors }}
+                    
+                          <!-- Title -->
+                          <p>
+                            {{ form.title.label_tag }}
+                            {{ form.title }}
+                            {{ form.title.errors }}
+                          </p>
+                    
+                          <!-- Description -->
+                          <p>
+                            {{ form.description.label_tag }}
+                            {{ form.description }}
+                            {{ form.description.errors }}
+                          </p>
+                    
+                          <!-- Category -->
+                          <p>
+                            {{ form.category.label_tag }}
+                            {{ form.category }}
+                            {{ form.category.errors }}
+                          </p>
+                    
+                          <!-- Condition -->
+                          <p>
+                            {{ form.condition.label_tag }}
+                            {{ form.condition }}
+                            {{ form.condition.errors }}
+                          </p>
+                    
+                          <!-- Price -->
+                          <p>
+                            {{ form.price.label_tag }}
+                            {{ form.price }}
+                            {{ form.price.errors }}
+                          </p>
+                    
+                          <!-- Listing Type -->
+                          <p>
+                            {{ form.listing_type.label_tag }}
+                            {{ form.listing_type }}
+                            {{ form.listing_type.errors }}
+                          </p>
+                    
+                          <!-- Picture -->
+                          <p>
+                            {{ form.picture.label_tag }}
+                            {{ form.picture }}
+                            {{ form.picture.errors }}
+                          </p>
+                    
+                          <div class="modal-footer">
+                            <button type="submit">Save Changes</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
       
               <!-- Delete Item Form -->
               <form action="{% url 'exchange:delete_item' item_id=item.item_id %}" method="post" style="display:inline;">
                   {% csrf_token %}
-                  <button type="submit" class="delete-item-btn" onclick="return confirm('Are you sure you want to delete this item?');">Delete Item</button>
+                  <button type="submit" class="button delete-item-btn" onclick="return confirm('Are you sure you want to delete this item?');">Delete Item</button>
               </form>
           {% else %}
               <!-- Display Send Offer button for other users -->
-              <button class="send-offer-btn">Send Offer</button>
+              <button class="button send-offer-btn">Send Offer</button>
           {% endif %}
       </div>
     </div>
@@ -214,5 +269,7 @@
  
    </div>
  </footer>
+
+ <script src="{% static 'js/item_detail.js' %}"></script>
 
 {% endblock %}

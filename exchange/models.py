@@ -74,14 +74,26 @@ class PaymentMethod(models.Model):
         return f"{self.provider} - {self.user.email}"
 
 class Item(models.Model):
+    CONDITION_CHOICES = [
+        ('New', 'New'),
+        ('Like New', 'Like New'),
+        ('Used', 'Used'),
+        ('Refurbished', 'Refurbished'),
+    ]
+
+    LISTING_TYPE_CHOICES = [
+        ('Sell', 'Sell'),
+        ('Exchange', 'Exchange'),
+    ]
+
     item_id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     description = models.TextField()
-    category = models.CharField(max_length=255)
-    condition = models.CharField(max_length=255)
+    category = models.CharField(max_length=255)  # Add choices if needed
+    condition = models.CharField(max_length=20, choices=CONDITION_CHOICES)
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    listing_type = models.CharField(max_length=10)
+    listing_type = models.CharField(max_length=10, choices=LISTING_TYPE_CHOICES)
     is_available = models.BooleanField(default=True)
     date_listed = models.DateTimeField(auto_now_add=True)
     picture = models.ImageField(upload_to='item_pictures/', null=True, blank=True)
