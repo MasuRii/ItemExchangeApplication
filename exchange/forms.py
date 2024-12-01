@@ -90,7 +90,7 @@ class ProfileSettingsForm(forms.ModelForm):
 class ItemForm(forms.ModelForm):
     class Meta:
         model = Item
-        fields = ['title', 'description', 'category', 'condition', 'price', 'listing_type', 'picture']
+        fields = ['title', 'description', 'category', 'condition', 'price', 'listing_type', 'picture', 'is_available']
         widgets = {
             'description': forms.Textarea(attrs={'rows': 4}),
             'condition': forms.Select(),

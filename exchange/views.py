@@ -132,23 +132,34 @@ def home_view(request):
 
 @login_required
 def user_profile(request, username):
-    user = request.user
-    items = Item.objects.filter(user=user, is_available=True).order_by('-date_listed')
-    
-    if request.method == 'POST':
-        form = ItemForm(request.POST, request.FILES)
-        if form.is_valid():
-            new_item = form.save(commit=False)
-            new_item.user = user
-            new_item.save()
-            return redirect('exchange:user_profile', username=user.username)
+    # Retrieve the profile user based on the username from the URL
+    profile_user = get_object_or_404(User, username=username)
+
+    # Get items belonging to the profile user
+    items = Item.objects.filter(user=profile_user, is_available=True).order_by('-date_listed')
+
+    # Check if the logged-in user is viewing their own profile
+    is_own_profile = request.user == profile_user
+
+    if is_own_profile:
+        if request.method == 'POST':
+            form = ItemForm(request.POST, request.FILES)
+            if form.is_valid():
+                new_item = form.save(commit=False)
+                new_item.user = request.user  # Associate the item with the logged-in user
+                new_item.save()
+                return redirect('exchange:user_profile', username=request.user.username)
+        else:
+            form = ItemForm()
     else:
-        form = ItemForm()
-    
+        # If viewing someone else's profile, do not provide the form
+        form = None
+
     context = {
-        'user': user,
+        'profile_user': profile_user,  # The user whose profile is being viewed
         'items': items,
         'form': form,
+        'is_own_profile': is_own_profile,
     }
     return render(request, 'exchange/user_profile.html', context)
 
@@ -166,10 +177,14 @@ def add_item(request):
     
     return render(request, 'exchange/add_item.html', {'form': form})
 
+@login_required
 def item_detail(request, item_id):
     item = get_object_or_404(Item, item_id=item_id)
+    is_owner = request.user == item.user
+
     context = {
         'item': item,
+        'is_owner': is_owner,
     }
     return render(request, 'exchange/item_detail.html', context)
 
