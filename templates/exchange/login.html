@@ -19,7 +19,7 @@
          <form method="post">
             {% csrf_token %}
             <div class="input-group">
-               <label for="{{ form.username.id_for_label }}">{% trans "Username or Email" %}:</label>
+               <label for="{{ form.username.id_for_label }}">{% trans "Email" %}:</label>
                {{ form.username.as_widget }}
                {% for error in form.username.errors %}
                <div class="error-message">{{ error }}</div>

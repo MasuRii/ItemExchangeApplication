@@ -79,7 +79,7 @@
                </div>
                <!-- User Information -->
                <h2 class="username">{{ user.username|default:"Username" }}</h2>
-               <p class="title">{{ user.title|default:"Title" }}</p>
+               <p class="title">{{ user.title|default:"" }}</p>
                <p class="location">
                   {% if user.country %}{{ user.country }}{% else %}Country{% endif %},
                   {% if user.city %}{{ user.city }}{% else %}City{% endif %}

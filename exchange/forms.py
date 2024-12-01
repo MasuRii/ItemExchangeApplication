@@ -80,7 +80,11 @@ class ProfileSettingsForm(forms.ModelForm):
         ]
         widgets = {
             'bio': forms.Textarea(attrs={'rows': 4}),
-        }    
+        }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['title'].label = "Occupation"
         
 
 class ItemForm(forms.ModelForm):

@@ -110,18 +110,23 @@ def logout_view(request):
 @login_required
 def home_view(request):
     query = request.GET.get('q', '')  # Retrieve the search query from GET parameters
+    
     if query:
-        # Perform a case-insensitive search on the title field
+        # If there's a search query, filter items by title containing the query (case-insensitive)
         items = Item.objects.filter(
             is_available=True,
             title__icontains=query
-        ).select_related('user')
+        )
     else:
-        items = Item.objects.filter(is_available=True).select_related('user')
+        # If no search query, retrieve all available items
+        items = Item.objects.filter(is_available=True)
+    
+    # Order the items by date_listed descending (newest first) and limit to 10
+    items = items.select_related('user').order_by('-date_listed')[:10]
     
     context = {
         'items': items,
-        'query': query,  # Pass the query back to the context
+        'query': query,  # Pass the query back to the context (useful for retaining search term in the template)
     }
     return render(request, 'exchange/homepage.html', context)
 

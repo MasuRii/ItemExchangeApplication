@@ -136,24 +136,35 @@
          <div class="grid-container">
             {% for item in items %}
             <div class="product-card">
-               {% if item.picture %}
-                  <img class="product-img-frame" src="{{ item.picture.url }}" alt="{{ item.title }}">
-               {% else %}
-                  <img class="product-img-frame" src="{% static 'images/default-product.jpg' %}" alt="Default Product">
-               {% endif %}
-               <div class="card-content">
-                  <p class="title">{{ item.title }}</p>
-                  <p class="price">PHP {{ item.price }}</p>
-                  <p class="location">{{ item.user.city }}, {{ item.user.country }}</p>
-               </div>
-               <div class="card-actions">
-                  <a href="#">
-                     <button class="view-listing-btn">View Listing</button>
-                  </a>
-               </div>
+                <a href="{% url 'exchange:item_detail' item_id=item.item_id %}" class="product-link">
+                    {% if item.picture %}
+                        <img class="product-img-frame" src="{{ item.picture.url }}" alt="{{ item.title }}">
+                    {% else %}
+                        <img class="product-img-frame" src="{% static 'images/default-product.jpg' %}" alt="Default Product">
+                    {% endif %}
+                    <div class="card-content">
+                        <p class="title">{{ item.title }}</p>
+                        <p class="price">PHP {{ item.price }}</p>
+                        <p class="location">
+                            {% if item.user.city and item.user.country %}
+                                {{ item.user.city }}, {{ item.user.country }}
+                            {% elif item.user.city %}
+                                {{ item.user.city }}
+                            {% elif item.user.country %}
+                                {{ item.user.country }}
+                            {% else %}
+                                Location not specified
+                            {% endif %}
+                        </p>
+                    </div>
+                </a>
+                <div class="card-actions">
+                    <button class="view-listing-btn">View Listing</button>
+                </div>
             </div>
+            {% empty %}
             {% endfor %}
-         </div>
+        </div>
       </div>
       
       <!-- Add Item Modal -->
