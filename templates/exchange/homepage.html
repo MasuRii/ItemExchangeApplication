@@ -82,7 +82,9 @@
       {% if query %}
          <h2>Showing results for: "{{ query }}"</h2>
       {% else %}
-         <h2>New Listings</h2>
+         <div class="h2">New Listings</div>
+         <span class="info-icon" title="15 most recent listings are displayed here,
+         with the top left one being the newest listing.">🛈</span>
       {% endif %}
       
       <div class="product-grid">
@@ -110,9 +112,6 @@
                   </p>
                </div>
             </a>
-            <div class="card-actions">
-               <button class="send-offer-btn">Send Offer</button>
-            </div>
          </div>
          {% empty %}
          <p>No items available{% if query %} matching your search{% else %}. Check back soon for new listings!{% endif %}.</p>

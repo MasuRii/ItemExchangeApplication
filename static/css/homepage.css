@@ -15,23 +15,20 @@ section {
 	margin: 0 auto;
 }
 
-/* User Profile Thumbnail */
 .user-profile {
 	margin-left: 20px;
 	position: relative;
-	/* Needed for dropdown positioning */
 	cursor: pointer;
-	/* Makes the profile picture clickable */
 }
 
 .user-name {
     font-size: 16px;
     color: #333;
-    font-weight: 500; /* Maintains visibility */
-    margin-left: 10px; /* Provides space between the image and username */
-    display: inline-block; /* Allows margin and alignment adjustments */
-    vertical-align: middle; /* Vertically centers the username with the image */
-    line-height: 40px; /* Matches the height of the profile image for perfect vertical alignment */
+    font-weight: 500;
+    margin-left: 10px;
+    display: inline-block; 
+    vertical-align: middle; 
+    line-height: 40px; 
 }
 
 .user-profile img {
@@ -41,13 +38,10 @@ section {
 	object-fit: cover;
 }
 
-/* Dropdown Menu Styling */
 .dropdown-menu {
 	display: none;
-	/* Hidden by default */
 	position: absolute;
 	top: 50px;
-	/* Position it below the profile picture */
 	right: 0;
 	background-color: white;
 	border: 1px solid #ccc;
@@ -78,26 +72,20 @@ section {
 	background-color: #f0f0f0;
 }
 
-/* Header background color */
 .site-header {
 	background-color: #B84217;
 	padding: 10px 0;
-	/* Adjust header padding */
 }
 
 .header-container {
 	display: flex;
 	align-items: center;
-	/* Vertically center items */
 	justify-content: space-between;
-	/* Space between left and right sections */
 }
 
-/* Left Section (Logo and Search Bar) */
 .left-header {
 	display: flex;
 	align-items: center;
-	/* Vertically center logo and search bar */
 }
 
 .logo {
@@ -107,22 +95,17 @@ section {
 	text-decoration: none;
 }
 
-/* Logo image styling */
 .logo-image {
 	max-width: 200px;
 	height: auto;
 	margin-right: 8px;
-	/* Space between logo and search bar */
 }
 
-/* Search bar styling */
 .search-bar {
 	margin-left: 10px;
-	/* Add space between search bar and logo */
 	width: 400px;
 }
 
-/* Search input styling */
 .search-input {
 	width: 100%;
 	padding: 8px 12px;
@@ -131,7 +114,6 @@ section {
 	font-size: 14px;
 }
 
-/* Header icons container */
 .header-icons {
 	display: flex;
 	align-items: center;
@@ -254,15 +236,26 @@ section h2 {
 	justify-content: center;
 }
 
+.h2 {
+	display: absolute;
+	top: 500px;
+	justify-content: left;
+	color: #B84217;
+	font-weight: bold;
+	font-size: 30px;
+	margin-left: 65px;
+	margin-bottom: 30px;
+}
+
 .product-card {
     background-color: #ffffff;
     border: 1px solid #E0E0E0;
     border-radius: 10px;
-    width: 190px; /* Fixed width */
-    height: 330px; /* Fixed height */
-    flex-direction: column; /* Stack content vertically */
+    width: 190px; 
+    height: 270px; 
+    flex-direction: column; 
     position: static;
-    overflow: hidden; /* Prevent content overflow */
+    overflow: hidden; 
 }
 
 .explore-discover {
@@ -271,8 +264,8 @@ section h2 {
 
 .product-card img {
     width: 188px;
-    height: 188px; /* Maintain frame size */
-    object-fit: cover; /* Scale and crop image to fit frame */
+    height: 188px; 
+    object-fit: cover; 
     border-radius: 12px;
     box-shadow: none;
     padding: 4px;
@@ -280,7 +273,7 @@ section h2 {
 
 .card-content {
     padding: 8px;
-    flex-grow: 1; /* Ensure content section grows to fill available space */
+    flex-grow: 1;
     margin-bottom: 3px;
 }
 
@@ -291,16 +284,16 @@ section h2 {
     margin-top: -10px;
 
     display: block;
-    width: calc(100% - 8px); /* Accounts for padding/margin */
-    white-space: nowrap; /* Prevents text from wrapping */
-    overflow: hidden; /* Hides overflow */
-    text-overflow: ellipsis; /* Adds ellipsis for overflowing text */
+    width: calc(100% - 8px); 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
     
     display: -webkit-box;
-    -webkit-line-clamp: 1; /* Limit to 1 line */
-    -webkit-box-orient: vertical; /* Set the box layout for a single line of text */
-    line-height: 1.2; /* Adjust line height for better control */
-    max-height: 1.2em; /* Limit to a single line height */
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical; 
+    line-height: 1.2; 
+    max-height: 1.2em; 
 }
 
 .product-card .price {
@@ -312,16 +305,16 @@ section h2 {
 
 .product-card .location {
 	display: block; 
-	width: calc(100% - 1px); /* Accounts for padding/margin */
-    white-space: normal; /* Allow text to wrap */
-    overflow: hidden; /* Hides overflow */
-    text-overflow: ellipsis; /* Adds ellipsis for overflowing text */
+	width: calc(100% - 1px); 
+    white-space: normal; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
 
 	display: -webkit-box;
-    -webkit-line-clamp: 1; /* Limit text to 2 lines */
-    -webkit-box-orient: vertical; /* Set the box layout for multiline text */
-    line-height: 1.2; /* Adjust line height for better control */
-    max-height: 2.6em; /* Set maximum height for two lines */
+    -webkit-line-clamp: 1; 
+    -webkit-box-orient: vertical; 
+    line-height: 1.2; 
+    max-height: 2.6em; 
     font-size: 11px;
     color: #b7b7b7;
     margin-bottom: auto;
@@ -329,16 +322,16 @@ section h2 {
 
 
 .card-actions {
-    margin-top: auto; /* Push actions to the bottom */
+    margin-top: auto; 
     padding: 15px;
     display: flex;
-    justify-content: center; /* Center-align button */
+    justify-content: center; 
 }
 
 .send-offer-btn {
     background-color: transparent;
-    color: #808080; /* Default grey text */
-    border: 2px solid #c2c2c2; /* Default grey border */
+    color: #808080;
+    border: 2px solid #c2c2c2; 
     padding: 10px;
     border-radius: 8px;
     cursor: pointer;
@@ -348,9 +341,9 @@ section h2 {
 }
 
 .send-offer-btn:hover {
-    background-color: #B84217; /* Orange background on hover */
-    color: #FFFFFF; /* White text on hover */
-    border-color: #B84217; /* Orange border on hover */
+    background-color: #B84217;
+    color: #FFFFFF; 
+    border-color: #B84217; 
 }
 
 .category-buttons {
@@ -366,21 +359,13 @@ section h2 {
 	height: 60px;
 	display: flex;
 	align-items: center;
-	/* Vertically center text */
 	justify-content: flex-end;
-	/* Align text to the right */
 	padding-right: 10px;
-	/* Add space between the text and edge of the button */
 	background-color: #FFFFFF;
-	/* Placeholder color */
 	color: #FFFFFF;
-	/* Text color */
 	border-radius: 10px;
-	/* Slightly rounded corners */
 	border: none;
-	/* No border for a clean look */
 	font-size: 14px;
-	/* Adjust font size to fit button size */
 	font-weight: bold;
 	text-align: right;
 	cursor: pointer;
@@ -390,44 +375,35 @@ section h2 {
 
 .category-btn.books-media {
 	background-color: #C0392B;
-	/* Red */
 }
 
 .category-btn.clothing-accessories {
 	background-color: #2980B9;
-	/* Blue */
 }
 
 .category-btn.personal-care {
 	background-color: #F1C40F;
-	/* Yellow */
 }
 
 .category-btn.home-furniture {
 	background-color: #27AE60;
-	/* Light Green */
 }
 
 .category-btn.electronics-gadgets {
 	background-color: #8E44AD;
-	/* Purple */
 }
 
 .category-btn.sports-gear {
 	background-color: #1ABC9C;
-	/* Cyan */
 }
 
 .category-btn.services {
 	background-color: #E67E22;
-	/* Orange */
 }
 
 .category-btn:hover {
 	transform: translateY(-3px);
-	/* Lift on hover */
 	box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.25);
-	/* More prominent shadow */
 }
 
 .site-footer {
@@ -437,23 +413,17 @@ section h2 {
 	margin-top: 50px;
 }
 
-/* -------------------------------------------------------------------
-   Footer Styles
-------------------------------------------------------------------- */
-
-/* Root Variables for Maintainability */
 :root {
     --footer-bg-color: #333333;
     --footer-text-color: #F0F0F0;
     --footer-accent-color: #B84217;
-    --font-family: 'Arial, sans-serif'; /* Example font */
+    --font-family: 'Arial, sans-serif'; 
     --font-size-base: 14px;
     --font-size-heading: 18px;
     --gap-default: 40px;
     --padding-footer: 40px 20px;
 }
 
-/* General Footer Styling */
 .site-footer {
     background-color: var(--footer-bg-color);
     color: var(--footer-text-color);
@@ -470,9 +440,6 @@ section h2 {
     gap: var(--gap-default);
 }
 
-/* -------------------------------------------------------------------
-   Logo and Company Info Section
-------------------------------------------------------------------- */
 .logo-section {
     flex: 1 1 200px;
     display: flex;
@@ -491,9 +458,6 @@ section h2 {
     margin: 5px 0;
 }
 
-/* -------------------------------------------------------------------
-   Sitemap, Products, and Help Sections
-------------------------------------------------------------------- */
 .footer-section {
     flex: 1 1 200px;
 }
@@ -526,14 +490,11 @@ section h2 {
     color: var(--footer-accent-color);
 }
 
-/* -------------------------------------------------------------------
-   Social Media Section
-------------------------------------------------------------------- */
 .social-media {
     flex: 1 1 200px;
     display: flex;
     align-items: center;
-    justify-content: flex-start; /* Adjusted for proper alignment */
+    justify-content: flex-start;
     gap: 15px;
 }
 
@@ -553,11 +514,6 @@ section h2 {
     opacity: 0.8;
 }
 
-/* -------------------------------------------------------------------
-   Responsive Styles
-------------------------------------------------------------------- */
-
-/* Tablets and Small Desktops (768px to 1024px) */
 @media (max-width: 1024px) and (min-width: 769px) {
     .footer-container {
         justify-content: space-around;
@@ -568,13 +524,12 @@ section h2 {
     }
 }
 
-/* Mobile Devices (Up to 768px) */
 @media (max-width: 768px) {
     .footer-container {
         flex-direction: column;
         align-items: center;
         text-align: center;
-        gap: 30px; /* Reduced gap for mobile */
+        gap: 30px;
     }
 
     .logo-section,
@@ -612,11 +567,6 @@ section h2 {
     }
 }
 
-/* -------------------------------------------------------------------
-   Accessibility Enhancements
-------------------------------------------------------------------- */
-
-/* Focus States for Accessibility */
 .footer-section ul li a:focus {
     outline: 2px dashed var(--footer-accent-color);
     outline-offset: 2px;
@@ -710,4 +660,34 @@ section h2 {
 
 * {
 	box-sizing: border-box;
+}
+
+.info-icon {
+    cursor: pointer;
+    font-size: 18px;
+    margin-left: 5px;
+    color: #555;
+    position: absolute;
+	top: 598px;
+	left: 400px;
+}
+
+.info-icon:hover::after {
+    content: attr(title); 
+    position: absolute;
+    bottom: 125%; 
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8); 
+    color: #fff; 
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    white-space: nowrap;
+    z-index: 10;
+    opacity: 1;
+}
+
+.info-icon:hover {
+    opacity: 1;
 }

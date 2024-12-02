@@ -34,11 +34,7 @@
           {% else %}
              <img src="{% static 'images/defaultpfp.png' %}" alt="Profile Picture">
           {% endif %}
-          
-          <!-- Username Display -->
-          <span class="user-name">
-             {{ user.username }}
-          </span>
+        
           
           <div class="dropdown-menu" id="dropdownMenu">
              <ul>
@@ -51,6 +47,11 @@
     </div>
  </header>
 
+ <!-- Category Trace Above Item Image -->
+<p class="category-trace">
+  <span class="category-title">{{ item.category }} &gt; {{ item.title }}</span>
+</p>
+ 
 <div class="item-detail-container">
     <!-- Item Image Section -->
     <div class="item-image-section">
@@ -72,12 +73,12 @@
         <h1 class="item-title">{{ item.title }}</h1>
         <p class="item-price">PHP {{ item.price }}</p>
         
-        <!-- Category and Condition -->
-        <p class="item-category"><strong>Category:</strong> {{ item.category }}</p>
-        <p class="item-condition"><strong>Condition:</strong> {{ item.condition }}</p>
-        
-        <!-- Listing Type and Availability -->
-        <p class="item-listing-type"><strong>Listing Type:</strong> {{ item.listing_type }}</p>
+        <!-- Category, Condition, and Listing Type -->
+        <div class="item-details-row">
+          <p class="item-category"><strong>Category:</strong> {{ item.category }}</p>
+          <p class="item-condition"><strong>Condition:</strong> {{ item.condition }}</p>
+          <p class="item-listing-type"><strong>Listing Type:</strong> {{ item.listing_type }}</p>
+        </div>
 
         <!-- Description -->
         <div class="item-description">
@@ -116,7 +117,7 @@
                   {% endif %}
               </a>
               <a href="{% url 'exchange:user_profile' username=item.user.username %}" class="seller-username">
-                  {{ item.user.username }}
+                  @ {{ item.user.username }}
               </a>
           </div>
         </div>
@@ -204,72 +205,41 @@
                   <button type="submit" class="button delete-item-btn" onclick="return confirm('Are you sure you want to delete this item?');">Delete Item</button>
               </form>
           {% else %}
-              <!-- Display Send Offer button for other users -->
-              <button class="button send-offer-btn">Send Offer</button>
           {% endif %}
       </div>
     </div>
 </div>
 
-<!-- Footer Section -->
-<footer class="site-footer">
-   <div class="footer-container">
- 
-     <!-- Logo and Company Info -->
-     <div class="footer-section logo-section">
-       <img alt="SwapSpot Logo" class="footer-logo" src="{% static 'images/logoheaderdark.png' %}">
-       <p class="copyright">© 2024 All rights reserved.</p>
-       <p class="company-info">SwapSpot Company, Cebu City.</p>
-     </div>
- 
-     <!-- Sitemap Section -->
-     <div class="footer-section sitemap">
-       <h3>Sitemap</h3>
-       <ul>
-         <li><a href="#">About Us</a></li>
-         <li><a href="#">Our Goals</a></li>
-         <li><a href="#">Our Pledge</a></li>
-         <li><a href="#">Contact</a></li>
-       </ul>
-     </div>
- 
-     <!-- Products Section -->
-     <div class="footer-section products">
-       <h3>Products</h3>
-       <ul>
-         <li><a href="#">How Bartering Works</a></li>
-         <li><a href="#">User Rating System</a></li>
-         <li><a href="#">Customer Protection</a></li>
-       </ul>
-     </div>
- 
-     <!-- Help Section -->
-     <div class="footer-section help">
-       <h3>Help</h3>
-       <ul>
-         <li><a href="#">Getting Started</a></li>
-         <li><a href="#">FAQ</a></li>
-         <li><a href="#">Referral Program</a></li>
-         <li><a href="#">Customer Support</a></li>
-       </ul>
-     </div>
- 
-     <!-- Social Media Section -->
-     <div class="footer-section social-media">
-       <a href="#" rel="noopener noreferrer" target="_blank" aria-label="Facebook">
-         <img alt="Facebook" class="social-icon" src="{% static 'svg/facebook-icon.svg' %}">
-       </a>
-       <a href="#" rel="noopener noreferrer" target="_blank" aria-label="Instagram">
-         <img alt="Instagram" class="social-icon" src="{% static 'svg/instagram-icon.svg' %}">
-       </a>
-       <a href="#" rel="noopener noreferrer" target="_blank" aria-label="Twitter">
-         <img alt="Twitter" class="social-icon" src="{% static 'svg/twitter-icon.svg' %}">
-       </a>
-     </div>
- 
-   </div>
- </footer>
+<!-- Suggested Listings Section -->
+<div class="suggested-listings">
+  <h2>Suggested Listings</h2>
+  <div class="suggested-listings-container">
+      {% for suggested_item in suggested_items %}
+          <div class="suggested-item-card">
+              <a href="{% url 'exchange:item_detail' item_id=suggested_item.item_id %}">
+                  {% if suggested_item.picture %}
+                      <img src="{{ suggested_item.picture.url }}" alt="{{ suggested_item.title }}" class="suggested-item-image">
+                  {% else %}
+                      <img src="{% static 'images/default_item.png' %}" alt="Default Item" class="suggested-item-image">
+                  {% endif %}
+                  <p class="suggested-item-title">{{ suggested_item.title }}</p>
+                  <p class="suggested-item-price">PHP {{ suggested_item.price }}</p>
+              </a>
+          </div>
+      {% empty %}
+          <p>No suggested listings available.</p>
+      {% endfor %}
+  </div>
+</div>
 
  <script src="{% static 'js/item_detail.js' %}"></script>
 
+ <footer class="footer">
+  <p class="terms">SwapSpot's Terms and Conditions</p>
+  <p class="security">Safety and Security</p>
+  <p class="how">How bartering works</p>
+  <p class="pledge">SwapSpot's Pledge</p>
+  <p class="contact">Contact Us</p>
+  <p class="copyright">© The SwapSpot Team 2024</p>
+</footer>
 {% endblock %}

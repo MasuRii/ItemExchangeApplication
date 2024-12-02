@@ -28,6 +28,9 @@
     max-width: 200px;
     height: auto;
     margin-right: 8px;
+    margin-left: 133px;
+    margin-top: 2px;
+    margin-bottom: 2px;
 }
 
 .search-bar {
@@ -45,8 +48,7 @@
 
 /* User Profile Dropdown */
 .user-profile {
-    margin-left: 20px;
-    position: relative;
+    position: flex;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -57,11 +59,13 @@
     height: 40px;
     border-radius: 50%;
     object-fit: cover;
+    margin-right: 149px;
+    margin-bottom: 3px;
 }
 
 .user-name {
     font-size: 16px;
-    color: #333;
+    color: #623535;
     font-weight: 500;
     margin-left: 10px;
     display: inline-block;
@@ -105,6 +109,7 @@
 
 /* Item Detail Section */
 .item-detail-container {
+    position: relative;
     display: flex;
     flex-wrap: wrap;
     gap: 40px;
@@ -114,8 +119,12 @@
 
 .item-image-section {
     flex: 1;
-    min-width: 300px;
-    max-width: 600px;
+    width: 200px; /* Set the width to 200px */
+    height: 400px; /* Set the height to 300px */
+    margin-top: 50px;
+    overflow: hidden; /* Ensure content doesn't overflow the frame */
+    border-radius: 10px; /* Optional for rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow for aesthetics */
 }
 
 .image-slider {
@@ -125,11 +134,10 @@
 }
 
 .item-image {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    object-fit: cover;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Fill the width of the parent container */
+    height: 100%; /* Fill the height of the parent container */
+    object-fit: cover; /* Ensures the image covers the frame while maintaining aspect ratio */
+    border-radius: inherit; /* Matches the parent frame's rounded corners */
 }
 
 .item-info-section {
@@ -140,20 +148,68 @@
 }
 
 .item-title {
-    font-size: 32px;
+    font-size: 28px;
     color: #303030;
     margin-bottom: 15px;
+    margin-top: 30px;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 2; 
+    -webkit-box-orient: vertical; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+
+    line-height: 1.2; 
+    max-height: 2.4em; 
+    white-space: normal; 
+    width: 100%; 
 }
 
 .item-price {
     font-size: 24px;
+    font-weight: bold;
     color: #B84217;
     margin-bottom: 15px;
+
+}
+
+/* Align category, condition, and listing type horizontally */
+.item-details-row {
+    display: flex;
+    justify-content: normal; 
+    gap: 0; 
+    margin: 0;
+}
+
+.item-details-row p {
+    margin: 1px; /* Removes default margin */
+    font-size: 16px; /* Optional: Adjust font size */
 }
 
 .item-category,
 .item-condition,
-.item-listing-type,
+.item-listing-type {
+    font-size: 16px;
+    color: #555555;
+    margin-bottom: 10px;
+    flex: 1; /* Make each item take equal space */
+}
+
+.item-category {
+    font-size: 16px;
+    color: #555555;
+    margin-bottom: 10px;}
+
+.item-condition {
+    font-size: 16px;
+    color: #555555;
+    margin-bottom: 10px;}
+
+.item-listing-type {
+    font-size: 16px;
+    color: #555555;
+    margin-bottom: 10px;}
+
 .item-location,
 .item-date-listed {
     font-size: 16px;
@@ -167,7 +223,6 @@
 
 .item-description h3 {
     font-size: 20px;
-    margin-bottom: 10px;
     color: #B84217;
 }
 
@@ -175,10 +230,11 @@
     font-size: 16px;
     color: #666666;
     line-height: 1.5;
+    margin-bottom: 20px;
 }
 
 .seller-info-section {
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 .seller-info-section h3 {
@@ -193,12 +249,11 @@
 }
 
 .seller-pfp {
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     object-fit: cover;
     margin-right: 15px;
-    border: 2px solid #B84217;
 }
 
 .seller-username {
@@ -214,220 +269,6 @@
     gap: 20px;
 }
 
-.send-offer-btn {
-    background-color: #B84217;
-    color: #FFFFFF;
-    border: none;
-    padding: 12px 25px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-}
-
-.send-offer-btn:hover {
-    background-color: #a03614;
-}
-
-/* Footer Styles */
-.site-footer {
-    background-color: #333333;
-    color: #F0F0F0;
-    padding: 40px 0;
-    margin-top: 50px;
-}
-
-/* -------------------------------------------------------------------
-   Footer Styles
-------------------------------------------------------------------- */
-
-/* Root Variables for Maintainability */
-:root {
-    --footer-bg-color: #333333;
-    --footer-text-color: #F0F0F0;
-    --footer-accent-color: #B84217;
-    --font-family: 'Arial, sans-serif'; /* Example font */
-    --font-size-base: 14px;
-    --font-size-heading: 18px;
-    --gap-default: 40px;
-    --padding-footer: 40px 20px;
-}
-
-/* General Footer Styling */
-.site-footer {
-    background-color: var(--footer-bg-color);
-    color: var(--footer-text-color);
-    padding: var(--padding-footer);
-    margin-top: 50px;
-}
-
-.footer-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: 0 auto;
-    gap: var(--gap-default);
-}
-
-/* -------------------------------------------------------------------
-   Logo and Company Info Section
-------------------------------------------------------------------- */
-.logo-section {
-    flex: 1 1 200px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-.footer-logo {
-    max-width: 150px;
-    height: auto;
-    margin-bottom: 15px;
-}
-
-.logo-section p {
-    font-size: var(--font-size-base);
-    margin: 5px 0;
-}
-
-/* -------------------------------------------------------------------
-   Sitemap, Products, and Help Sections
-------------------------------------------------------------------- */
-.footer-section {
-    flex: 1 1 200px;
-}
-
-.footer-section h3 {
-    font-size: var(--font-size-heading);
-    margin-bottom: 15px;
-    color: var(--footer-text-color);
-}
-
-.footer-section ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.footer-section ul li {
-    margin-bottom: 10px;
-}
-
-.footer-section ul li a {
-    text-decoration: none;
-    color: var(--footer-text-color);
-    font-size: var(--font-size-base);
-    transition: color 0.3s ease;
-}
-
-.footer-section ul li a:hover,
-.footer-section ul li a:focus {
-    color: var(--footer-accent-color);
-}
-
-/* -------------------------------------------------------------------
-   Social Media Section
-------------------------------------------------------------------- */
-.social-media {
-    flex: 1 1 200px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start; /* Adjusted for proper alignment */
-    gap: 15px;
-}
-
-.social-media a {
-    display: inline-block;
-}
-
-.social-icon {
-    width: 24px;
-    height: 24px;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-.social-icon:hover,
-.social-icon:focus {
-    transform: scale(1.1);
-    opacity: 0.8;
-}
-
-/* -------------------------------------------------------------------
-   Responsive Styles
-------------------------------------------------------------------- */
-
-/* Tablets and Small Desktops (768px to 1024px) */
-@media (max-width: 1024px) and (min-width: 769px) {
-    .footer-container {
-        justify-content: space-around;
-    }
-
-    .social-media {
-        justify-content: center;
-    }
-}
-
-/* Mobile Devices (Up to 768px) */
-@media (max-width: 768px) {
-    .footer-container {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 30px; /* Reduced gap for mobile */
-    }
-
-    .logo-section,
-    .footer-section {
-        flex: 1 1 100%;
-        max-width: 300px;
-        align-items: center;
-    }
-
-    .logo-section {
-        align-items: center;
-    }
-
-    .footer-section h3 {
-        font-size: 16px;
-    }
-
-    .footer-section ul li a {
-        font-size: 13px;
-    }
-
-    .footer-logo {
-        max-width: 120px;
-        margin-bottom: 10px;
-    }
-
-    .social-media {
-        justify-content: center;
-        gap: 10px;
-    }
-
-    .social-icon {
-        width: 20px;
-        height: 20px;
-    }
-}
-
-/* -------------------------------------------------------------------
-   Accessibility Enhancements
-------------------------------------------------------------------- */
-
-/* Focus States for Accessibility */
-.footer-section ul li a:focus {
-    outline: 2px dashed var(--footer-accent-color);
-    outline-offset: 2px;
-}
-
-.social-media a:focus .social-icon {
-    outline: 2px dashed var(--footer-accent-color);
-    outline-offset: 2px;
-}
-
-/* Responsive Styles */
 @media (max-width: 1024px) {
     .item-detail-container {
         flex-direction: column;
@@ -655,3 +496,147 @@
 .modal .errorlist li {
     font-size: 14px;
 }
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensures the body stretches to fill the viewport height */
+    margin: 0;
+}
+
+.main-content {
+    flex: 1; /* Makes the main content grow to fill available space */
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: #f8f8f8;
+    padding: 16px;
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    border-top: 1px solid #d8d8d8;
+    margin-top: auto; /* Pushes footer below content */
+    margin-bottom: 10px; /* Always keep 20px gap from the bottom */
+}
+
+ .footer p {
+	margin: 4px 0;
+	opacity: 0.4;
+ }
+
+ .terms, .security, .how, .pledge, .contact {
+	margin-right: 10px; /* Adds space between items */
+ }
+
+ /* Footer items specific positioning */
+ .terms {
+	margin-right: 20px;
+ }
+ 
+ .security {
+	margin-left: 20px;
+ }
+ 
+ .how {
+	margin-left: 20px;
+ }
+ 
+ .pledge {
+	margin-left: 20px;
+ }
+ 
+ .contact {
+	margin-left: 20px;
+ }
+ 
+.copyright {
+	margin-left: auto; /* Pushes it to the far right */
+	margin-right: 20px; /* Ensures some space from the right edge */
+ }
+
+ .details {
+    padding: 10px 0;  /* Padding for top and bottom */
+    width: 100%;      /* Ensure it spans the full width */
+    text-align: left; /* Align text to the left */
+    font-size: 16px;  /* Font size for readability */
+    color: #232323;   /* Text color */
+}
+
+.category-trace {
+    position: absolute;  /* Use absolute positioning */
+    font-size: 10px;
+    color: #989898; /* Light grey color */
+    text-decoration: underline;
+    gap: 4px;  /* Space between the category and title */
+    white-space: nowrap;  /* Prevent line breaks */
+    margin-bottom: 5px;  /* Space below the text */
+    top: 90px;  /* Adjust this value to control vertical position */
+    left: 25px;  /* Adjust this value to control horizontal position */
+    z-index: 10;  /* Ensure it's above other content */
+}
+
+.category-trace .category-title {
+    font-weight: normal;
+    font-size: 10px;  /* Ensure consistent font size */
+    white-space: nowrap; /* Prevent text from wrapping */
+}
+
+.item-image-section {
+    margin-top: 30px;  /* Ensures the image section is properly spaced from text */
+}
+
+.suggested-listings {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.suggested-listings h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.suggested-listings-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.suggested-item-card {
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.suggested-item-card a {
+    display: block;
+    color: #333;
+    text-decoration: none;
+}
+
+.suggested-item-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.suggested-item-title {
+    font-size: 18px;
+    padding: 10px;
+    background-color: #f9f9f9;
+}
+
+.suggested-item-price {
+    font-size: 16px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    font-weight: bold;
+}
+

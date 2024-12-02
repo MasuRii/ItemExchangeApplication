@@ -5,6 +5,7 @@ from .forms import LoginForm, SignUpStep1Form, SignUpStep2Form, ProfileSettingsF
 from rest_framework import viewsets
 from django.contrib import messages
 from django.urls import reverse
+import random
 from .models import (
     User, PaymentMethod, Item, Tag, ItemTag,
     Proposal, Transaction, Review, Notification
@@ -14,6 +15,20 @@ from .serializers import (
     ItemTagSerializer, ProposalSerializer, TransactionSerializer,
     ReviewSerializer, NotificationSerializer
 )
+
+def item_detail(request, item_id):
+    # Get the current item by ID
+    item = Item.objects.get(item_id=item_id)
+
+    # Fetch 8 random items from the database (excluding the current item to avoid repetition)
+    suggested_items = Item.objects.exclude(item_id=item_id).order_by('?')[:8]
+    
+    context = {
+        'item': item,
+        'suggested_items': suggested_items,  # Add suggested items to the context
+    }
+
+    return render(request, 'exchange/item_detail.html', context)
 
 def signup_step1(request):
     if request.method == 'POST':
@@ -121,8 +136,8 @@ def home_view(request):
         # If no search query, retrieve all available items
         items = Item.objects.filter(is_available=True)
     
-    # Order the items by date_listed descending (newest first) and limit to 10
-    items = items.select_related('user').order_by('-date_listed')[:10]
+    # Order the items by date_listed descending (newest first) and limit to 15
+    items = items.select_related('user').order_by('-date_listed')[:15]
     
     context = {
         'items': items,
