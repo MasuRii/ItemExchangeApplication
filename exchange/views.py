@@ -200,11 +200,15 @@ def item_detail(request, item_id):
 
     if is_owner:
         form = ItemForm(instance=item)
+    
+    # Example: Get 4 random suggested items excluding the current item
+    suggested_items = Item.objects.exclude(item_id=item_id).filter(is_available=True)[:4]
 
     context = {
         'item': item,
         'is_owner': is_owner,
         'form': form,
+        'suggested_items': suggested_items,  # Add this line
     }
     return render(request, 'exchange/item_detail.html', context)
 

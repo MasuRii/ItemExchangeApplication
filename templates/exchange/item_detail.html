@@ -210,27 +210,25 @@
     </div>
 </div>
 
-<!-- Suggested Listings Section -->
-<div class="suggested-listings">
-  <h2>Suggested Listings</h2>
-  <div class="suggested-listings-container">
-      {% for suggested_item in suggested_items %}
-          <div class="suggested-item-card">
-              <a href="{% url 'exchange:item_detail' item_id=suggested_item.item_id %}">
-                  {% if suggested_item.picture %}
-                      <img src="{{ suggested_item.picture.url }}" alt="{{ suggested_item.title }}" class="suggested-item-image">
-                  {% else %}
-                      <img src="{% static 'images/default_item.png' %}" alt="Default Item" class="suggested-item-image">
-                  {% endif %}
-                  <p class="suggested-item-title">{{ suggested_item.title }}</p>
-                  <p class="suggested-item-price">PHP {{ suggested_item.price }}</p>
-              </a>
-          </div>
-      {% empty %}
-          <p>No suggested listings available.</p>
-      {% endfor %}
+<!-- Suggested Items Section -->
+<section class="suggested-items my-5">
+  <h2>Suggested Items</h2>
+  <div class="product-grid">
+    {% for item in suggested_items %}
+      <div class="product-card">
+        {% if item.picture %}
+          <img src="{{ item.picture.url }}" alt="{{ item.title }}">
+        {% else %}
+          <img src="{% static 'images/default-placeholder.png' %}" alt="No Image Available">
+        {% endif %}
+        <h3>{{ item.title }}</h3>
+        <p>Price: ${{ item.price }}</p>
+        <p>Location: {{ item.user.city }}, {{ item.user.state }}</p>
+        <a href="{% url 'exchange:item_detail' item.item_id %}">View Details</a>
+      </div>
+    {% endfor %}
   </div>
-</div>
+</section>
 
  <script src="{% static 'js/item_detail.js' %}"></script>
 
