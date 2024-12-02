@@ -29,6 +29,7 @@
     height: auto;
     margin-right: 8px;
     margin-left: 138px;
+    margin-left: 133px;
     margin-top: 2px;
     margin-bottom: 2px;
 }
@@ -48,19 +49,16 @@
 
 /* User Profile Dropdown */
 .user-profile {
-    position: flex;
-    cursor: pointer;
-    display: flex;
-    align-items: left;
+	margin-right: 133px;
+	position: relative;
+	cursor: pointer;
 }
 
 .user-profile img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 149px;
-    margin-bottom: 3px;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	object-fit: cover;
 }
 
 .user-name {
@@ -74,15 +72,17 @@
 }
 
 .dropdown-menu {
-    display: none;
     position: absolute;
-    top: 50px;
-    right: 100px;
+    top: 50px; /* Place dropdown directly below the .user-profile */
+    right: 0; /* Align dropdown to the right edge of the .user-profile */
     background-color: #ffffff;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 100;
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Align menu items vertically */
+    align-items: flex-start; /* Align items to the left inside the dropdown */
 }
 
 .dropdown-menu ul {
@@ -589,8 +589,9 @@ body {
     text-align: left;
     color: #9e3a15;
     font-size: 22px;
-    margin-left: 50px;
+    margin-left: 125px;
     font-weight: bold;
+    margin-top: -10px;
 }
 
 .suggested-listings h2 {
@@ -645,29 +646,57 @@ body {
 }
 
 .product-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	justify-content: flex-start;
+	margin-left: 122px;
+    margin-bottom: 20px;
 }
 
-.product-card {
-  flex: 1 1 calc(25% - 1.5rem);
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 1rem;
-  box-sizing: border-box;
-  text-align: center;
+.product-card-suggest {
+    background-color: #ffffff;
+    border: 1px solid #E0E0E0;
+    border-radius: 10px;
+    width: 190px; 
+    height: 230px; 
+    flex-direction: column; 
+    position: static;
+    overflow: hidden; 
 }
 
 .product-card img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 4px;
+    width: 188px;
+    height: 188px; 
+    object-fit: cover; 
+    border-radius: 12px;
+    box-shadow: none;
+    padding: 4px;
+}
+
+.card-content {
+    padding: 8px;
+    flex-grow: 1;
+    margin-bottom: 3px;
 }
 
 .product-card h3 {
-  font-size: 1.25rem;
-  margin: 0.5rem 0;
+    font-size: 16px;
+    color: #303030;
+    margin-bottom: 8px;
+    margin-top: -10px;
+
+    display: block;
+    width: calc(100% - 8px); 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical; 
+    line-height: 1.2; 
+    max-height: 1.2em; 
 }
 
 .product-card p {
@@ -714,3 +743,70 @@ body {
     margin: 20px 0; /* Optional: Adds spacing above and below the divider */
     border: none; /* Ensures no border styles interfere */
 }
+
+.item-image-suggested {
+    padding: 4px 4px;
+    border-radius: 12px;
+    overflow: hidden; 
+}
+
+.item-image-suggested img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: none;
+}
+
+
+.item-title-suggested {
+    font-size: 12px;
+    color: #303030;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    margin-left: 5px;
+
+    display: -webkit-box; /* Used for the ellipsis effect */
+    -webkit-line-clamp: 1; /* Limits to one line */
+    -webkit-box-orient: vertical; /* Ensures proper box orientation */
+    line-height: 1.2; /* Controls the line height for proper display */
+    max-height: 1.2em; /* Ensures one line */
+    overflow: hidden; /* Hides overflow text */
+    text-overflow: ellipsis; /* Displays "..." when text overflows */
+    width: calc(100% - 8px); /* Ensures the width is correct */
+}
+
+.item-price-suggested {
+    font-size: 14px;
+	font-weight: bold;
+    color: #B84217;
+    margin-bottom: 5px;
+    margin-left: 5px;
+}
+
+.item-location-suggested {
+    display: block; 
+    width: calc(100% - 1px); 
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Hide overflowing text */
+    text-overflow: ellipsis; /* Show ellipsis (...) for overflowing text */
+    
+    -webkit-line-clamp: 1; /* Limit the text to 1 line */
+    -webkit-box-orient: vertical; 
+    display: -webkit-box; /* Use flexbox for clamping */
+    line-height: 1.2; 
+    max-height: 2.6em; 
+    font-size: 11px;
+    color: #b8b8b8;
+    margin-bottom: auto;
+    margin-left: 5px;
+}
+
+.product-card-link {
+    text-decoration: none; /* Remove underline */
+    display: block; /* Ensure the link takes up the full area */
+  }
+  
+  .product-card-suggest {
+    cursor: pointer; /* Change cursor to a pointer when hovering over the card */
+  }

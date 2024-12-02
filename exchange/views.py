@@ -236,7 +236,7 @@ def item_detail(request, item_id):
         form = ItemForm(instance=item)
 
     # Get 4 random suggested items excluding the current item
-    suggested_items = Item.objects.exclude(item_id=item_id).filter(is_available=True).order_by('?')[:4]
+    suggested_items = Item.objects.exclude(item_id=item_id).filter(is_available=True).order_by('?')[:6]
 
     context = {
         'item': item,

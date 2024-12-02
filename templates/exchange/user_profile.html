@@ -20,7 +20,7 @@
             </div>
             <div class="nav-links">
                 <ul>
-                    <li><a href="{% url 'exchange:user_profile' username=request.user.username %}" {% if request.user == profile_user %}class="active" {% endif %}>Profile</a></li>
+                    <li><a href="{% url 'exchange:user_profile' username=request.user.username %}" {% if request.user == profile_user %}class="active" {% endif %}>My Profile</a></li>
                     <li><a href="{% url 'exchange:user_profile_settings' %}">Settings</a></li>
                     <li><a href="#">Help & Support</a></li>
                 </ul>
@@ -87,7 +87,7 @@
                 </form>
                 <p>
                     {% if user_rating %}
-                    You rated: {{ user_rating.rating }} star{{ user_rating.rating|pluralize }}
+                    You rated this user: {{ user_rating.rating }} star{{ user_rating.rating|pluralize }}
                     {% endif %}
                 </p>
                 {% endif %}
@@ -97,10 +97,8 @@
                     {% if profile_user.country %}{{ profile_user.country }}{% else %}Country{% endif %},
                     {% if profile_user.city %}{{ profile_user.city }}{% else %}City{% endif %}
                 </p>
-                {% if is_own_profile %}
                 <p><strong>Contact:</strong> {{ profile_user.contact|default:"N/A" }}</p>
                 <p><strong>Email:</strong> {{ profile_user.email }}</p>
-                {% endif %}
             </div>
             {% if is_own_profile %}
             <div class="add-listing-container">

@@ -3,16 +3,21 @@
 <html lang="en">
    <head>
       <meta charset="UTF-8">
-      <title>{% block title %}Item Exchange{% endblock %}</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>{% block title %}SwapSpot{% endblock %}</title>
+
+      <!-- Set the favicon for the tab -->
+      <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+
+      <!-- Linking to the base CSS -->
       <link rel="stylesheet" href="{% static 'css/base.css' %}">
-      {% block page_css %}
-      {% endblock %}
-      {% block extra_css %}
-      {% endblock %}
+      
+      <!-- Additional CSS blocks for page-specific styling -->
+      {% block page_css %}{% endblock %}
+      {% block extra_css %}{% endblock %}
    </head>
    <body>
-  </ul>
-      {% block content %}
-      {% endblock %}
+      <!-- The main content area where specific page content will be rendered -->
+      {% block content %}{% endblock %}
    </body>
 </html>

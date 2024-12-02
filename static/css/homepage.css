@@ -1,3 +1,4 @@
+@ -1,677 +1,677 @@
 @import url('base.css');
 
 
@@ -609,7 +610,7 @@ section h2 {
     color: #555;
     position: absolute;
 	top: 598px;
-	left: 330px;
+	left: 390px;
 }
 
 .info-icon:hover::after {
@@ -651,7 +652,7 @@ section h2 {
     align-items: center;         /* Center content vertically */
     color: #9b9b9b;
     margin-top: 0px;
-	margin-left: 70px;
+	margin-left: 5px;
     font-size: 14px;
     text-align: left;             /* Ensure text is aligned to the left */
     width: 100%;                  /* Ensure it takes full width of its container */
@@ -675,8 +676,4 @@ section h2 {
     padding: 8px;
     font-size: 10px;
     width: 150px; /* Adjust the width of the dropdown */
-    border-radius: 4px;
-    border: 1px solid #ccc; /* Optional: border style */
 }
-
-
