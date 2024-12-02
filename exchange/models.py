@@ -43,13 +43,16 @@ class User(AbstractBaseUser, PermissionsMixin):
     
     profile_picture = models.ImageField(upload_to='profile_pictures/', blank=True, null=True)
     
+    total_rating = models.PositiveIntegerField(default=0)    # New Field
+    rating_count = models.PositiveIntegerField(default=0)    # New Field
     average_rating = models.DecimalField(max_digits=5, decimal_places=2, default=0.0)
+    
     date_joined = models.DateTimeField(default=timezone.now)
     terms_agreed = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     
-    objects = UserManager()  # Make sure your UserManager is properly defined
+    objects = UserManager()  # Ensure your UserManager is properly defined
     
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
