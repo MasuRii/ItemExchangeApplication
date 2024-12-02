@@ -346,66 +346,6 @@ section h2 {
     border-color: #B84217; 
 }
 
-.category-buttons {
-	display: flex;
-	gap: 15px;
-	justify-content: center;
-	flex-wrap: nowrap;
-	overflow-x: auto;
-}
-
-.category-btn {
-	width: 130px;
-	height: 60px;
-	display: flex;
-	align-items: center;
-	justify-content: flex-end;
-	padding-right: 10px;
-	background-color: #FFFFFF;
-	color: #FFFFFF;
-	border-radius: 10px;
-	border: none;
-	font-size: 14px;
-	font-weight: bold;
-	text-align: right;
-	cursor: pointer;
-	box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-	transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.category-btn.books-media {
-	background-color: #C0392B;
-}
-
-.category-btn.clothing-accessories {
-	background-color: #2980B9;
-}
-
-.category-btn.personal-care {
-	background-color: #F1C40F;
-}
-
-.category-btn.home-furniture {
-	background-color: #27AE60;
-}
-
-.category-btn.electronics-gadgets {
-	background-color: #8E44AD;
-}
-
-.category-btn.sports-gear {
-	background-color: #1ABC9C;
-}
-
-.category-btn.services {
-	background-color: #E67E22;
-}
-
-.category-btn:hover {
-	transform: translateY(-3px);
-	box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.25);
-}
-
 .site-footer {
 	background-color: #333333;
 	color: #F0F0F0;
@@ -629,8 +569,7 @@ section h2 {
 		font-size: 28px;
 	}
 
-	.send-offer-btn,
-	.category-btn {
+	.send-offer-btn {
 		font-size: 14px;
 		padding: 8px 15px;
 	}

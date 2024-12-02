@@ -118,27 +118,26 @@
 }
 
 .item-image-section {
+    margin-top: 30px; 
+    margin-left: 110px;
     flex: 1;
-    width: 200px; /* Set the width to 200px */
-    height: 400px; /* Set the height to 300px */
-    margin-top: 50px;
-    overflow: hidden; /* Ensure content doesn't overflow the frame */
-    border-radius: 10px; /* Optional for rounded corners */
+    width: 200px; /* Fixed width of the frame */
+    height: 450px; /* Fixed height of the frame */
+    overflow: hidden; /* Ensure the image doesn't overflow the frame */
+    border-radius: 10px; /* Optional rounded corners */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow for aesthetics */
-}
-
-.image-slider {
-    display: flex;
-    overflow-x: scroll;
-    gap: 10px;
+    display: flex; /* Ensures the content inside aligns properly */
+    justify-content: center; /* Center the image horizontally */
+    align-items: center; /* Center the image vertically */
 }
 
 .item-image {
-    width: 100%; /* Fill the width of the parent container */
-    height: 100%; /* Fill the height of the parent container */
-    object-fit: cover; /* Ensures the image covers the frame while maintaining aspect ratio */
-    border-radius: inherit; /* Matches the parent frame's rounded corners */
+    width: 100%; /* Fills the width of the frame */
+    height: 100%; /* Fills the height of the frame */
+    object-fit: cover; /* Maintains the aspect ratio and covers the frame */
+    border-radius: inherit; /* Matches the frame's rounded corners */
 }
+
 
 .item-info-section {
     flex: 2;
@@ -347,23 +346,23 @@
 
 /* Edit Item Button */
 .edit-item-btn {
-    background-color: #B84217; /* Primary color */
+    background-color: #333333; /* Primary color */
     color: #F0F0F0; /* Light text */
 }
 
 .edit-item-btn:hover {
-    background-color: #9e3a15; /* Slightly darker primary color on hover */
+    background-color: #181818; /* Slightly darker primary color on hover */
     transform: translateY(-2px); /* Lift effect */
 }
 
 /* Delete Item Button */
 .delete-item-btn {
-    background-color: #333333; /* Accent color */
+    background-color: #ce0909; /* Accent color */
     color: #F0F0F0; /* Light text */
 }
 
 .delete-item-btn:hover {
-    background-color: #2a2a2a; /* Slightly darker accent color */
+    background-color: #f70000; /* Slightly darker accent color */
     transform: translateY(-2px);
 }
 
@@ -575,7 +574,7 @@ body {
     white-space: nowrap;  /* Prevent line breaks */
     margin-bottom: 5px;  /* Space below the text */
     top: 90px;  /* Adjust this value to control vertical position */
-    left: 25px;  /* Adjust this value to control horizontal position */
+    left: 132px;  /* Adjust this value to control horizontal position */
     z-index: 10;  /* Ensure it's above other content */
 }
 
@@ -585,13 +584,13 @@ body {
     white-space: nowrap; /* Prevent text from wrapping */
 }
 
-.item-image-section {
-    margin-top: 30px;  /* Ensures the image section is properly spaced from text */
-}
-
 .suggested-listings {
-    margin-top: 50px;
-    text-align: center;
+    margin-bottom: 10px;
+    text-align: left;
+    color: #9e3a15;
+    font-size: 22px;
+    margin-left: 50px;
+    font-weight: bold;
 }
 
 .suggested-listings h2 {
@@ -706,4 +705,12 @@ body {
   .product-card {
     flex: 1 1 100%;
   }
+}
+
+.section-divider {
+    width: 100%; /* Full width of the container */
+    height: 1px; /* Thin height for the line */
+    background-color: #bababa; /* Light gray color for the divider */
+    margin: 20px 0; /* Optional: Adds spacing above and below the divider */
+    border: none; /* Ensures no border styles interfere */
 }
