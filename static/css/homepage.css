@@ -233,7 +233,8 @@ section h2 {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 30px;
-	justify-content: center;
+	justify-content: flex-start;
+	margin-left: 65px;
 }
 
 .h2 {
@@ -244,7 +245,7 @@ section h2 {
 	font-weight: bold;
 	font-size: 30px;
 	margin-left: 65px;
-	margin-bottom: 30px;
+	margin-bottom: 10px;
 }
 
 .product-card {
@@ -608,7 +609,7 @@ section h2 {
     color: #555;
     position: absolute;
 	top: 598px;
-	left: 400px;
+	left: 330px;
 }
 
 .info-icon:hover::after {
@@ -649,7 +650,8 @@ section h2 {
     justify-content: flex-start;  /* Align content to the left */
     align-items: center;         /* Center content vertically */
     color: #9b9b9b;
-    margin-top: 10px;
+    margin-top: 0px;
+	margin-left: 70px;
     font-size: 14px;
     text-align: left;             /* Ensure text is aligned to the left */
     width: 100%;                  /* Ensure it takes full width of its container */
