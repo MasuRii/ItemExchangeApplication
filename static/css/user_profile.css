@@ -645,3 +645,29 @@ body {
         width: 100%;
     }
 }
+
+/* Star Rating */
+.star-rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+.star-rating input[type="radio"] {
+    display: none;
+}
+.star-rating label {
+    font-size: 2em;
+    color: #ddd;
+    padding: 0 0.1em;
+    cursor: pointer;
+}
+.star-rating label:hover,
+.star-rating label:hover ~ label,
+.star-rating input[type="radio"]:checked ~ label {
+    color: #f5b301;
+}
+
+.star-rating label {
+    font-family: Arial, Helvetica, sans-serif;
+    /* existing styles */
+}

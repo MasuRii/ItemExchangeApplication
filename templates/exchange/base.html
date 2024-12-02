@@ -11,6 +11,13 @@
       {% endblock %}
    </head>
    <body>
+      {% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+      <li class="alert {{ message.tags }}">{{ message }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
       {% block content %}
       {% endblock %}
    </body>

@@ -4,11 +4,13 @@ from django.contrib.auth.decorators import login_required
 from .forms import LoginForm, SignUpStep1Form, SignUpStep2Form, ProfileSettingsForm, ItemForm
 from rest_framework import viewsets
 from django.contrib import messages
+from django.db.models import Avg
+from django.http import JsonResponse
 from django.urls import reverse
 import random
 from .models import (
     User, PaymentMethod, Item, Tag, ItemTag,
-    Proposal, Transaction, Review, Notification
+    Proposal, Transaction, Review, Notification, Rating
 )
 from .serializers import (
     UserSerializer, PaymentMethodSerializer, ItemSerializer, TagSerializer,
@@ -152,34 +154,61 @@ def home_view(request):
 
 @login_required
 def user_profile(request, username):
-    # Retrieve the profile user based on the username from the URL
+    # Retrieve the profile user
     profile_user = get_object_or_404(User, username=username)
 
     # Get items belonging to the profile user
     items = Item.objects.filter(user=profile_user, is_available=True).order_by('-date_listed')
 
-    # Check if the logged-in user is viewing their own profile
+    # Check if viewing own profile
     is_own_profile = request.user == profile_user
 
-    if is_own_profile:
-        if request.method == 'POST':
-            form = ItemForm(request.POST, request.FILES)
-            if form.is_valid():
-                new_item = form.save(commit=False)
-                new_item.user = request.user  # Associate the item with the logged-in user
-                new_item.save()
-                return redirect('exchange:user_profile', username=request.user.username)
+    # Handle rating submission
+    if request.method == 'POST' and 'rating' in request.POST:
+        rating_value = int(request.POST.get('rating'))
+        if 1 <= rating_value <= 5:
+            if not is_own_profile:
+                Rating.objects.update_or_create(
+                    rater=request.user,
+                    ratee=profile_user,
+                    defaults={'rating': rating_value}
+                )
+                if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+                    return JsonResponse({'status': 'success', 'message': 'Your rating has been submitted.'})
+                else:
+                    messages.success(request, 'Your rating has been submitted.')
+                    return redirect('user_profile', username=profile_user.username)
+            else:
+                error_msg = 'You cannot rate yourself.'
+                if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+                    return JsonResponse({'status': 'error', 'message': error_msg}, status=400)
+                else:
+                    messages.error(request, error_msg)
         else:
-            form = ItemForm()
-    else:
-        # If viewing someone else's profile, do not provide the form
-        form = None
+            error_msg = 'Invalid rating value.'
+            if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+                return JsonResponse({'status': 'error', 'message': error_msg}, status=400)
+            else:
+                messages.error(request, error_msg)
+
+    # Retrieve the current user's rating for this profile user, if any
+    user_rating = None
+    if not is_own_profile:
+        try:
+            user_rating = Rating.objects.get(rater=request.user, ratee=profile_user)
+        except Rating.DoesNotExist:
+            pass
+     
+    star_range = range(1, 6)          # For static average rating display
+    star_range_reverse = range(5, 0, -1)  # For interactive rating form
 
     context = {
-        'profile_user': profile_user,  # The user whose profile is being viewed
+        'profile_user': profile_user,
         'items': items,
-        'form': form,
         'is_own_profile': is_own_profile,
+        'user_rating': user_rating,
+        'star_range': star_range,                  # Add this line
+        'star_range_reverse': star_range_reverse,  # Add this line
     }
     return render(request, 'exchange/user_profile.html', context)
 

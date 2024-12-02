@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.utils import timezone
+from django.conf import settings
 class UserManager(BaseUserManager):
     def create_user(self, email, username, password=None, **extra_fields):
         if not email:
@@ -62,7 +64,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         return f"{self.first_name} {self.last_name}".strip()
     
     def get_short_name(self):
-        return self.first_name or self.username
+        return self.first_name or self.username    
 
 class PaymentMethod(models.Model):
     payment_method_id = models.AutoField(primary_key=True)
@@ -101,6 +103,28 @@ class Item(models.Model):
 
     def __str__(self):
         return self.title
+    
+class Rating(models.Model):
+    rater = models.ForeignKey(
+        settings.AUTH_USER_MODEL, 
+        on_delete=models.CASCADE, 
+        related_name='ratings_given'
+    )
+    ratee = models.ForeignKey(
+        settings.AUTH_USER_MODEL, 
+        on_delete=models.CASCADE, 
+        related_name='ratings_received'
+    )
+    rating = models.PositiveSmallIntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(5)]
+    )
+    date_rated = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('rater', 'ratee')  # Prevent a user from rating another user multiple times
+
+    def __str__(self):
+        return f"{self.rater.username} rated {self.ratee.username}: {self.rating} stars"    
 
 class Tag(models.Model):
     tag_id = models.AutoField(primary_key=True)

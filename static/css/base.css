@@ -32,3 +32,16 @@ img {
 	max-width: 100%;
 	height: auto;
 }
+
+.alert {
+	padding: 1em;
+	margin-bottom: 1em;
+  }
+  .alert.success {
+	background-color: #d4edda;
+	color: #155724;
+  }
+  .alert.error {
+	background-color: #f8d7da;
+	color: #721c24;
+  }
