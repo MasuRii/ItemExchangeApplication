@@ -228,6 +228,8 @@
         <p>Location: {{ item.user.city }}, {{ item.user.state }}</p>
         <a href="{% url 'exchange:item_detail' item.item_id %}">View Details</a>
       </div>
+    {% empty %}
+      <p>No suggested items available at this time.</p>
     {% endfor %}
   </div>
 </section>

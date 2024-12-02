@@ -1,7 +1,6 @@
 from django import forms
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import AuthenticationForm
-from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 from django.conf import settings
 from .models import User, Item
@@ -94,23 +93,3 @@ class ItemForm(forms.ModelForm):
         widgets = {
             'description': forms.Textarea(attrs={'rows': 4}),
         } 
-        
-class RatingForm(forms.Form):
-    RATING_CHOICES = [
-        (5, '⭐⭐⭐⭐⭐'),
-        (4, '⭐⭐⭐⭐☆'),
-        (3, '⭐⭐⭐☆☆'),
-        (2, '⭐⭐☆☆☆'),
-        (1, '⭐☆☆☆☆'),
-    ]
-
-    rating = forms.ChoiceField(
-        choices=RATING_CHOICES,
-        widget=forms.RadioSelect,
-        label='Your Rating'
-    )
-    comment = forms.CharField(
-        widget=forms.Textarea(attrs={'rows': 3}),
-        required=False,
-        label='Your Review (Optional)'
-    )  

@@ -43,8 +43,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     
     profile_picture = models.ImageField(upload_to='profile_pictures/', blank=True, null=True)
     
-    total_rating = models.PositiveIntegerField(default=0)    # New Field
-    rating_count = models.PositiveIntegerField(default=0)    # New Field
     average_rating = models.DecimalField(max_digits=5, decimal_places=2, default=0.0)
     
     date_joined = models.DateTimeField(default=timezone.now)

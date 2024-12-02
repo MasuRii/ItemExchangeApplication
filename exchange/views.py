@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
-from .forms import LoginForm, SignUpStep1Form, SignUpStep2Form, ProfileSettingsForm, ItemForm, RatingForm
+from .forms import LoginForm, SignUpStep1Form, SignUpStep2Form, ProfileSettingsForm, ItemForm
 from rest_framework import viewsets
 from django.contrib import messages
 from django.urls import reverse
@@ -156,11 +156,6 @@ def user_profile(request, username):
     # Check if the logged-in user is viewing their own profile
     is_own_profile = request.user == profile_user
 
-    # Initialize form variables
-    form = None
-    rating_form = None
-    has_rated = False  # Indicates if the user has already rated in this session
-
     if is_own_profile:
         if request.method == 'POST':
             form = ItemForm(request.POST, request.FILES)
@@ -168,47 +163,18 @@ def user_profile(request, username):
                 new_item = form.save(commit=False)
                 new_item.user = request.user  # Associate the item with the logged-in user
                 new_item.save()
-                messages.success(request, "Your item has been added.")
                 return redirect('exchange:user_profile', username=request.user.username)
         else:
             form = ItemForm()
     else:
-        # Define a unique session key for each profile user
-        session_key = f'rated_{profile_user.user_id}'
-        has_rated = request.session.get(session_key, False)
-
-        if request.method == 'POST':
-            rating_form = RatingForm(request.POST)
-            if rating_form.is_valid():
-                if not has_rated:
-                    rating = int(rating_form.cleaned_data['rating'])
-                    comment = rating_form.cleaned_data['comment']  # Optional
-
-                    # Update the profile user's rating statistics
-                    profile_user.total_rating += rating
-                    profile_user.rating_count += 1
-                    profile_user.average_rating = round(profile_user.total_rating / profile_user.rating_count, 2)
-                    profile_user.save()
-
-                    # Optionally process the comment here (e.g., display immediately)
-
-                    # Mark this profile as rated in the session
-                    request.session[session_key] = True
-
-                    messages.success(request, "Your rating has been submitted.")
-                    return redirect('exchange:user_profile', username=username)
-                else:
-                    messages.error(request, "You have already rated this user in this session.")
-        else:
-            rating_form = RatingForm()
+        # If viewing someone else's profile, do not provide the form
+        form = None
 
     context = {
-        'profile_user': profile_user,        # The user whose profile is being viewed
+        'profile_user': profile_user,  # The user whose profile is being viewed
         'items': items,
         'form': form,
         'is_own_profile': is_own_profile,
-        'rating_form': rating_form,
-        'has_rated': has_rated,
     }
     return render(request, 'exchange/user_profile.html', context)
 
@@ -234,15 +200,15 @@ def item_detail(request, item_id):
 
     if is_owner:
         form = ItemForm(instance=item)
-    
-    # Example: Get 4 random suggested items excluding the current item
-    suggested_items = Item.objects.exclude(item_id=item_id).filter(is_available=True)[:4]
+
+    # Get 4 random suggested items excluding the current item
+    suggested_items = Item.objects.exclude(item_id=item_id).filter(is_available=True).order_by('?')[:4]
 
     context = {
         'item': item,
         'is_owner': is_owner,
         'form': form,
-        'suggested_items': suggested_items,  # Add this line
+        'suggested_items': suggested_items,
     }
     return render(request, 'exchange/item_detail.html', context)
 
