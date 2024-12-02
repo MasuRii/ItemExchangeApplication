@@ -76,11 +76,28 @@
 </section>
 {% endif %}
 
+<div class="category-dropdown-container">
+   <label for="categorySelect" class="category-label">Filter: </label>
+   <select id="categorySelect" class="category-dropdown">
+       <option value="books-media">Books and Media</option>
+       <option value="clothing-accessories">Clothing and Accessories</option>
+       <option value="personal-care">Personal Care</option>
+       <option value="electronics">Electronics</option>
+       <option value="home-kitchen">Home and Kitchen</option>
+       <option value="sports-outdoors">Sports and Outdoors</option>
+       <option value="toys-games">Toys and Games</option>
+       <option value="automotive">Automotive</option>
+       <option value="furniture">Furniture</option>
+   </select>
+</div>
+
+
 <!-- Listings Section: Top Listings or Search Results -->
 <section class="top-listings">
+   <div class="filters-container">
    <div class="container">
       {% if query %}
-         <h2>Showing results for: "{{ query }}"</h2>
+         <p class="showing">Showing results for: "{{ query }}"</p>
       {% else %}
          <div class="h2">New Listings</div>
          <span class="info-icon" title="15 most recent listings are displayed here,
@@ -114,7 +131,7 @@
             </a>
          </div>
          {% empty %}
-         <p>No items available{% if query %} matching your search{% else %}. Check back soon for new listings!{% endif %}.</p>
+         <p class="no-result">No items available{% if query %} matching your search{% else %}. Check back soon for new listings!{% endif %}.</p>
          {% endfor %}
       </div>
    </div>

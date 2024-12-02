@@ -487,7 +487,7 @@ body {
 
 .add-product-btn {
     position: absolute; /* Use absolute positioning */
-    top: 330px; /* Distance from the top of the container (adjust as needed) */
+    top: 340px; /* Distance from the top of the container (adjust as needed) */
     left: 100px; /* Center the button horizontally */
     transform: translateX(-50%); /* Fine-tune the horizontal center alignment */
     padding: 12px 30px; /* Add padding for a better button size */
