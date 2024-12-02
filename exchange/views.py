@@ -297,6 +297,20 @@ def user_profile_settings(request):
     return render(request, 'exchange/user_profile_settings.html', {'form': form, 'user': user})
 
 @login_required
+def delete_account(request):
+    if request.method == 'POST':
+        # User confirmed deletion
+        user = request.user
+        user.delete()
+        logout(request)
+        messages.success(request, 'Your account has been deleted successfully.')
+        return redirect('exchange:landing')  # Redirect to your landing page or homepage
+    else:
+        # If GET request, redirect to settings with an error message
+        messages.error(request, 'Invalid request method.')
+        return redirect('exchange:user_profile_settings')
+
+@login_required
 def upload_avatar(request):
     if request.method == 'POST':
         avatar = request.FILES.get('avatar')

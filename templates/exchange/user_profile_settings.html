@@ -1,127 +1,134 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <!-- Meta tags -->
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Profile Settings - SwapSpot</title>
-      <!-- Include the external CSS file -->
-      <link rel="stylesheet" href="{% static 'css/user_profile_settings.css' %}">
-      <script defer>
-         // Function to toggle the dropdown visibility
-         function toggleDropdown() {
-            const dropdown = document.getElementById('dropdownMenu');
-            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-         }
-      </script>
-   </head>
-   <body>
-      <!-- Header Section -->
-      <!-- Navbar -->
-      <nav class="navbar">
-         <div class="navbar-container">
+
+<head>
+    <!-- Meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Settings - SwapSpot</title>
+    <!-- Include the external CSS file -->
+    <link rel="stylesheet" href="{% static 'css/user_profile_settings.css' %}">
+</head>
+
+<body>
+    <!-- Header Section -->
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
             <!-- Brand Logo -->
             <div class="brand-logo">
-               <a href="{% url 'exchange:homepage' %}">
-               <img src="{% static 'svg/swapspot-logo-dark.svg' %}" alt="SwapSpot Logo" class="logo-icon">
-               </a>
+                <a href="{% url 'exchange:homepage' %}">
+                    <img src="{% static 'svg/swapspot-logo-dark.svg' %}" alt="SwapSpot Logo" class="logo-icon">
+                </a>
             </div>
             <!-- Navigation Links -->
             <div class="nav-links">
-               <ul>
-                  <li><a href="{% url 'exchange:user_profile' user.username %}">Profile</a></li>
-                  <li><a href="{% url 'exchange:user_profile_settings' %}" class="active">Settings</a></li>
-                  <li><a href="#">Help & Support</a></li>
-               </ul>
+                <ul>
+                    <li><a href="{% url 'exchange:user_profile' user.username %}">Profile</a></li>
+                    <li><a href="{% url 'exchange:user_profile_settings' %}" class="active">Settings</a></li>
+                    <li><a href="#">Help & Support</a></li>
+                </ul>
             </div>
             <!-- User Account Thumbnail -->
             <div class="user-profile" onclick="toggleDropdown(event)">
-               {% if user.profile_picture %} <img src="{{ user.profile_picture.url }}" alt="Profile Picture"> {% else %} <img
-                  src="{% static 'images/defaultpfp.png' %}" alt="Profile Picture"> {% endif %}   
-               <div class="dropdown-menu" id="dropdownMenu">
-                  <ul>
-                     <li>
-                        <a href="{% url 'exchange:logout' %}">Logout</a>
-                     </li>
-                  </ul>
-               </div>
+                {% if user.profile_picture %} <img src="{{ user.profile_picture.url }}" alt="Profile Picture"> {% else %} <img src="{% static 'images/defaultpfp.png' %}" alt="Profile Picture"> {% endif %}
+                <div class="dropdown-menu" id="dropdownMenu">
+                    <ul>
+                        <li>
+                            <a href="{% url 'exchange:logout' %}">Logout</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-         </div>
-      </nav>
-      <!-- Main Settings Section -->
-      <div class="settings-container">
-         <!-- Tabs for Settings Options -->
-         <div class="settings-tabs">
+        </div>
+    </nav>
+    <!-- Main Settings Section -->
+    <div class="settings-container">
+        <!-- Tabs for Settings Options -->
+        <div class="settings-tabs">
             <ul>
-               <li><a href="#" class="active">Settings</a></li>
-               <li><a href="#">Notification</a></li>
+                <li><a href="#" class="active">Settings</a></li>
+                <li><a href="#">Notification</a></li>
             </ul>
-         </div>
-         <div class="settings-content">
+        </div>
+        <div class="settings-content">
             <!-- Profile Section (Left Panel) -->
             <div class="profile-section">
-               <!-- Profile Avatar -->
-               <div class="avatar-container">
-                  {% if user.profile_picture %}
-                  <img src="{{ user.profile_picture.url }}" alt="Profile Picture" class="avatar">
-                  {% else %}
-                  <img src="{% static 'images/defaultpfp.png' %}" alt="Profile Picture" class="avatar">
-                  {% endif %}
-                  <form method="POST" action="{% url 'exchange:upload_avatar' %}" enctype="multipart/form-data">
-                     {% csrf_token %}
-                     <label for="avatar-input" class="btn upload-btn">Upload new avatar</label>
-                     <input type="file" name="avatar" id="avatar-input" accept="image/*">
-                     <button type="submit" class="btn save-avatar-btn">Save Avatar</button>
-                  </form>
-               </div>
-               <!-- User Information -->
-               <h2 class="username">{{ user.username|default:"Username" }}</h2>
-               <p class="title">{{ user.title|default:"" }}</p>
-               <p class="location">
-                  {% if user.country %}{{ user.country }}{% else %}Country{% endif %},
-                  {% if user.city %}{{ user.city }}{% else %}City{% endif %}
-               </p>
-               <p class="bio">
-                  {% if user.bio %}
-                  {{ user.bio }}
-                  {% else %}
-                  This user hasn't written a bio yet.
-                  {% endif %}
-               </p>
+                <!-- Profile Avatar and Delete Account Section -->
+                <div class="avatar-container">
+                    <!-- Profile Avatar -->
+                    {% if user.profile_picture %}
+                    <img src="{{ user.profile_picture.url }}" alt="Profile Picture" class="avatar">
+                    {% else %}
+                    <img src="{% static 'images/defaultpfp.png' %}" alt="Profile Picture" class="avatar">
+                    {% endif %}
+                    <!-- Avatar Upload Form -->
+                    <form method="POST" action="{% url 'exchange:upload_avatar' %}" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <label for="avatar-input" class="btn upload-btn">Upload new avatar</label>
+                        <input type="file" name="avatar" id="avatar-input" accept="image/*">
+                        <button type="submit" class="btn save-avatar-btn">Save Avatar</button>
+                    </form>
+                </div>
+                <!-- User Information -->
+                <h2 class="username">{{ user.username|default:"Username" }}</h2>
+                <p class="title">{{ user.title|default:"" }}</p>
+                <p class="location">
+                    {% if user.country %}{{ user.country }}{% else %}Country{% endif %},
+                    {% if user.city %}{{ user.city }}{% else %}City{% endif %}
+                </p>
+                <p class="bio">
+                    {% if user.bio %}
+                    {{ user.bio }}
+                    {% else %}
+                    This user hasn't written a bio yet.
+                    {% endif %}
+                </p>
+                <!-- Delete Account Section -->
+                <div class="delete-account-section">
+                    <h2>Delete Account</h2>
+                    <p class="caution-text">Caution: Deleting your account is irreversible. All your data will be permanently removed.</p>
+                    <button class="btn delete-account-btn" id="deleteAccountBtn">Delete Account</button>
+                    <!-- Hidden form -->
+                    <form id="deleteAccountForm" method="post" action="{% url 'exchange:delete_account' %}" style="display: none;">
+                        {% csrf_token %}
+                    </form>
+                </div>
             </div>
             <!-- Basic Info Section (Right Panel) -->
             <div class="info-section">
-               <!-- Display messages -->
-               {% if messages %}
-               <ul class="messages">
-                  {% for message in messages %}
-                  <li class="{{ message.tags }}">{{ message }}</li>
-                  {% endfor %}
-               </ul>
-               {% endif %}
-               <form method="POST" action="{% url 'exchange:user_profile_settings' %}" enctype="multipart/form-data">
-                  {% csrf_token %}
-                  <!-- Basic Info -->
-                  <h2>BASIC INFO</h2>
-                  {{ form.non_field_errors }}
-                  {% for field in form %}
-                  <div class="form-group">
-                     {{ field.label_tag }}
-                     {{ field }}
-                     {{ field.errors }}
-                  </div>
-                  {% endfor %}
-                  <!-- Action Buttons -->
-                  <div class="form-actions">
-                     <button type="reset" class="btn cancel-btn">Cancel</button>
-                     <button type="submit" class="btn save-btn">Save</button>
-                  </div>
-               </form>
+                <!-- Display messages -->
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li class="{{ message.tags }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                <form method="POST" action="{% url 'exchange:user_profile_settings' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <!-- Basic Info -->
+                    <h2>BASIC INFO</h2>
+                    {{ form.non_field_errors }}
+                    {% for field in form %}
+                    <div class="form-group">
+                        {{ field.label_tag }}
+                        {{ field }}
+                        {{ field.errors }}
+                    </div>
+                    {% endfor %}
+                    <!-- Action Buttons -->
+                    <div class="form-actions">
+                        <button type="reset" class="btn cancel-btn">Cancel</button>
+                        <button type="submit" class="btn save-btn">Save</button>
+                    </div>
+                </form>
             </div>
-         </div>
-      </div>
-      <!-- Include external JS file if necessary -->
-      <script src="{% static 'js/user_profile_settings.js' %}"></script>
-   </body>
+        </div>
+    </div>
+    </div>
+    <script src="{% static 'js/user_profile_settings.js' %}"></script>
+</body>
+
 </html>

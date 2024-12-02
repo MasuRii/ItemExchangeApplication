@@ -29,6 +29,7 @@ urlpatterns = [
     path('items/<int:item_id>/delete/', views.delete_item, name='delete_item'),
     path('item/<int:item_id>/edit/', views.edit_item, name='edit_item'),
     path('settings/', views.user_profile_settings, name='user_profile_settings'),
+    path('delete-account/', views.delete_account, name='delete_account'),
     path('upload-avatar/', views.upload_avatar, name='upload_avatar'),
     path('', views.landing, name='landing'),
     path('api/', include(router.urls)),
