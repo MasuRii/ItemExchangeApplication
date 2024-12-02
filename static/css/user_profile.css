@@ -1,412 +1,429 @@
 /* Reset default margins and paddings */
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 /* General Styles */
 body {
-	display: flex;
-	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	flex-direction: column;
-	min-height: 100vh;
+    display: flex;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .footer {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	flex-wrap: wrap;
-	background-color: #f8f8f8;
-	padding: 16px;
-	font-size: 12px;
-	font-family: Arial, Helvetica, sans-serif;
-	text-align: center;
-	border-top: 1px solid #d8d8d8;
-	margin-top: auto; /* Pushes footer to the bottom */
- }
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: #f8f8f8;
+    padding: 16px;
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    border-top: 1px solid #d8d8d8;
+    margin-top: auto;
+    /* Pushes footer to the bottom */
+}
 
- .footer p {
-	margin: 4px 0;
-	opacity: 0.4;
- }
+.footer p {
+    margin: 4px 0;
+    opacity: 0.4;
+}
 
 /* Navbar */
 .navbar {
-	background-color: #FFFFFF;
-	padding: 10px 20px;
-	display: flex;
-	align-items: center;
-	box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
-	position: fixed;
-	top: 0;
-	width: 100%;
-	z-index: 1000;
+    background-color: #FFFFFF;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
 }
 
 .navbar-container {
-	display: flex;
-	align-items: center;
-	width: 100%;
-	max-width: 1200px;
-	margin: 0 auto;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .brand-logo {
-	margin-right: auto;
+    margin-right: auto;
 }
 
 .brand-logo img {
-	height: 40px;
+    height: 40px;
 }
 
 .nav-links {
-	flex-grow: unset;
-	display: flex;
-	align-items: right;
-	justify-content: center;
-	margin-right: 20px;
+    flex-grow: unset;
+    display: flex;
+    align-items: right;
+    justify-content: center;
+    margin-right: 20px;
 }
 
 a {
-	text-decoration: none;
-	color: inherit;
+    text-decoration: none;
+    color: inherit;
 }
 
 ul {
-	list-style-type: none;
+    list-style-type: none;
 }
 
 .nav-links ul {
-	display: flex;
+    display: flex;
 }
 
 .nav-links ul li {
-	margin-left: 30px;
+    margin-left: 30px;
 }
 
 .nav-links ul li a {
-	font-size: 16px;
-	color: #000000;
-	padding: 5px;
-	position: relative;
+    font-size: 16px;
+    color: #000000;
+    padding: 5px;
+    position: relative;
 }
 
 .nav-links ul li a:hover,
 .nav-links ul li a.active {
-	font-weight: bold;
+    font-weight: bold;
 }
 
 .nav-links ul li a.active::after {
-	content: '';
-	position: absolute;
-	width: 100%;
-	height: 2px;
-	background-color: #FF5722;
-	bottom: -2px;
-	left: 0;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #FF5722;
+    bottom: -2px;
+    left: 0;
 }
 
 .user-profile {
-	margin-left: 30px;
+    margin-left: 30px;
 }
 
 .user-profile img {
-	width: 40px;
-	height: 40px;
-	border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
 }
 
 .user-name {
     font-size: 16px;
     color: #333;
-    font-weight: 500; /* Maintains visibility */
-    margin-left: 10px; /* Provides space between the image and username */
-    display: inline-block; /* Allows margin and alignment adjustments */
-    vertical-align: middle; /* Vertically centers the text with the image */
-    line-height: normal; /* Ensures the text doesn't stretch */
+    font-weight: 500;
+    /* Maintains visibility */
+    margin-left: 10px;
+    /* Provides space between the image and username */
+    display: inline-block;
+    /* Allows margin and alignment adjustments */
+    vertical-align: middle;
+    /* Vertically centers the text with the image */
+    line-height: normal;
+    /* Ensures the text doesn't stretch */
 }
 
 /* Profile Container */
 .profile-container {
-	background-color: #FFFFFF;
-	text-align: center;
-	padding-top: 0;
-	position: relative;
-	margin-bottom: 50px;
+    background-color: #FFFFFF;
+    text-align: center;
+    padding-top: 0;
+    position: relative;
+    margin-bottom: 50px;
 }
 
 .profile-picture-container {
-	display: flex;
-	justify-content: left;
-	align-items: left;
-	margin-bottom: 16px;
-	margin-left: 100px;
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    margin-bottom: 16px;
+    margin-left: 100px;
 }
 
 .profile-picture {
-	width: 100px;
-	height: 100px;
-	border-radius: 50%;
-	object-fit: cover;
-	border: 3px solid white;
-	background-color: #f0f0f0;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid white;
+    background-color: #f0f0f0;
 }
 
 /* Profile Information */
 .profile-info {
-	padding-top: 90px;
+    padding-top: 90px;
 }
 
 .username {
-	font-size: 24px;
-	font-weight: bold;
-	text-align: left;
-	margin-bottom: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 10px;
 }
 
 .location {
-	font-size: 18px;
-	color: #777777;
-	margin-bottom: 15px;
+    font-size: 18px;
+    color: #777777;
+    margin-bottom: 15px;
 }
 
 .bio {
-	font-size: 14px;
-	color: #666;
-	text-align: left;
-	margin-bottom: 16px;
-	margin-top: 7px;
+    font-size: 14px;
+    color: #666;
+    text-align: left;
+    margin-bottom: 16px;
+    margin-top: 7px;
 }
 
 /* Call-to-Action Buttons */
 .profile-actions {
-	display: flex;
-	justify-content: center;
-	gap: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
 
 .btn {
-	font-size: 16px;
-	padding: 10px 30px;
-	border-radius: 25px;
-	cursor: pointer;
-	transition: background-color 0.3s, color 0.3s;
+    font-size: 16px;
+    padding: 10px 30px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 /* Add styles for the dropdown menu */
 .dropdown-menu {
-	display: none;
-	position: absolute;
-	background-color: #fff;
-	border: 1px solid #ccc;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	z-index: 1000;
-	margin-top: 10px;
-	padding: 10px;
-	list-style: none;
-	width: 150px;
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    margin-top: 10px;
+    padding: 10px;
+    list-style: none;
+    width: 150px;
 }
 
 .dropdown-menu ul {
-	padding: 0;
-	margin: 0;
+    padding: 0;
+    margin: 0;
 }
 
 .dropdown-menu ul li {
-	margin: 0;
-	padding: 5px 0;
+    margin: 0;
+    padding: 5px 0;
 }
 
 .dropdown-menu ul li a {
-	text-decoration: none;
-	color: #333;
-	display: block;
+    text-decoration: none;
+    color: #333;
+    display: block;
 }
 
 .dropdown-menu ul li a:hover {
-	background-color: #f0f0f0;
+    background-color: #f0f0f0;
 }
 
 .dropdown-menu.show {
-	display: block;
+    display: block;
 }
 
 /* Right Section */
 .right-section {
-	flex: 2;
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
-	align-items: flex-start;
-	padding-top: 24px;
-	padding-left: 140px;
-	gap: 16px;
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-top: 24px;
+    padding-left: 140px;
+    gap: 16px;
 }
 
 .left-section .username {
-	font-size: 24px;
-	font-weight: bold;
-	margin-bottom: 0px;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 0px;
 }
 
 .left-section .bio {
-	font-size: 14px;
-	color: #666;
-	margin-bottom: 16px;
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 16px;
 }
 
 .section-divider {
-	width: 100%;
-	border: 0;
-	height: 1px;
-	background-color: #ddd;
-	margin: 16px 0;
+    width: 100%;
+    border: 0;
+    height: 1px;
+    background-color: #ddd;
+    margin: 16px 0;
 }
 
 .profile-divider {
-	position: absolute;
-	width: 100%;
-	border: 0;
-	height: 1px;
-	background-color: #d8d8d8;
-	top: 700px;
-	margin: 16px 0;
+    position: absolute;
+    width: 100%;
+    border: 0;
+    height: 1px;
+    background-color: #d8d8d8;
+    top: 700px;
+    margin: 16px 0;
 }
 
 /* Ensures the body takes up full height and arranges the content */
 body {
-	display: flex;
-	flex-direction: column;
-	min-height: 100vh;
- }
- 
- /* Profile content takes up remaining space */
- .profile-layout {
-	flex: 1; /* Makes the profile section flexible */
- }
- 
- /* Footer at the bottom */
- .footer {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	flex-wrap: wrap;
-	background-color: #f8f8f8;
-	padding: 16px;
-	font-size: 12px;
-	font-family: Arial, Helvetica, sans-serif;
-	text-align: center;
-	border-top: 1px solid #d8d8d8;
-	margin-top: auto; /* Pushes footer to the bottom */
- }
- 
- /* Footer items (Terms, Security, etc.) */
- .footer p {
-	margin: 2px 0; /* Optional, if you want some vertical spacing */
-	opacity: 0.4;
- }
- 
- .terms, .security, .how, .pledge, .contact {
-	margin-right: 10px; /* Adds space between items */
- }
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
 
- /* Footer items specific positioning */
- .terms {
-	margin-right: 20px;
- }
- 
- .security {
-	margin-left: 20px;
- }
- 
- .how {
-	margin-left: 20px;
- }
- 
- .pledge {
-	margin-left: 20px;
- }
- 
- .contact {
-	margin-left: 20px;
- }
- 
+/* Profile content takes up remaining space */
+.profile-layout {
+    flex: 1;
+    /* Makes the profile section flexible */
+}
+
+/* Footer at the bottom */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: #f8f8f8;
+    padding: 16px;
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    border-top: 1px solid #d8d8d8;
+    margin-top: auto;
+    /* Pushes footer to the bottom */
+}
+
+/* Footer items (Terms, Security, etc.) */
+.footer p {
+    margin: 2px 0;
+    /* Optional, if you want some vertical spacing */
+    opacity: 0.4;
+}
+
+.terms,
+.security,
+.how,
+.pledge,
+.contact {
+    margin-right: 10px;
+    /* Adds space between items */
+}
+
+/* Footer items specific positioning */
+.terms {
+    margin-right: 20px;
+}
+
+.security {
+    margin-left: 20px;
+}
+
+.how {
+    margin-left: 20px;
+}
+
+.pledge {
+    margin-left: 20px;
+}
+
+.contact {
+    margin-left: 20px;
+}
+
 .copyright {
-	margin-left: auto; /* Pushes it to the far right */
-	margin-right: 20px; /* Ensures some space from the right edge */
- }
- 
- /* Divider Styling */
- .profile-divider {
-	width: 100%;
-	border: 0;
-	height: 1px;
-	background-color: #d8d8d8;
-	margin-top: 24px;
- }
- 
+    margin-left: auto;
+    /* Pushes it to the far right */
+    margin-right: 20px;
+    /* Ensures some space from the right edge */
+}
+
+/* Divider Styling */
+.profile-divider {
+    width: 100%;
+    border: 0;
+    height: 1px;
+    background-color: #d8d8d8;
+    margin-top: 24px;
+}
+
 
 .details {
-	font-size: 14px;
-	color: #333;
-	line-height: 1.6;
+    font-size: 14px;
+    color: #333;
+    line-height: 1.6;
 }
 
 .details strong {
-	font-weight: bold;
-	color: #000;
+    font-weight: bold;
+    color: #000;
 }
 
 .details .stars {
-	color: #FFB400;
-	font-size: 16px;
-	vertical-align: middle;
+    color: #FFB400;
+    font-size: 16px;
+    vertical-align: middle;
 }
 
 .details .rating-count {
-	font-size: 12px;
-	color: #999;
-	margin-left: 4px;
+    font-size: 12px;
+    color: #999;
+    margin-left: 4px;
 }
 
 .profile-layout {
-	margin-top: 100px;
-	display: flex;
-	justify-content: space-between;
-	padding: 20px;
+    margin-top: 100px;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
 }
 
 .left-section {
-	flex: 1;
-	position: sticky;
-	top: 20px;
-	max-height: calc(100vh - 80px);
-	overflow-y: auto;
-	margin-left: 130px;
+    flex: 1;
+    position: sticky;
+    top: 20px;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+    margin-left: 130px;
 }
 
 .right-section {
-	overflow-y: auto;
-	max-height: 100vh;
-	padding-right: 20px;
+    overflow-y: auto;
+    max-height: 100vh;
+    padding-right: 20px;
 }
 
 @media (max-width: 1024px) {
-	.product-card {
-		width: calc(33.333% - 30px);
-	}
+    .product-card {
+        width: calc(33.333% - 30px);
+    }
 }
 
 @media (max-width: 768px) {
+
     .header-container,
     .footer-container {
         flex-direction: column;
         align-items: center;
     }
 
-.product-card {
+    .product-card {
         width: calc(16.666% - 20px);
         background-color: #FFFFFF;
         border: 1px solid #E0E0E0;
@@ -422,18 +439,23 @@ body {
     .product-card {
         width: 100%;
     }
+
     .search-placeholder {
         margin: 20px 0;
     }
+
     .icon-placeholder .icon-image {
         margin-left: 10px;
     }
+
     .hero-content h1 {
         font-size: 32px;
     }
+
     .hero-content p {
         font-size: 18px;
     }
+
     section h2 {
         font-size: 28px;
     }
@@ -441,142 +463,172 @@ body {
 }
 
 .grid-container {
-	display: grid;
-	grid-template-columns: repeat(4, 1fr); /* Force 4 equal-width columns per row */
-	gap: 16px;
-	background-color: #ffffff;
-	padding: 20px;
-	width: 100%; /* Make it responsive */
-	max-width: 850px; /* Ensure the container doesn't stretch too far */
-	height: auto;
-	max-height: 590px; /* Limit max height */
-	overflow-y: auto; /* Allow scrolling for excess content */
-	overflow-x: hidden;
-	margin: 0 auto; /* Center the container */
-	margin-top: -20px;
-	border-radius: 10px;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .grid-container > * {
-	width: 100%; /* Make sure child items fit within their grid cell */
-	box-sizing: border-box; /* Include padding and borders in the width/height */
-  }
-  
-  
-  .scrollable {
-	overflow-y: auto; /* Keep scrolling for content overflow */
-	scrollbar-width: thin; /* For modern browsers (Firefox) */
-	scrollbar-color: #cccccc transparent; /* Customize scrollbar color */
-  }
-  
-  /* Custom scrollbar styling for WebKit browsers (Chrome, Edge, Safari) */
-  .scrollable::-webkit-scrollbar {
-	width: 8px;
-  }
-  
-  .scrollable::-webkit-scrollbar-thumb {
-	background-color: #cccccc;
-	border-radius: 4px;
-  }
-  
-  .scrollable::-webkit-scrollbar-track {
-	background-color: transparent;
-  }
-  
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* Force 4 equal-width columns per row */
+    gap: 16px;
+    background-color: #ffffff;
+    padding: 20px;
+    width: 100%;
+    /* Make it responsive */
+    max-width: 850px;
+    /* Ensure the container doesn't stretch too far */
+    height: auto;
+    max-height: 590px;
+    /* Limit max height */
+    overflow-y: auto;
+    /* Allow scrolling for excess content */
+    overflow-x: hidden;
+    margin: 0 auto;
+    /* Center the container */
+    margin-top: -20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.grid-container>* {
+    width: 100%;
+    /* Make sure child items fit within their grid cell */
+    box-sizing: border-box;
+    /* Include padding and borders in the width/height */
+}
+
+
+.scrollable {
+    overflow-y: auto;
+    /* Keep scrolling for content overflow */
+    scrollbar-width: thin;
+    /* For modern browsers (Firefox) */
+    scrollbar-color: #cccccc transparent;
+    /* Customize scrollbar color */
+}
+
+/* Custom scrollbar styling for WebKit browsers (Chrome, Edge, Safari) */
+.scrollable::-webkit-scrollbar {
+    width: 8px;
+}
+
+.scrollable::-webkit-scrollbar-thumb {
+    background-color: #cccccc;
+    border-radius: 4px;
+}
+
+.scrollable::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
 
 .add-product-btn {
-    position: absolute; /* Use absolute positioning */
-    top: 340px; /* Distance from the top of the container (adjust as needed) */
-    left: 100px; /* Center the button horizontally */
-    transform: translateX(-50%); /* Fine-tune the horizontal center alignment */
-    padding: 12px 30px; /* Add padding for a better button size */
-    background-color: transparent; /* Light green background */
-    border-radius: 2px; /* Slightly rounded corners */
+    position: absolute;
+    /* Use absolute positioning */
+    top: 340px;
+    /* Distance from the top of the container (adjust as needed) */
+    left: 100px;
+    /* Center the button horizontally */
+    transform: translateX(-50%);
+    /* Fine-tune the horizontal center alignment */
+    padding: 12px 30px;
+    /* Add padding for a better button size */
+    background-color: transparent;
+    /* Light green background */
+    border-radius: 2px;
+    /* Slightly rounded corners */
     border: 2px solid #c2c2c2;
-    font-size: 14px; /* Adjust font size for better readability */
-    color: #808080; /* Dark text for visibility */
-    text-align: center; /* Center the text */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: all 0.3s ease; /* Smooth transition for hover effects */
-    width: 200px; /* Make it stretch to the container's width */
+    font-size: 14px;
+    /* Adjust font size for better readability */
+    color: #808080;
+    /* Dark text for visibility */
+    text-align: center;
+    /* Center the text */
+    cursor: pointer;
+    /* Pointer cursor on hover */
+    transition: all 0.3s ease;
+    /* Smooth transition for hover effects */
+    width: 200px;
+    /* Make it stretch to the container's width */
 }
 
 
 .add-product-btn:hover {
-	background-color: #B84217;
-	color: white;
-	border-color: #B84217;
+    background-color: #B84217;
+    color: white;
+    border-color: #B84217;
 }
 
 .modal {
-	display: none;
-	position: fixed;
-	padding-top: 100px; 
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	overflow: auto;
-	background-color: rgba(0,0,0,0.4);
-  }
-  
-  .modal-content {
-	background-color: #fefefe;
-	margin: auto;
-	padding: 20px;
-	border: 1px solid #888;
-	width: 50%;
-	border-radius: 8px;
-  }
-  
-  .close {
-	color: #aaa;
-	float: right;
-	font-size: 28px;
-	font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
-	color: black;
-	text-decoration: none;
-	cursor: pointer;
-  }
-  
-  .form-group {
-	margin-bottom: 15px;
-  }
-  
-  .form-group label {
-	display: block;
-	font-weight: bold;
-  }
-  
-  .form-group input,
-  .form-group textarea,
-  .form-group select {
-	width: 100%;
-	padding: 8px;
-	box-sizing: border-box;
-  }
+    display: none;
+    position: fixed;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    border-radius: 8px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
 
 
 .product-card {
     background-color: #ffffff;
     border: 1px solid #E0E0E0;
     border-radius: 10px;
-    width: 190px; /* Fixed width */
-    height: 270px; /* Fixed height */
-    flex-direction: column; /* Stack content vertically */
+    width: 190px;
+    /* Fixed width */
+    height: 270px;
+    /* Fixed height */
+    flex-direction: column;
+    /* Stack content vertically */
     position: flex;
-    overflow: hidden; /* Prevent content overflow */
+    overflow: hidden;
+    /* Prevent content overflow */
 }
 
 .product-card img {
     width: 188px;
-    height: 188px; /* Maintain frame size */
-    object-fit: cover; /* Scale and crop image to fit frame */
+    height: 188px;
+    /* Maintain frame size */
+    object-fit: cover;
+    /* Scale and crop image to fit frame */
     border-radius: 12px;
     box-shadow: none;
     padding: 4px;
@@ -584,33 +636,42 @@ body {
 
 .card-content {
     padding: 8px;
-    flex-grow: 1; /* Ensure content section grows to fill available space */
+    flex-grow: 1;
+    /* Ensure content section grows to fill available space */
     margin-bottom: 3px;
 }
 
-.title { 
+.title {
     font-size: 16px;
     color: #303030;
     margin-bottom: 8px;
     margin-top: -10px;
 
-    display: block; 
-    width: calc(100% - 1px); /* Accounts for padding/margin */
-    white-space: normal; /* Allow text to wrap */
-    overflow: hidden; /* Hides overflow */
-    text-overflow: ellipsis; /* Adds ellipsis for overflowing text */
+    display: block;
+    width: calc(100% - 1px);
+    /* Accounts for padding/margin */
+    white-space: normal;
+    /* Allow text to wrap */
+    overflow: hidden;
+    /* Hides overflow */
+    text-overflow: ellipsis;
+    /* Adds ellipsis for overflowing text */
 
     /* Control maximum height and allow 2 lines of text */
     display: -webkit-box;
-    -webkit-line-clamp: 1; /* Limit text to 2 lines */
-    -webkit-box-orient: vertical; /* Set the box layout for multiline text */
-    line-height: 1.2; /* Adjust line height for better control */
-    max-height: 2.6em; /* Set maximum height for two lines */
+    -webkit-line-clamp: 1;
+    /* Limit text to 2 lines */
+    -webkit-box-orient: vertical;
+    /* Set the box layout for multiline text */
+    line-height: 1.2;
+    /* Adjust line height for better control */
+    max-height: 2.6em;
+    /* Set maximum height for two lines */
 }
 
 .product-card .price {
     font-size: 14px;
-	font-weight: bold;
+    font-weight: bold;
     color: #B84217;
     margin-bottom: 5px;
 }
@@ -618,14 +679,17 @@ body {
 .product-card .location {
     font-size: 11px;
     color: #b7b7b7;
-    margin-bottom: auto; /* Allow the location text to take up space */
+    margin-bottom: auto;
+    /* Allow the location text to take up space */
 }
 
 .card-actions {
-    margin-top: 5px; /* Push actions to the bottom */
+    margin-top: 5px;
+    /* Push actions to the bottom */
     padding: 15px;
     display: flex;
-    justify-content: center; /* Center-align button */
+    justify-content: center;
+    /* Center-align button */
 }
 
 @media (max-width: 1024px) {
@@ -652,18 +716,21 @@ body {
     flex-direction: row-reverse;
     justify-content: flex-end;
 }
+
 .star-rating input[type="radio"] {
     display: none;
 }
+
 .star-rating label {
     font-size: 2em;
     color: #ddd;
     padding: 0 0.1em;
     cursor: pointer;
 }
+
 .star-rating label:hover,
-.star-rating label:hover ~ label,
-.star-rating input[type="radio"]:checked ~ label {
+.star-rating label:hover~label,
+.star-rating input[type="radio"]:checked~label {
     color: #f5b301;
 }
 
