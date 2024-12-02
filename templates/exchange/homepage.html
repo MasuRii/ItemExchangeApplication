@@ -81,25 +81,29 @@
    <div class="filters-container">
    <div class="container">
       {% if query %}
-      <div class="category-dropdown-container">
-         <select id="categorySelect" class="category-dropdown">
-            <option value="books-media">Books and Media</option>
-            <option value="clothing-accessories">Clothing and Accessories</option>
-            <option value="personal-care">Personal Care</option>
-            <option value="electronics">Electronics</option>
-            <option value="home-kitchen">Home and Kitchen</option>
-            <option value="sports-outdoors">Sports and Outdoors</option>
-            <option value="toys-games">Toys and Games</option>
-            <option value="automotive">Automotive</option>
-            <option value="furniture">Furniture</option>
-         </select>
-      </div>
-         <p class="showing">Showing results for: "{{ query }}"</p>
-      {% else %}
+         <form id="filterForm" method="get">
+            <div class="category-dropdown-container">
+               <select id="categorySelect" class="category-dropdown" name="category" onchange="document.getElementById('filterForm').submit();">
+                     <option value="">-- Select Category --</option>
+                     <option value="Books and Media" {% if selected_category == 'books-media' %}selected{% endif %}>Books and Media</option>
+                     <option value="Clothing and Accessories" {% if selected_category == 'clothing-accessories' %}selected{% endif %}>Clothing and Accessories</option>
+                     <option value="Personal Care" {% if selected_category == 'personal-care' %}selected{% endif %}>Personal Care</option>
+                     <option value="Electronics" {% if selected_category == 'electronics' %}selected{% endif %}>Electronics</option>
+                     <option value="Home and Kitchen" {% if selected_category == 'home-kitchen' %}selected{% endif %}>Home and Kitchen</option>
+                     <option value="Sports and Outdoors" {% if selected_category == 'sports-outdoors' %}selected{% endif %}>Sports and Outdoors</option>
+                     <option value="Toys and Games" {% if selected_category == 'toys-games' %}selected{% endif %}>Toys and Games</option>
+                     <option value="Automotive" {% if selected_category == 'automotive' %}selected{% endif %}>Automotive</option>
+                     <option value="Furniture" {% if selected_category == 'furniture' %}selected{% endif %}>Furniture</option>
+               </select>
+            </div>
+            <input type="hidden" name="q" value="{{ query }}">
+         </form>
+         <p class="showing">Showing results for: "{{ query }}"{% if selected_category %} in "{{ selected_category|title }}" category{% endif %}</p>
+         {% else %}
          <div class="h2">New Listings</div>
          <span class="info-icon" title="15 most recent listings are displayed here,
          with the top left one being the newest listing.">🛈</span>
-      {% endif %}
+         {% endif %}
       
       <div class="product-grid">
          {% for item in items|slice:":15" %}

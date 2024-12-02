@@ -124,24 +124,29 @@ def logout_view(request):
 
 @login_required
 def home_view(request):
-    query = request.GET.get('q', '')  # Retrieve the search query from GET parameters
-    
+    query = request.GET.get('q', '')  # Retrieve the search query
+    category = request.GET.get('category', '')  # Retrieve the selected category
+
     if query:
-        # If there's a search query, filter items by title containing the query (case-insensitive)
+        # Filter items by title containing the query
         items = Item.objects.filter(
             is_available=True,
             title__icontains=query
         )
+        # Apply category filter if a category is selected
+        if category:
+            items = items.filter(category=category)
     else:
         # If no search query, retrieve all available items
         items = Item.objects.filter(is_available=True)
-    
-    # Order the items by date_listed descending (newest first) and limit to 15
+
+    # Order the items and limit to 15
     items = items.select_related('user').order_by('-date_listed')[:15]
-    
+
     context = {
         'items': items,
-        'query': query,  # Pass the query back to the context (useful for retaining search term in the template)
+        'query': query,
+        'selected_category': category,  # Pass the selected category to the template
     }
     return render(request, 'exchange/homepage.html', context)
 
