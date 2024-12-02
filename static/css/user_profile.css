@@ -442,66 +442,36 @@ body {
 
 .grid-container {
 	display: grid;
-	grid-template-columns: repeat(4, 1fr); /* Force 4 equal-width columns per row */
+	grid-template-columns: repeat(4, 1fr);
 	gap: 16px;
-	background-color: #ffffff;
+	background-color: #f5f5f5;
 	padding: 20px;
-	width: 100%; /* Make it responsive */
-	max-width: 850px; /* Ensure the container doesn't stretch too far */
-	height: auto;
-	max-height: 590px; /* Limit max height */
-	overflow-y: auto; /* Allow scrolling for excess content */
-	overflow-x: hidden;
-	margin: 0 auto; /* Center the container */
-	margin-top: -20px;
-	border-radius: 10px;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .grid-container > * {
-	width: 100%; /* Make sure child items fit within their grid cell */
-	box-sizing: border-box; /* Include padding and borders in the width/height */
-  }
-  
-  
-  .scrollable {
-	overflow-y: auto; /* Keep scrolling for content overflow */
-	scrollbar-width: thin; /* For modern browsers (Firefox) */
-	scrollbar-color: #cccccc transparent; /* Customize scrollbar color */
-  }
-  
-  /* Custom scrollbar styling for WebKit browsers (Chrome, Edge, Safari) */
-  .scrollable::-webkit-scrollbar {
-	width: 8px;
-  }
-  
-  .scrollable::-webkit-scrollbar-thumb {
-	background-color: #cccccc;
-	border-radius: 4px;
-  }
-  
-  .scrollable::-webkit-scrollbar-track {
-	background-color: transparent;
-  }
-  
+	width: 850px;
+	height: "wrap-content";
+	min-height: 200px;
+	margin-right: 130px;
+	border-radius: 10;
+	margin-top: 0px;
+}
 
 .add-product-btn {
-    position: absolute; /* Use absolute positioning */
-    top: 330px; /* Distance from the top of the container (adjust as needed) */
-    left: 100px; /* Center the button horizontally */
-    transform: translateX(-50%); /* Fine-tune the horizontal center alignment */
+    position: relative; /* Use relative positioning for better control */
+    margin-top: 20px; /* Add spacing from profile */
     padding: 12px 30px; /* Add padding for a better button size */
     background-color: transparent; /* Light green background */
     border-radius: 2px; /* Slightly rounded corners */
-    border: 2px solid #c2c2c2;
+	border: 2px solid #c2c2c2;
     font-size: 14px; /* Adjust font size for better readability */
     color: #808080; /* Dark text for visibility */
     text-align: center; /* Center the text */
     cursor: pointer; /* Pointer cursor on hover */
     transition: all 0.3s ease; /* Smooth transition for hover effects */
-    width: 200px; /* Make it stretch to the container's width */
+    width: 95%; /* Make it stretch to the container's width */
+    max-width: 400px; /* Limit the width to 400px */
+    display: block; /* Ensure it behaves like a block element */
+    margin-left: auto; /* Center the button horizontally */
+    margin-right: auto; /* Center the button horizontally */
 }
-
 
 .add-product-btn:hover {
 	background-color: #B84217;
