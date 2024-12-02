@@ -13,6 +13,29 @@
       dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
     }
 
+    const gridContainer = document.querySelector('.grid-container');
+
+    function updateScrolling() {
+      const items = gridContainer.querySelectorAll('.product-card').length; // Count grid items
+      if (items > 12) {
+        gridContainer.classList.add('scrollable'); // Enable scrolling
+      } else {
+        gridContainer.classList.remove('scrollable'); // Disable scrolling
+      }
+    }
+
+    // Call the function on page load
+    updateScrolling();
+
+    function addProductCard() {
+    const newCard = document.createElement('div');
+    newCard.classList.add('product-card');
+    newCard.innerHTML = '<p>New Product</p>';
+    gridContainer.appendChild(newCard);
+
+    updateScrolling(); // Re-check scrolling
+    }
+
     // Functions to handle Add Item modal
     function openAddItemModal() {
       document.getElementById('addItemModal').style.display = 'block';
@@ -30,6 +53,14 @@
       }
     }
   </script>
+
+  <script>
+  // Run updateScrolling when the page content is loaded
+  document.addEventListener('DOMContentLoaded', function () {
+    updateScrolling();
+  });
+</script>
+
 </head>
 <body>
   <nav class="navbar">
@@ -42,7 +73,6 @@
       <div class="nav-links">
         <ul>
           <li><a href="{% url 'exchange:user_profile' username=request.user.username %}" {% if request.user == profile_user %}class="active"{% endif %}>Profile</a></li>
-          <li><a href="#">List</a></li>
           <li><a href="{% url 'exchange:user_profile_settings' %}">Settings</a></li>
           <li><a href="#">Help & Support</a></li>
         </ul>
