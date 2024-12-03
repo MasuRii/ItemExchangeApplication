@@ -1,17 +1,12 @@
-/* User Profile Settings CSS */
-
-/* Reset default margins and padding */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* General Styles */
 body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     background-color: #F5F5F5;
-    /* Light gray */
 }
 
 a {
@@ -23,7 +18,6 @@ ul {
     list-style-type: none;
 }
 
-/* Messages */
 .messages {
     margin-bottom: 20px;
 }
@@ -44,10 +38,8 @@ ul {
     color: #A94442;
 }
 
-/* Navbar */
 .navbar {
     background-color: #FFFFFF;
-    /* White */
     padding: 10px 20px;
     display: flex;
     align-items: center;
@@ -118,28 +110,20 @@ ul {
     font-size: 16px;
     color: #333;
     font-weight: 500;
-    /* Maintains visibility */
     margin-left: 10px;
-    /* Provides space between the image and username */
     display: inline-block;
-    /* Allows margin and alignment adjustments */
     vertical-align: middle;
-    /* Vertically centers the text with the image */
     line-height: normal;
-    /* Ensures the text doesn't stretch */
 }
 
-/* Settings Container */
 .settings-container {
     margin-top: 80px;
-    /* To account for fixed navbar */
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
     padding: 20px;
 }
 
-/* Tabs */
 .settings-tabs ul {
     display: flex;
     border-bottom: 1px solid #E0E0E0;
@@ -172,13 +156,11 @@ ul {
     left: 0;
 }
 
-/* Settings Content */
 .settings-content {
     display: flex;
     gap: 50px;
 }
 
-/* Profile Section (Left Panel) */
 .profile-section {
     width: 35%;
     background-color: #FFFFFF;
@@ -235,7 +217,6 @@ ul {
     color: #FFFFFF;
 }
 
-/* User Information */
 .username {
     text-align: center;
     font-size: 24px;
@@ -264,10 +245,8 @@ ul {
     line-height: 1.5;
 }
 
-/* Add styles for the dropdown menu */
 .dropdown-menu {
     display: none;
-    /* Initially hidden */
     position: absolute;
     background-color: #fff;
     border: 1px solid #ccc;
@@ -277,7 +256,6 @@ ul {
     padding: 10px;
     list-style: none;
     width: 150px;
-    /* Adjust as needed */
 }
 
 .dropdown-menu ul {
@@ -300,12 +278,10 @@ ul {
     background-color: #f0f0f0;
 }
 
-/* Visible state for the dropdown */
 .dropdown-menu.show {
     display: block;
 }
 
-/* Delete Account Section */
 .delete-account-section {
     text-align: center;
     margin-top: 30px;
@@ -316,7 +292,6 @@ ul {
 .delete-account-section h2 {
     font-size: 22px;
     color: #ff4d4d;
-    /* Red color to indicate caution */
     margin-bottom: 10px;
 }
 
@@ -341,7 +316,6 @@ ul {
     background-color: #e60000;
 }
 
-/* Info Section (Right Panel) */
 .info-section {
     width: 65%;
     background-color: #FFFFFF;

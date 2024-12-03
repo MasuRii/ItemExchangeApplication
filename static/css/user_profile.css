@@ -1,11 +1,9 @@
-/* Reset default margins and paddings */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* General Styles */
 body {
     display: flex;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -25,7 +23,6 @@ body {
     text-align: center;
     border-top: 1px solid #d8d8d8;
     margin-top: auto;
-    /* Pushes footer to the bottom */
 }
 
 .footer p {
@@ -33,7 +30,6 @@ body {
     opacity: 0.4;
 }
 
-/* Navbar */
 .navbar {
     background-color: #FFFFFF;
     padding: 10px 20px;
@@ -123,18 +119,12 @@ ul {
     font-size: 16px;
     color: #333;
     font-weight: 500;
-    /* Maintains visibility */
     margin-left: 10px;
-    /* Provides space between the image and username */
     display: inline-block;
-    /* Allows margin and alignment adjustments */
     vertical-align: middle;
-    /* Vertically centers the text with the image */
     line-height: normal;
-    /* Ensures the text doesn't stretch */
 }
 
-/* Profile Container */
 .profile-container {
     background-color: #FFFFFF;
     text-align: center;
@@ -160,7 +150,6 @@ ul {
     background-color: #f0f0f0;
 }
 
-/* Profile Information */
 .profile-info {
     padding-top: 90px;
 }
@@ -186,7 +175,6 @@ ul {
     margin-top: 7px;
 }
 
-/* Call-to-Action Buttons */
 .profile-actions {
     display: flex;
     justify-content: center;
@@ -201,7 +189,6 @@ ul {
     transition: background-color 0.3s, color 0.3s;
 }
 
-/* Add styles for the dropdown menu */
 .dropdown-menu {
     display: none;
     position: absolute;
@@ -239,7 +226,6 @@ ul {
     display: block;
 }
 
-/* Right Section */
 .right-section {
     flex: 2;
     display: flex;
@@ -281,20 +267,16 @@ ul {
     margin: 16px 0;
 }
 
-/* Ensures the body takes up full height and arranges the content */
 body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
-/* Profile content takes up remaining space */
 .profile-layout {
     flex: 1;
-    /* Makes the profile section flexible */
 }
 
-/* Footer at the bottom */
 .footer {
     display: flex;
     justify-content: space-between;
@@ -307,13 +289,10 @@ body {
     text-align: center;
     border-top: 1px solid #d8d8d8;
     margin-top: auto;
-    /* Pushes footer to the bottom */
 }
 
-/* Footer items (Terms, Security, etc.) */
 .footer p {
     margin: 2px 0;
-    /* Optional, if you want some vertical spacing */
     opacity: 0.4;
 }
 
@@ -323,10 +302,8 @@ body {
 .pledge,
 .contact {
     margin-right: 10px;
-    /* Adds space between items */
 }
 
-/* Footer items specific positioning */
 .terms {
     margin-right: 20px;
 }
@@ -349,12 +326,9 @@ body {
 
 .copyright {
     margin-left: auto;
-    /* Pushes it to the far right */
     margin-right: 20px;
-    /* Ensures some space from the right edge */
 }
 
-/* Divider Styling */
 .profile-divider {
     width: 100%;
     border: 0;
@@ -400,7 +374,7 @@ body {
     top: 20px;
     max-height: calc(100vh - 80px);
     overflow-y: auto;
-    margin-left: 130px;
+    margin-left: 100px;
 }
 
 .right-section {
@@ -465,45 +439,34 @@ body {
 .grid-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    /* Force 4 equal-width columns per row */
     gap: 16px;
     background-color: #ffffff;
     padding: 20px;
     width: 100%;
-    /* Make it responsive */
     max-width: 850px;
-    /* Ensure the container doesn't stretch too far */
     height: auto;
     max-height: 590px;
-    /* Limit max height */
     overflow-y: auto;
-    /* Allow scrolling for excess content */
     overflow-x: hidden;
     margin: 0 auto;
-    /* Center the container */
     margin-top: -20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-right: 100px;
 }
 
 .grid-container>* {
     width: 100%;
-    /* Make sure child items fit within their grid cell */
     box-sizing: border-box;
-    /* Include padding and borders in the width/height */
 }
 
 
 .scrollable {
     overflow-y: auto;
-    /* Keep scrolling for content overflow */
     scrollbar-width: thin;
-    /* For modern browsers (Firefox) */
     scrollbar-color: #cccccc transparent;
-    /* Customize scrollbar color */
 }
 
-/* Custom scrollbar styling for WebKit browsers (Chrome, Edge, Safari) */
 .scrollable::-webkit-scrollbar {
     width: 8px;
 }
@@ -520,32 +483,19 @@ body {
 
 .add-product-btn {
     position: absolute;
-    /* Use absolute positioning */
     top: 340px;
-    /* Distance from the top of the container (adjust as needed) */
     left: 100px;
-    /* Center the button horizontally */
     transform: translateX(-50%);
-    /* Fine-tune the horizontal center alignment */
     padding: 12px 30px;
-    /* Add padding for a better button size */
     background-color: transparent;
-    /* Light green background */
     border-radius: 2px;
-    /* Slightly rounded corners */
     border: 2px solid #c2c2c2;
     font-size: 14px;
-    /* Adjust font size for better readability */
     color: #808080;
-    /* Dark text for visibility */
     text-align: center;
-    /* Center the text */
     cursor: pointer;
-    /* Pointer cursor on hover */
     transition: all 0.3s ease;
-    /* Smooth transition for hover effects */
     width: 200px;
-    /* Make it stretch to the container's width */
 }
 
 
@@ -613,22 +563,16 @@ body {
     border: 1px solid #E0E0E0;
     border-radius: 10px;
     width: 190px;
-    /* Fixed width */
     height: 270px;
-    /* Fixed height */
     flex-direction: column;
-    /* Stack content vertically */
     position: flex;
     overflow: hidden;
-    /* Prevent content overflow */
 }
 
 .product-card img {
     width: 188px;
     height: 188px;
-    /* Maintain frame size */
     object-fit: cover;
-    /* Scale and crop image to fit frame */
     border-radius: 12px;
     box-shadow: none;
     padding: 4px;
@@ -637,7 +581,6 @@ body {
 .card-content {
     padding: 8px;
     flex-grow: 1;
-    /* Ensure content section grows to fill available space */
     margin-bottom: 3px;
 }
 
@@ -649,24 +592,15 @@ body {
 
     display: block;
     width: calc(100% - 1px);
-    /* Accounts for padding/margin */
     white-space: normal;
-    /* Allow text to wrap */
     overflow: hidden;
-    /* Hides overflow */
     text-overflow: ellipsis;
-    /* Adds ellipsis for overflowing text */
 
-    /* Control maximum height and allow 2 lines of text */
     display: -webkit-box;
     -webkit-line-clamp: 1;
-    /* Limit text to 2 lines */
     -webkit-box-orient: vertical;
-    /* Set the box layout for multiline text */
     line-height: 1.2;
-    /* Adjust line height for better control */
     max-height: 2.6em;
-    /* Set maximum height for two lines */
 }
 
 .product-card .price {
@@ -680,16 +614,13 @@ body {
     font-size: 11px;
     color: #b7b7b7;
     margin-bottom: auto;
-    /* Allow the location text to take up space */
 }
 
 .card-actions {
     margin-top: 5px;
-    /* Push actions to the bottom */
     padding: 15px;
     display: flex;
     justify-content: center;
-    /* Center-align button */
 }
 
 @media (max-width: 1024px) {
@@ -710,7 +641,6 @@ body {
     }
 }
 
-/* Star Rating */
 .star-rating {
     display: flex;
     flex-direction: row-reverse;
@@ -736,5 +666,5 @@ body {
 
 .star-rating label {
     font-family: Arial, Helvetica, sans-serif;
-    /* existing styles */
 }
+

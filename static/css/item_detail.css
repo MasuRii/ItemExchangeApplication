@@ -1,6 +1,5 @@
 @import url('base.css');
 
-/* Header Styles */
 .site-header {
     background-color: #B84217;
     padding: 10px 0;
@@ -47,7 +46,6 @@
     font-size: 14px;
 }
 
-/* User Profile Dropdown */
 .user-profile {
 	margin-right: 133px;
 	position: relative;
@@ -73,16 +71,16 @@
 
 .dropdown-menu {
     position: absolute;
-    top: 50px; /* Place dropdown directly below the .user-profile */
-    right: 0; /* Align dropdown to the right edge of the .user-profile */
+    top: 50px; 
+    right: 0; 
     background-color: #ffffff;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 100;
-    display: flex; /* Use flexbox for layout */
-    flex-direction: column; /* Align menu items vertically */
-    align-items: flex-start; /* Align items to the left inside the dropdown */
+    display: none; 
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .dropdown-menu ul {
@@ -107,7 +105,6 @@
     background-color: #f0f0f0;
 }
 
-/* Item Detail Section */
 .item-detail-container {
     position: relative;
     display: flex;
@@ -121,21 +118,21 @@
     margin-top: 30px; 
     margin-left: 110px;
     flex: 1;
-    width: 200px; /* Fixed width of the frame */
-    height: 450px; /* Fixed height of the frame */
-    overflow: hidden; /* Ensure the image doesn't overflow the frame */
-    border-radius: 10px; /* Optional rounded corners */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow for aesthetics */
-    display: flex; /* Ensures the content inside aligns properly */
-    justify-content: center; /* Center the image horizontally */
-    align-items: center; /* Center the image vertically */
+    width: 200px; 
+    height: 450px; 
+    overflow: hidden;
+    border-radius: 10px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    outline: 1px solid #c8c8c8;
 }
 
 .item-image {
-    width: 100%; /* Fills the width of the frame */
-    height: 100%; /* Fills the height of the frame */
-    object-fit: cover; /* Maintains the aspect ratio and covers the frame */
-    border-radius: inherit; /* Matches the frame's rounded corners */
+    width: 100%;
+    height: 100%; 
+    object-fit: cover; 
+    border-radius: inherit; 
 }
 
 
@@ -172,7 +169,6 @@
 
 }
 
-/* Align category, condition, and listing type horizontally */
 .item-details-row {
     display: flex;
     justify-content: normal; 
@@ -181,8 +177,8 @@
 }
 
 .item-details-row p {
-    margin: 1px; /* Removes default margin */
-    font-size: 16px; /* Optional: Adjust font size */
+    margin: 1px; 
+    font-size: 16px; 
 }
 
 .item-category,
@@ -191,7 +187,7 @@
     font-size: 16px;
     color: #555555;
     margin-bottom: 10px;
-    flex: 1; /* Make each item take equal space */
+    flex: 1; 
 }
 
 .item-category {
@@ -217,6 +213,8 @@
 }
 
 .item-description {
+    width: 600px;
+    text-align: left;
     margin-top: 20px;
 }
 
@@ -230,6 +228,7 @@
     color: #666666;
     line-height: 1.5;
     margin-bottom: 20px;
+    margin-top: 10px;
 }
 
 .seller-info-section {
@@ -331,12 +330,11 @@
     }
 }
 
-/* Common Button Styles */
 .button {
     padding: 10px 20px;
     margin: 5px;
     border: none;
-    border-radius: 5px; /* Rounded corners */
+    border-radius: 5px; 
     cursor: pointer;
     font-size: 16px;
     font-weight: bold;
@@ -344,70 +342,52 @@
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-/* Edit Item Button */
 .edit-item-btn {
-    background-color: #333333; /* Primary color */
-    color: #F0F0F0; /* Light text */
+    background-color: #333333; 
+    color: #F0F0F0; 
 }
 
 .edit-item-btn:hover {
-    background-color: #181818; /* Slightly darker primary color on hover */
-    transform: translateY(-2px); /* Lift effect */
+    background-color: #181818; 
+    transform: translateY(-2px); 
 }
 
-/* Delete Item Button */
 .delete-item-btn {
-    background-color: #ce0909; /* Accent color */
-    color: #F0F0F0; /* Light text */
+    background-color: #ce0909; 
+    color: #F0F0F0;
 }
 
 .delete-item-btn:hover {
-    background-color: #f70000; /* Slightly darker accent color */
+    background-color: #f70000;
     transform: translateY(-2px);
 }
 
-/* Send Offer Button */
-.send-offer-btn {
-    background-color: #F0F0F0; /* Secondary color */
-    color: #B84217; /* Primary color text */
-    border: 2px solid #B84217; /* Primary color border */
-    margin: 5px;
-}
-
-.send-offer-btn:hover {
-    background-color: #e6e6e6; /* Slightly darker secondary color */
-    transform: translateY(-2px);
-}
-
-/* Modal container */
 .modal {
-    display: none; /* Hidden by default */
+    display: none; 
     position: fixed;
-    z-index: 1000; /* Sit on top */
+    z-index: 1000; 
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto; /* Enable scroll for tall content */
-    background-color: rgba(51, 51, 51, 0.8); /* Dark gray with opacity */
-    backdrop-filter: blur(5px); /* Optional: Blurs the background */
+    overflow: auto; 
+    background-color: rgba(51, 51, 51, 0.8); 
+    backdrop-filter: blur(5px); 
 }
 
-/* Modal content box */
 .modal-content {
-    background-color: #F0F0F0; /* Light gray background */
-    margin: 5% auto; /* Centered vertically and horizontally */
+    background-color: #F0F0F0; 
+    margin: 5% auto; 
     padding: 20px;
-    border-radius: 8px; /* Rounded corners */
-    max-width: 600px; /* Max width of the modal */
-    width: 90%; /* Responsive width */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Subtle shadow */
-    position: relative; /* For positioning child elements */
+    border-radius: 8px; 
+    max-width: 600px; 
+    width: 90%; 
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
 }
 
-/* Close button */
 .close {
-    color: #333333; /* Dark gray */
+    color: #333333; 
     position: absolute;
     top: 15px;
     right: 20px;
@@ -418,13 +398,11 @@
 
 .close:hover,
 .close:focus {
-    color: #B84217; /* Primary color on hover */
+    color: #B84217;
     text-decoration: none;
 }
 
-/* Modal header */
 .modal-header {
-    border-bottom: 1px solid #e5e5e5;
     margin-bottom: 20px;
 }
 
@@ -434,22 +412,19 @@
     color: #333333;
 }
 
-/* Modal body */
 .modal-body {
     padding: 10px 0;
     color: #333333;
 }
 
-/* Modal footer */
 .modal-footer {
     margin-top: 20px;
     text-align: right;
 }
 
-/* Buttons */
 .modal button {
-    background-color: #B84217; /* Primary color */
-    color: #F0F0F0; /* Light text */
+    background-color: #B84217; 
+    color: #F0F0F0; 
     border: none;
     padding: 10px 20px;
     font-size: 16px;
@@ -458,10 +433,9 @@
 }
 
 .modal button:hover {
-    background-color: #9e3a15; /* Slightly darker shade on hover */
+    background-color: #9e3a15; 
 }
 
-/* Input fields */
 .modal input[type="text"],
 .modal input[type="number"],
 .modal select,
@@ -476,17 +450,15 @@
     font-size: 16px;
 }
 
-/* Input focus */
 .modal input:focus,
 .modal select:focus,
 .modal textarea:focus {
-    border-color: #B84217; /* Primary color on focus */
+    border-color: #B84217; 
     outline: none;
 }
 
-/* Error messages */
 .modal .errorlist {
-    color: #B84217; /* Primary color for errors */
+    color: #B84217; 
     margin: -10px 0 10px 0;
     list-style-type: none;
     padding: 0;
@@ -499,12 +471,12 @@
 body {
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Ensures the body stretches to fill the viewport height */
+    min-height: 100vh; 
     margin: 0;
 }
 
 .main-content {
-    flex: 1; /* Makes the main content grow to fill available space */
+    flex: 1; 
 }
 
 .footer {
@@ -518,8 +490,8 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
     border-top: 1px solid #d8d8d8;
-    margin-top: auto; /* Pushes footer below content */
-    margin-bottom: 10px; /* Always keep 20px gap from the bottom */
+    margin-top: auto; 
+    margin-bottom: 10px; 
 }
 
  .footer p {
@@ -528,10 +500,9 @@ body {
  }
 
  .terms, .security, .how, .pledge, .contact {
-	margin-right: 10px; /* Adds space between items */
+	margin-right: 10px; 
  }
 
- /* Footer items specific positioning */
  .terms {
 	margin-right: 20px;
  }
@@ -553,35 +524,35 @@ body {
  }
  
 .copyright {
-	margin-left: auto; /* Pushes it to the far right */
-	margin-right: 20px; /* Ensures some space from the right edge */
+	margin-left: auto; 
+	margin-right: 20px; 
  }
 
  .details {
-    padding: 10px 0;  /* Padding for top and bottom */
-    width: 100%;      /* Ensure it spans the full width */
-    text-align: left; /* Align text to the left */
-    font-size: 16px;  /* Font size for readability */
-    color: #232323;   /* Text color */
+    padding: 10px 0;  
+    width: 100%;      
+    text-align: left; 
+    font-size: 16px;  
+    color: #232323;   
 }
 
 .category-trace {
-    position: absolute;  /* Use absolute positioning */
+    position: absolute; 
     font-size: 10px;
-    color: #989898; /* Light grey color */
+    color: #989898; 
     text-decoration: underline;
-    gap: 4px;  /* Space between the category and title */
-    white-space: nowrap;  /* Prevent line breaks */
-    margin-bottom: 5px;  /* Space below the text */
-    top: 90px;  /* Adjust this value to control vertical position */
-    left: 132px;  /* Adjust this value to control horizontal position */
-    z-index: 10;  /* Ensure it's above other content */
+    gap: 4px;  
+    white-space: nowrap;  
+    margin-bottom: 5px;  
+    top: 90px;  
+    left: 132px;  
+    z-index: 10; 
 }
 
 .category-trace .category-title {
     font-weight: normal;
-    font-size: 10px;  /* Ensure consistent font size */
-    white-space: nowrap; /* Prevent text from wrapping */
+    font-size: 10px;  
+    white-space: nowrap; 
 }
 
 .suggested-listings {
@@ -717,7 +688,6 @@ body {
   background-color: #0056b3;
 }
 
-/* Responsive Adjustments */
 @media (max-width: 992px) {
   .product-card {
     flex: 1 1 calc(33.333% - 1.5rem);
@@ -737,11 +707,10 @@ body {
 }
 
 .section-divider {
-    width: 100%; /* Full width of the container */
-    height: 1px; /* Thin height for the line */
-    background-color: #bababa; /* Light gray color for the divider */
-    margin: 20px 0; /* Optional: Adds spacing above and below the divider */
-    border: none; /* Ensures no border styles interfere */
+    width: 100%; 
+    height: 1px; 
+    background-color: #bababa; 
+    border: none; 
 }
 
 .item-image-suggested {
@@ -766,14 +735,14 @@ body {
     margin-top: 5px;
     margin-left: 5px;
 
-    display: -webkit-box; /* Used for the ellipsis effect */
-    -webkit-line-clamp: 1; /* Limits to one line */
-    -webkit-box-orient: vertical; /* Ensures proper box orientation */
-    line-height: 1.2; /* Controls the line height for proper display */
-    max-height: 1.2em; /* Ensures one line */
-    overflow: hidden; /* Hides overflow text */
-    text-overflow: ellipsis; /* Displays "..." when text overflows */
-    width: calc(100% - 8px); /* Ensures the width is correct */
+    display: -webkit-box; 
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    line-height: 1.2; 
+    max-height: 1.2em; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    width: calc(100% - 8px);
 }
 
 .item-price-suggested {
@@ -787,13 +756,13 @@ body {
 .item-location-suggested {
     display: block; 
     width: calc(100% - 1px); 
-    white-space: nowrap; /* Prevent text from wrapping */
-    overflow: hidden; /* Hide overflowing text */
-    text-overflow: ellipsis; /* Show ellipsis (...) for overflowing text */
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
     
-    -webkit-line-clamp: 1; /* Limit the text to 1 line */
+    -webkit-line-clamp: 1; 
     -webkit-box-orient: vertical; 
-    display: -webkit-box; /* Use flexbox for clamping */
+    display: -webkit-box; 
     line-height: 1.2; 
     max-height: 2.6em; 
     font-size: 11px;
@@ -803,10 +772,10 @@ body {
 }
 
 .product-card-link {
-    text-decoration: none; /* Remove underline */
-    display: block; /* Ensure the link takes up the full area */
+    text-decoration: none;
+    display: block;
   }
   
   .product-card-suggest {
-    cursor: pointer; /* Change cursor to a pointer when hovering over the card */
+    cursor: pointer; 
   }
