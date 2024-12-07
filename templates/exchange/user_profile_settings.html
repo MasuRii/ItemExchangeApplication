@@ -2,6 +2,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
+<title>{% block title %}Settings{% endblock %}</title>
+<link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+
 <head>
     <!-- Meta tags -->
     <meta charset="UTF-8">
@@ -49,7 +53,6 @@
         <div class="settings-tabs">
             <ul>
                 <li><a href="#" class="active">Settings</a></li>
-                <li><a href="#">Notification</a></li>
             </ul>
         </div>
         <div class="settings-content">
